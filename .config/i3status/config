@@ -1,0 +1,31 @@
+general {
+  output_format = i3bar
+  interval = 5
+  separator = ""
+}
+
+order += "battery 0"
+order += "cpu_temperature 0"
+order += "time"
+order += "volume master"
+
+battery 0 {
+  format = "%status %percentage"
+  status_bat = "🔋"
+  status_chr = "⚡"
+  integer_battery_capacity = true
+  # path = "/sys/class/power_supply/BAT0/uevent"
+}
+
+cpu_temperature 0 {
+  # 🌡️ is made of two codepoints: 🌡(1F321) and variation selector 16 (FE0F)
+  format = "🌡️ %degrees °C"
+}
+
+time {
+  format = "📅 %a %Y-%m-%d 🕒 %H:%M:%S"
+}
+
+volume master {
+  format = "🔊 %volume"
+}
