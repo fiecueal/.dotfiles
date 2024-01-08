@@ -1,0 +1,32 @@
+{
+  "ignored_packages": [
+    "Vintage",
+  ],
+  "theme": "ayu-light.sublime-theme",
+  "color_scheme": "Alabaster BG.sublime-color-scheme",
+  "remember_full_screen": true,
+  "hardware_acceleration": "opengl",
+
+  "font_face": "Victor Mono Medium",
+  "font_options": ["ss02"],
+  "font_size": 16,
+  "line_padding_top": 4,
+  "line_padding_bottom": 4,
+
+  "block_caret": true,
+  "highlight_line": true,
+  "always_show_minimap_viewport": true,
+  "scroll_context_lines": 100,
+  "rulers": [[100, "stippled", 2]],
+
+  "tab_size": 2,
+  "translate_tabs_to_spaces": true,
+  "trim_trailing_white_space_on_save": "not_on_caret",
+  "ensure_newline_at_eof_on_save": true,
+  "indent_to_bracket": true,
+}
+// 0OoD  `'"
+// ij    Il|17
+// gq9   5sS
+// b6    2zZ7
+// B8

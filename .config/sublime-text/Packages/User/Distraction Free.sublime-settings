@@ -1,0 +1,10 @@
+{
+  "font_size": 28,
+  "font_face": "Klee One SemiBold",
+  "wrap_width": 40,
+  "tab_size": 4,
+  "block_caret": false,
+  "caret_style": "phase",
+  "spell_check": true,
+  "highlight_line": false,
+}
