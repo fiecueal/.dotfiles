@@ -24,6 +24,7 @@
   "trim_trailing_white_space_on_save": "not_on_caret",
   "ensure_newline_at_eof_on_save": true,
   "indent_to_bracket": true,
+  "index_files": true,
 }
 // 0OoD  `'"
 // ij    Il|17
