@@ -6,7 +6,7 @@ sudo nala fetch --auto --fetches 3 -y
 sudo nala upgrade -y
 
 # remove unwanted programs
-sudo nala purge -y yt-dlp gucharmap
+sudo nala purge -y yt-dlp gucharmap npm
 
 # fonts
 # Victor Mono

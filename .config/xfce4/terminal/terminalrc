@@ -28,11 +28,11 @@ MiscSearchDialogOpacity=100
 MiscShowUnsafePasteDialog=TRUE
 MiscRightClickAction=TERMINAL_RIGHT_CLICK_ACTION_CONTEXT_MENU
 ScrollingUnlimited=TRUE
-FontName=3270 Nerd Font Mono 22
-BackgroundImageFile=/home/fiecueal/Pictures/114048650_p0.jpg
+FontName=3270 Nerd Font 22
+BackgroundImageFile=/home/fiecueal/Pictures/F9BKxU1aYAANoQJ.jpeg
 OverlayScrolling=TRUE
 BackgroundImageStyle=TERMINAL_BACKGROUND_STYLE_FILLED
-BackgroundMode=TERMINAL_BACKGROUND_IMAGE
 BackgroundImageShading=0.650000
-ColorPalette=#000000;#cc0000;#4e9a06;#c4a000;#3465a4;#75507b;#06989a;#d3d7cf;#555753;#ef2929;#8ae234;#fce94f;#739fcf;#ad7fa8;#34e2e2;#eeeeec
+ColorPalette=rgb(0,0,0);rgb(221,33,33);rgb(78,154,6);rgb(196,160,0);rgb(52,101,164);rgb(117,80,123);rgb(6,152,154);rgb(211,215,207);rgb(180,184,176);rgb(218,112,112);rgb(138,226,52);rgb(252,233,79);rgb(115,159,207);rgb(173,127,168);rgb(52,226,226);rgb(238,238,236)
+BackgroundMode=TERMINAL_BACKGROUND_IMAGE
 
