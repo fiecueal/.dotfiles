@@ -3,7 +3,6 @@
 # nala
 sudo apt install -y nala
 sudo nala fetch --auto --fetches 3 -y
-sudo nala upgrade -y
 
 # remove unwanted programs
 sudo nala purge -y yt-dlp gucharmap nodejs npm
@@ -44,6 +43,7 @@ wget https://go.dev/dl/$version.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf $version.linux-amd64.tar.gz
 
 # install packages
+sudo nala upgrade -y
 sudo nala install -y \
 autojump \
 breeze-gtk-theme \
