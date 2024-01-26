@@ -1,0 +1,8 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+file_extensions:
+  - webc
+scope: text.html.webc
+version: 2
+extends: Packages/HTML/HTML.sublime-syntax
