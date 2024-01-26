@@ -21,13 +21,6 @@ wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/3270.zip -
 unzip ~/Downloads/3270.zip -d ~/Downloads/3270/
 cp ~/Downloads/3270/*.ttf ~/.local/share/fonts/
 
-# icons
-# Nordzy
-git clone https://github.com/alvatip/Nordzy-icon
-cd Nordzy-icon
-./install.sh
-cd
-
 # Sublime text
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
