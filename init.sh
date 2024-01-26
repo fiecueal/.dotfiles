@@ -52,11 +52,11 @@ fcitx \
 fcitx-mozc \
 ffmpeg \
 flameshot \
-foliate \
 font-manager \
 fonts-noto \
 fortunes \
 git-cola \
+git-gui \
 gpick \
 i3 \
 im-config \
@@ -71,20 +71,25 @@ ruby-full \
 simplescreenrecorder \
 sublime-text \
 woff2 \
-xbacklight \
-xclip \
 xfce4-terminal \
+
+# install flatpaks
+flatpak install -y flathub \
+com.github.johnfactotum.Foliate \
+com.heroicgameslauncher.hgl \
+io.mgba.mGBA \
 
 # install tlp for power management and charge thresholds if 'laptop' passed as arg
 if [[ $1 == "laptop" ]]; then
 
-sudo nala install -y tlp
+sudo nala install -y tlp xbacklight
 sudo mkdir -p /etc/tlp.d
 sudo bash -c 'cat > /etc/tlp.d/00-charge-thresh.conf <<EOF
 START_CHARGE_THRESH_BAT0=0
 STOP_CHARGE_THRESH_BAT0=60
 EOF'
 tlp start
+xbacklight set 100
 
 fi
 
