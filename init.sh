@@ -99,6 +99,9 @@ sudo ufw enable
 # ruby gems
 sudo gem install solargraph
 
+# sublime text package control
+wget https://packagecontrol.io/Package%20Control.sublime-package -P ~/.config/sublime-text/Installed\ Packages
+
 # set xfce4-terminal as default
 sudo update-alternatives --set x-terminal-emulator /usr/bin/xfce4-terminal.wrapper
 gsettings set org.cinnamon.desktop.default-applications.terminal exec xfce4-terminal
