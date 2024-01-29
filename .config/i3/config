@@ -37,7 +37,7 @@ bindsym $super+Shift+F1  exec firefox
 bindsym $super+Shift+F2  exec firefox -P p1 --class ff2
 bindsym $super+Shift+F3  exec subl
 bindsym $super+Shift+F4  exec nemo
-bindsym $super+Shift+F5  exec foliate
+bindsym $super+Shift+F5  exec flatpak run com.github.johnfactotum.Foliate
 bindsym $super+Shift+F6  exec virtualbox
 bindsym $super+Shift+F7  exec minecraft-launcher
 bindsym $super+Shift+F8  exec flatpak run com.heroicgameslauncher.hgl
