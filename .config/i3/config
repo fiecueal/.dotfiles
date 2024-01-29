@@ -58,12 +58,11 @@ bindsym --release               Print exec --no-startup-id flameshot screen -c
 bindsym --release         Shift+Print exec --no-startup-id flameshot gui -s -c
 bindsym --release       Control+Print exec --no-startup-id flameshot screen -p ~/Pictures/screenshot_$(date +'%Y-%m-%d-%T').png
 bindsym --release Control+Shift+Print exec --no-startup-id flameshot gui -s -p ~/Pictures/screenshot_$(date +'%Y-%m-%d-%T').png
-
-# screenshots using import and xclip (does not work sometimes i.e. Minecraft)
-# bindsym --release               Print exec --no-startup-id import -window root png:- | xclip -selection clipboard -t image/png
-# bindsym --release       Control+Print exec --no-startup-id import -window root ~/Pictures/screenshot_$(date +'%Y-%m-%d-%T').png
-# bindsym --release         Shift+Print exec --no-startup-id import png:- | xclip -selection clipboard -t image/png
-# bindsym --release Control+Shift+Print exec --no-startup-id import ~/Pictures/screenshot_$(date +'%Y-%m-%d-%T').png
+# just so they work even when super key is held
+bindsym --release               $super+Print exec --no-startup-id flameshot screen -c
+bindsym --release         $super+Shift+Print exec --no-startup-id flameshot gui -s -c
+bindsym --release       $super+Control+Print exec --no-startup-id flameshot screen -p ~/Pictures/screenshot_$(date +'%Y-%m-%d-%T').png
+bindsym --release $super+Control+Shift+Print exec --no-startup-id flameshot gui -s -p ~/Pictures/screenshot_$(date +'%Y-%m-%d-%T').png
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
