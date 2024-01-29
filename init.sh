@@ -7,6 +7,12 @@ sudo nala fetch --auto --fetches 3 -y
 # remove unwanted programs
 sudo nala purge -y yt-dlp gucharmap nodejs npm
 
+# Nordzy-icons
+git clone https://github.com/alvatip/Nordzy-icon
+cd Nordzy-icon
+./install.sh
+cd
+
 # fonts
 # Victor Mono
 wget https://rubjo.github.io/victor-mono/VictorMonoAll.zip -P ~/Downloads/
