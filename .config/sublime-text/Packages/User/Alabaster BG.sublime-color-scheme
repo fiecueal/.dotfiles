@@ -9,7 +9,7 @@
     // "green": "lightgreen",
     "yellow": "hsl(56, 100%, 87%)",
     // "green": "hsl(81, 23%, 87%)",
-    "chocolate": "hsl(25,75%,47%)", // css-colors chocolate == #D2691E
+    // "chocolate": "hsl(25,75%,47%)", // css-colors chocolate == #D2691E
   },
   "globals":
   {
@@ -28,24 +28,24 @@
     //   "background": "var(blue)",
     // },
     {
-      "scope": "constant.other.symbol",
+      "scope": "constant.other.symbol | meta.mapping.key",
       "foreground": "var(fg)",
       "background": "var(magenta)",
     },
     {
       "scope": "keyword.operator",
-      "foreground": "var(chocolate)",
+      "foreground": "chocolate",
     },
-    {
-      "scope": "punctuation.definition",
-      // "background": "var(bg)",
-    },
+    // {
+    //   "scope": "punctuation.definition",
+    //   "background": "var(bg)",
+    // },
     {
       "scope": "punctuation.definition.string",
       "background": "var(green)",
     },
     {
-      "scope": "keyword.control.flow",
+      "scope": "keyword.control.flow | keyword.control.conditional",
       "background": "bisque",
     }
   ]

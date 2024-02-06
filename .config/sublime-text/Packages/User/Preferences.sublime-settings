@@ -10,13 +10,13 @@
   "font_face": "Victor Mono Medium",
   "font_options": ["ss02"],
   "font_size": 16,
-  "line_padding_top": 4,
-  "line_padding_bottom": 4,
+  "line_padding_top": 2,
+  "line_padding_bottom": 2,
 
   "block_caret": true,
   "highlight_line": true,
   "always_show_minimap_viewport": true,
-  "scroll_context_lines": 100,
+  "scroll_context_lines": 10,
   "rulers": [[100, "stippled", 2]],
 
   "tab_size": 2,
