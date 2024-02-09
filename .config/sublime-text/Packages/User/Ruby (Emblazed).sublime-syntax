@@ -1,0 +1,351 @@
+%YAML 1.2
+---
+# playground file for sublime-syntax
+# does not implement everything ruby syntax has to offer
+# only scopes and tokens I use when working with DragonRuby
+# will add more as needed (or if I feel like it)
+name: Ruby (Emblazed)
+file_extensions: rb
+scope: source.ruby
+
+variables:
+  digits: \d+(?:_\d+)*
+
+# TODO: strings, symbols, hashes, arrays, method/module/class declarations,
+#       procs/lambdas, operators, syntax errors
+# TODO (maybe): ternary ops, regex(why?), yardoc in comments, bin/oct/hex ints
+contexts:
+  main:
+    - include: comments
+    - include: bools-and-nil
+    - include: decimals
+    - include: strings
+    - include: symbols
+    - include: operators
+    - include: hashes
+    - include: arrays
+
+
+###[ ARRAYS ]##################################################################
+
+  arrays:
+    # - include: empty-arrays
+    - match: \[
+      scope: punctuation.section.sequence.begin.ruby
+      push:
+        - array-body
+    - include: comments
+
+  array-body:
+    - meta_scope: meta.sequence.array.ruby
+    - match: \]
+      scope: punctuation.section.sequence.end.ruby
+      pop: true
+
+  # empty-arrays:
+
+###[ HASHES ]#######################################################
+
+  hashes:
+    - include: empty-block
+    - match: (?=\{)
+      captures:
+        1: punctuation.section.mapping.begin.ruby
+      push:
+        - meta_scope: meta.mapping.ruby
+        - match: (})
+          scope: punctuation.section.mapping.end.ruby
+          pop: true
+
+  empty-block:
+    - match: ({)\s*\n(})
+      scope: meta.block.ruby
+      captures:
+        1: punctuation.section.block.begin.ruby
+        2: punctuation.section.block.end.ruby
+
+
+###[ OPERATORS ]###############################################################
+
+  operators:
+    # ranges
+    - match: \.\.\.?
+      scope: keyword.operator.range.ruby
+    # arithmetic
+    - match: \*\*|[-+*/%]
+      scope: keyword.operator.arithmetic.ruby
+    # comparison
+    - match: <=>|===|<=|>=|==|=~|!=|!~|<|>
+      scope: keyword.operator.comparison.ruby
+    # assignment
+    - match: =
+      scope: keyword.operator.assignment.ruby
+    # augmented assignment
+    - match: <<=|&&=|\|\|=|\*\*=|[-+*&|^]=|<<
+      scope: keyword.operator.assignment.augmented.ruby
+
+###[ SYMBOLS ]#################################################################
+
+  symbols:
+    # single-quoted syms
+    - match: :'
+      scope: punctuation.definition.constant.ruby
+      push:
+        - match: \'
+          scope: punctuation.definition.constant.ruby
+          pop: true
+    # double-quoted syms
+    - match: :"
+      scope: punctuation.definition.constant.ruby
+      push:
+        - match: \"
+          scope: punctuation.definition.constant.ruby
+          pop: true
+    # regular syms
+    - match: (:)\S+
+      scope: constant.other.symbol.ruby
+      captures:
+        1: punctuation.definition.constant.ruby
+
+###[ STRINGS ]#################################################################
+
+  strings:
+    # single quotes
+    - match: \'
+      scope: punctuation.definition.string.begin.ruby
+      push:
+        - meta_scope: meta.string.ruby string.quoted.single.ruby
+        - match: \'
+          scope: punctuation.definition.string.end.ruby
+          pop: true
+        - match: \\'|\\\\
+          scope: constant.character.escape.ruby
+    # double quotes
+    - match: \"
+      scope: punctuation.definition.string.begin.ruby
+      push:
+        - meta_scope: meta.string.ruby string.quoted.double.ruby
+        - match: \"
+          scope: punctuation.definition.string.end.ruby
+          pop: true
+
+###[ DECIMALS ]################################################################
+
+  decimals:
+    # floats
+    - match: \b{{digits}}(_)*(?:(\.){{digits}}|(?:(\.){{digits}}(_)*)?[eE][+-]?(_)*{{digits}})(_)*\b
+      scope: meta.number.float.decimal.ruby constant.numeric.value.ruby
+      captures:
+        1: invalid.illegal.ruby
+        2: punctuation.separator.decimal.ruby
+        3: punctuation.separator.decimal.ruby
+        4: invalid.illegal.ruby
+        5: invalid.illegal.ruby
+        6: invalid.illegal.ruby
+    # ints
+    - match: \b(0[dD])?({{digits}}(_)*)\b
+      scope: meta.number.integer.decimal.ruby
+      captures:
+        1: constant.numeric.base.ruby
+        2: constant.numeric.value.ruby
+        3: invalid.illegal.ruby
+
+###[ BOOLS AND NIL ]###########################################################
+
+  bools-and-nil:
+    - match: \b(?:true|false)\b(?![?!])
+      scope: constant.language.boolean.ruby
+    - match: \bnil\b(?![?!])
+      scope: constant.language.null.ruby
+
+###[ COMMENTS ]################################################################
+
+  comments:
+    - match: (\#+).*
+      scope: comment.line.number-sign.ruby
+      captures:
+        1: punctuation.definition.comment.ruby
+    - match: ^=begin
+      scope: punctuation.definition.comment.begin.ruby
+      push:
+        - meta_scope: comment.block.ruby
+        - match: ^=end
+          scope: punctuation.definition.comment.end.ruby
+          pop: true
+
+###############################################################################
+###############################################################################
+###############################################################################
+###############################################################################
+###############################################################################
+###############################################################################
+
+  # dragon:
+  #   # variables assigned to args.state
+  #   - match: (\$?(?:args\.)?state\.)[a-zA-Z_]\w*''
+  #     scope: variable.other.readwrite.global.dragonruby
+  #     captures:
+  #       1: punctuation.definition.variable.dragonruby
+  #   # built-in dr attributes
+  #   - match: attr_gtk|attr_rect|attr_sprite
+  #     scope: keyword.other.special-method.dragonruby
+  #   # invalid args re-assignments
+  #   - match: args\s*(<<=|&&=|\|\|=|\*\*=|[-+*&|^]?=|<<).*
+  #     scope: invalid.illegal.dragonruby
+
+  # strings:
+  #   # single quotes
+  #   - match: \'
+  #     scope: punctuation.definition.string.begin.ruby
+  #     push:
+  #       - meta_scope: meta.string.ruby string.quoted.single.ruby
+  #       - match: \'
+  #         scope: punctuation.definition.string.end.ruby
+  #         pop: true
+  #       - match: \\'|\\\\
+  #         scope: constant.character.escape.ruby
+  #   # double quotes
+  #   - match: \"
+  #     scope: punctuation.definition.string.begin.ruby
+  #     push:
+  #       - meta_scope: string.quoted.double.ruby
+  #       - match: \"
+  #         scope: punctuation.definition.string.end.ruby
+  #         pop: true
+
+  # symbols:
+  #   - match: (:)[a-zA-Z_]\w*
+  #     scope: constant.other.symbol.ruby
+  #     captures:
+  #       1: punctuation.definition.constant.ruby
+
+  # variables:
+  #   - match: (\@)[a-zA-Z_]\w*
+  #     scope: variable.other.readwrite.instance.ruby
+  #     captures:
+  #       1: punctuation.definition.variable.ruby
+
+  # keywords:
+    # # blocks
+    # - match: \bbegin\b(?![?!])
+    #   scope: keyword.control.block.begin.ruby
+    # - match: \bend\b(?![?!])
+    #   scope: keyword.control.block.end.ruby
+    # # conditional
+    # - match: \bcase\b(?![?!])
+    #   scope: keyword.control.conditional.case.ruby
+    # - match: \belse\b(?![?!])
+    #   scope: keyword.control.conditional.if.ruby
+    # - match: \belsif\b(?![?!])
+    #   scope: keyword.control.conditional.elseif.ruby
+    # - match: \bif\b(?![?!])
+    #   scope: keyword.control.conditional.if.ruby
+    # - match: \bthen\b(?![?!])
+    #   scope: keyword.control.conditional.then.ruby
+    # - match: \bunless\b(?![?!])
+    #   scope: keyword.control.conditional.unless.ruby
+    # - match: \bwhen\b(?![?!])
+    #   scope: keyword.control.conditional.when.ruby
+    # # exception
+    # - match: \bensure\b(?![?!])
+    #   scope: keyword.control.exception.ensure.ruby
+    # - match: \brescue\b(?![?!])
+    #   scope: keyword.control.exception.rescue.ruby
+    # # loop
+    # - match: \bfor\b(?![?!])
+    #   scope: keyword.control.loop.for.ruby
+    # - match: \buntil\b(?![?!])
+    #   scope: keyword.control.loop.until.ruby
+    # - match: \bwhile\b(?![?!])
+    #   scope: keyword.control.loop.while.ruby
+    # # flow
+    # - match: \bbreak\b(?![?!])
+    #   scope: keyword.control.flow.break.ruby
+    # - match: \bnext\b(?![?!])
+    #   scope: keyword.control.flow.next.ruby
+    # - match: \bredo\b(?![?!])
+    #   scope: keyword.control.flow.redo.ruby
+    # - match: \bretry\b(?![?!])
+    #   scope: keyword.control.flow.retry.ruby
+    # - match: \breturn\b(?![?!])
+    #   scope: keyword.control.flow.return.ruby
+    # - match: \byield\b(?![?!])
+    #   scope: keyword.control.flow.yield.ruby
+    # # declarations
+    # - match: \b(?:alias|alias_method)\b(?![?!])
+    #   scope: keyword.declaration.alias.ruby
+    # - match: \bundef\b(?![?!])
+    #   scope: keyword.declaration.undef.ruby
+    # # operators
+    # - match: \b(?:and|not|or)\b
+    #   scope: keyword.operator.logical.ruby
+    # - match: \bin\b(?![?!])
+    #   scope: keyword.operator.logical.ruby
+    # # other functions
+    # - match: \b(?:BEGIN|END)\b(?![?!])
+    #   scope: entity.name.function.preprocessor.ruby
+    # - match: \b(?:defined|block_given)\?
+    #   scope: support.function.builtin.ruby
+    # - match: \bsuper\b(?![?!])
+    #   scope: support.function.builtin.ruby
+
+
+
+# adapted from Python/Python.sublime-syntax [ DICTIONARIES AND SETS ] section
+  # hashes-and-blocks:
+  #   - include: empty-hashes
+  #   - match: (?=\{)
+  #   # - branch_point: hashes-and-blocks
+  #   #   branch:
+  #   #     - maybe-block
+  #   #     - maybe-hash
+
+  # maybe-hash:
+  #   - match: \{
+  #     scope: punctuation.section.mapping.begin.ruby
+  #     set: allow-hash-splat-operator
+
+  # hash-end:
+  #   - match: \}
+  #     scope: meta.mapping.ruby punctuation.section.mapping.end.ruby
+  #     set: after-expression
+
+  # hash-separator:
+  #   - match: ','
+  #     scope: punctuation.separator.sequence.ruby
+  #     set: allow-hash-splat-operator
+
+  # allow-hash-splat-operator:
+  #   - meta_scope: meta.mapping.ruby
+  #   - include: comments
+  #   - match: \*{3,}
+  #     scope: invalid.illegal.syntax.ruby
+  #     set: hash-splat-body
+  #   - match: \*\*
+  #     scope: keyword.operator.splat.mapping.ruby
+  #     set: hash-splat-body
+  #   - match: \*
+  #     scope: invalid.illegal.unexpected-operator.ruby
+  #     set: hash-splat-body
+  #   - match: (?=\S)
+  #     set: splat-body
+  #   - match: ^(?!\s*([#*]|$))
+  #     set: splat-body
+
+
+  # illegal-separator:
+  #   - match: ','
+  #     scope: invalid.illegal.separator.ruby
+
+  # empty-hashes:
+  # - match: (\{)\s*(\})
+  #   scope: meta.mapping.empty.ruby
+  #   captures:
+  #     1: punctuation.section.mapping.begin.ruby
+  #     2: punctuation.section.mapping.end.ruby
+  #   # push: after-expression
+
+  # maybe-block:
+  #   - match: \{
+  #     scope: punctuation.section.block.ruby
+  #     push: maybe-block-parameters
