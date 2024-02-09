@@ -45,7 +45,7 @@
       "background": "var(green)",
     },
     {
-      "scope": "keyword.control.flow | keyword.control.conditional",
+      "scope": "keyword.control.flow | keyword.control.conditional | keyword.control.loop",
       "background": "bisque",
     }
   ]
