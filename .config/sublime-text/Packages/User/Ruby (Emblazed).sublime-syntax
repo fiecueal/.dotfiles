@@ -24,6 +24,10 @@ contexts:
     - include: operators
     - include: hashes
     - include: arrays
+  # TODO: only include things that won't cause errors
+  # (i don't think including main will cause erros but who knows)
+  literals:
+    - include: main
 
 
 ###[ ARRAYS ]##################################################################
@@ -84,6 +88,29 @@ contexts:
     - match: <<=|&&=|\|\|=|\*\*=|[-+*&|^]=|<<
       scope: keyword.operator.assignment.augmented.ruby
 
+###[ ESCAPES AND INTERPOLATION ]###############################################
+###[ https://ruby-doc.org/current/syntax/literals_rdoc.html ]##################
+
+  single-quoted-escapes:
+    - match: \\[\\']
+      scope: constant.character.escape.ruby
+
+  double-quoted-escapes:
+    - match: \\[\\"abtnvfres]
+      scope: constant.character.escape.ruby
+
+  interpolated:
+    - meta_scope: meta.interpolation.ruby
+    - match: \#{
+      scope: punctuation.section.interpolation.begin.ruby
+      push:
+        - clear_scopes: 1
+        - meta_scope: meta.interpolation.ruby
+        - match: \}
+          scope: punctuation.section.interpolation.end.ruby
+          pop: true
+        - include: literals
+
 ###[ SYMBOLS ]#################################################################
 
   symbols:
@@ -91,19 +118,25 @@ contexts:
     - match: :'
       scope: punctuation.definition.constant.ruby
       push:
+        - meta_scope: meta.symbol.ruby constant.other.symbol.ruby
         - match: \'
           scope: punctuation.definition.constant.ruby
           pop: true
+        - include: single-quoted-escapes
     # double-quoted syms
     - match: :"
       scope: punctuation.definition.constant.ruby
       push:
+        - meta_scope: meta.symbol.ruby constant.other.symbol.ruby
         - match: \"
           scope: punctuation.definition.constant.ruby
           pop: true
+        - include: double-quoted-escapes
+        - include: interpolated
     # regular syms
-    - match: (:)\S+
-      scope: constant.other.symbol.ruby
+    # does not cover all valid symbols (there's a lot apparently)
+    - match: (:)(?:@@|[$@])?[a-zA-Z_]\w*
+      scope: meta.symbol.ruby constant.other.symbol.ruby
       captures:
         1: punctuation.definition.constant.ruby
 
@@ -118,8 +151,7 @@ contexts:
         - match: \'
           scope: punctuation.definition.string.end.ruby
           pop: true
-        - match: \\'|\\\\
-          scope: constant.character.escape.ruby
+        - include: single-quoted-escapes
     # double quotes
     - match: \"
       scope: punctuation.definition.string.begin.ruby
@@ -128,6 +160,8 @@ contexts:
         - match: \"
           scope: punctuation.definition.string.end.ruby
           pop: true
+        - include: double-quoted-escapes
+        - include: interpolated
 
 ###[ DECIMALS ]################################################################
 
@@ -192,33 +226,6 @@ contexts:
   #   # invalid args re-assignments
   #   - match: args\s*(<<=|&&=|\|\|=|\*\*=|[-+*&|^]?=|<<).*
   #     scope: invalid.illegal.dragonruby
-
-  # strings:
-  #   # single quotes
-  #   - match: \'
-  #     scope: punctuation.definition.string.begin.ruby
-  #     push:
-  #       - meta_scope: meta.string.ruby string.quoted.single.ruby
-  #       - match: \'
-  #         scope: punctuation.definition.string.end.ruby
-  #         pop: true
-  #       - match: \\'|\\\\
-  #         scope: constant.character.escape.ruby
-  #   # double quotes
-  #   - match: \"
-  #     scope: punctuation.definition.string.begin.ruby
-  #     push:
-  #       - meta_scope: string.quoted.double.ruby
-  #       - match: \"
-  #         scope: punctuation.definition.string.end.ruby
-  #         pop: true
-
-  # symbols:
-  #   - match: (:)[a-zA-Z_]\w*
-  #     scope: constant.other.symbol.ruby
-  #     captures:
-  #       1: punctuation.definition.constant.ruby
-
   # variables:
   #   - match: (\@)[a-zA-Z_]\w*
   #     scope: variable.other.readwrite.instance.ruby
