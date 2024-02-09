@@ -45,9 +45,9 @@
       "background": "var(green)",
     },
     {
-      "scope": "punctuation.section.interpolation",
+      "scope": "punctuation.section.interpolation, constant.character.escape",
       "background": "var(dark_green)",
-      // "foreground": "#7A3E9D",
+      "foreground": "#7A3E9D",
     },
     {
       "scope": "keyword.control.flow | keyword.control.conditional | keyword.control.loop",
