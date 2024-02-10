@@ -21,53 +21,13 @@ contexts:
     - include: decimals
     - include: strings
     - include: symbols
-    - include: operators
-    - include: hashes
     - include: arrays
+    - include: hashes
+    - include: operators
   # TODO: only include things that won't cause errors
   # (i don't think including main will cause erros but who knows)
   literals:
     - include: main
-
-
-###[ ARRAYS ]##################################################################
-
-  arrays:
-    # - include: empty-arrays
-    - match: \[
-      scope: punctuation.section.sequence.begin.ruby
-      push:
-        - array-body
-    - include: comments
-
-  array-body:
-    - meta_scope: meta.sequence.array.ruby
-    - match: \]
-      scope: punctuation.section.sequence.end.ruby
-      pop: true
-
-  # empty-arrays:
-
-###[ HASHES ]#######################################################
-
-  hashes:
-    - include: empty-block
-    - match: (?=\{)
-      captures:
-        1: punctuation.section.mapping.begin.ruby
-      push:
-        - meta_scope: meta.mapping.ruby
-        - match: (})
-          scope: punctuation.section.mapping.end.ruby
-          pop: true
-
-  empty-block:
-    - match: ({)\s*\n(})
-      scope: meta.block.ruby
-      captures:
-        1: punctuation.section.block.begin.ruby
-        2: punctuation.section.block.end.ruby
-
 
 ###[ OPERATORS ]###############################################################
 
@@ -87,6 +47,42 @@ contexts:
     # augmented assignment
     - match: <<=|&&=|\|\|=|\*\*=|[-+*&|^]=|<<
       scope: keyword.operator.assignment.augmented.ruby
+
+
+
+###[ HASHES ]##################################################################
+
+  hashes:
+    - include: empty-block
+    - match: (?=\{)
+      captures:
+        1: punctuation.section.mapping.begin.ruby
+      push:
+        - meta_scope: meta.mapping.ruby
+        - match: (})
+          scope: punctuation.section.mapping.end.ruby
+          pop: true
+
+  empty-block:
+    - match: ({)\s*\n(})
+      scope: meta.block.ruby
+      captures:
+        1: punctuation.section.block.begin.ruby
+        2: punctuation.section.block.end.ruby
+
+###[ ARRAYS ]##################################################################
+
+  arrays:
+    - match: \[
+      scope: punctuation.section.sequence.begin.ruby
+      push:
+        - meta_scope: meta.sequence.array.ruby
+        - match: \]
+          scope: punctuation.section.sequence.end.ruby
+          pop: true
+        - match: \,
+          scope: punctuation.separator.sequence.ruby
+        - include: literals
 
 ###[ ESCAPES AND INTERPOLATION ]###############################################
 ###[ https://ruby-doc.org/current/syntax/literals_rdoc.html ]##################
