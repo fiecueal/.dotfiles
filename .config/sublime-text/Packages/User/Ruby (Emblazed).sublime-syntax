@@ -9,11 +9,14 @@ file_extensions: rb
 scope: source.ruby
 
 variables:
-  digits: \d+(?:_\d+)*
+  digits: '\d+(?:_\d+)*'
+  vars:   '[a-zA-Z_]\w*'
 
-# TODO: strings, symbols, hashes, arrays, method/module/class declarations,
+
+# TODO: hashes, var/method/module/class declarations, code blocks
 #       procs/lambdas, operators, syntax errors
-# TODO (maybe): ternary ops, regex(why?), yardoc in comments, bin/oct/hex ints
+# TODO (maybe): hash/array splats, ternary ops, regex(why?),
+#               yardoc in comments, bin/oct/hex ints
 contexts:
   main:
     - include: comments
@@ -131,7 +134,7 @@ contexts:
         - include: interpolated
     # regular syms
     # does not cover all valid symbols (there's a lot apparently)
-    - match: (:)(?:@@|[$@])?[a-zA-Z_]\w*
+    - match: (:)(?:@@|[$@])?{{vars}}
       scope: meta.symbol.ruby constant.other.symbol.ruby
       captures:
         1: punctuation.definition.constant.ruby
@@ -291,64 +294,3 @@ contexts:
     #   scope: support.function.builtin.ruby
     # - match: \bsuper\b(?![?!])
     #   scope: support.function.builtin.ruby
-
-
-
-# adapted from Python/Python.sublime-syntax [ DICTIONARIES AND SETS ] section
-  # hashes-and-blocks:
-  #   - include: empty-hashes
-  #   - match: (?=\{)
-  #   # - branch_point: hashes-and-blocks
-  #   #   branch:
-  #   #     - maybe-block
-  #   #     - maybe-hash
-
-  # maybe-hash:
-  #   - match: \{
-  #     scope: punctuation.section.mapping.begin.ruby
-  #     set: allow-hash-splat-operator
-
-  # hash-end:
-  #   - match: \}
-  #     scope: meta.mapping.ruby punctuation.section.mapping.end.ruby
-  #     set: after-expression
-
-  # hash-separator:
-  #   - match: ','
-  #     scope: punctuation.separator.sequence.ruby
-  #     set: allow-hash-splat-operator
-
-  # allow-hash-splat-operator:
-  #   - meta_scope: meta.mapping.ruby
-  #   - include: comments
-  #   - match: \*{3,}
-  #     scope: invalid.illegal.syntax.ruby
-  #     set: hash-splat-body
-  #   - match: \*\*
-  #     scope: keyword.operator.splat.mapping.ruby
-  #     set: hash-splat-body
-  #   - match: \*
-  #     scope: invalid.illegal.unexpected-operator.ruby
-  #     set: hash-splat-body
-  #   - match: (?=\S)
-  #     set: splat-body
-  #   - match: ^(?!\s*([#*]|$))
-  #     set: splat-body
-
-
-  # illegal-separator:
-  #   - match: ','
-  #     scope: invalid.illegal.separator.ruby
-
-  # empty-hashes:
-  # - match: (\{)\s*(\})
-  #   scope: meta.mapping.empty.ruby
-  #   captures:
-  #     1: punctuation.section.mapping.begin.ruby
-  #     2: punctuation.section.mapping.end.ruby
-  #   # push: after-expression
-
-  # maybe-block:
-  #   - match: \{
-  #     scope: punctuation.section.block.ruby
-  #     push: maybe-block-parameters
