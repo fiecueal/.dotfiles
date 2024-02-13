@@ -36,10 +36,10 @@
       "scope": "keyword.operator",
       "foreground": "chocolate",
     },
-    // {
-    //   "scope": "punctuation.definition",
-    //   "background": "var(bg)",
-    // },
+    {
+      "scope": "meta.interpolation",
+      "background": "var(bg)",
+    },
     {
       "scope": "punctuation.definition.string",
       "background": "var(green)",
