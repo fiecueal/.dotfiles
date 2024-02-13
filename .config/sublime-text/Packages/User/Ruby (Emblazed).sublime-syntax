@@ -74,57 +74,58 @@ contexts:
         - match: \}
           scope: punctuation.section.mapping.end.ruby
           pop: true
-        - match: \,
-          scope: punctuation.separator.sequence.ruby
-        - include: key-value-pair
-
-  key-value-pair:
-    - include: keys
-    - include: values
+        - include: keys
+        - include: illegals
 
   keys:
     # single-quoted syms
     - match: \'
       scope: punctuation.definition.constant.ruby
       push:
-        - meta_scope: meta.symbol.ruby constant.other.symbol.ruby
-        - match: \'
-          scope: punctuation.definition.constant.ruby
-          push:
-            - match: '[^:]*'
-              scope: invalid.illegal.ruby
-              pop: true
-        - match: ':'
-          scope: punctuation.definition.constant.ruby
-          pop: true
+        - clear_scopes: 1
+        - meta_scope: meta.mapping.key.ruby meta.symbol.ruby constant.other.symbol.ruby
+        - match: (\')([^:]*)
+          captures:
+            1: punctuation.definition.constant.ruby
+            2: invalid.illegal.ruby
+          set: colon-hash-keys
         - include: single-quoted-escapes
     # double-quoted syms
     - match: \"
       scope: punctuation.definition.constant.ruby
       push:
-        - meta_scope: meta.symbol.ruby constant.other.symbol.ruby
-        - match: \"
-          scope: punctuation.definition.constant.ruby
-          push:
-            - match: '[^:]*'
-              scope: invalid.illegal.ruby
-              pop: true
-        - match: ':'
-          scope: punctuation.definition.constant.ruby
-          pop: true
+        - clear_scopes: 1
+        - meta_scope: meta.mapping.key.ruby meta.symbol.ruby constant.other.symbol.ruby
+        - match: (\")([^:]*)
+          captures:
+            1: punctuation.definition.constant.ruby
+            2: invalid.illegal.ruby
+          set: colon-hash-keys
         - include: double-quoted-escapes
         - include: interpolated
     # regular syms
-    - match: '{{vars}}'
+    - match: '{{vars}}[!?]?'
       push:
-        - meta_scope: meta.symbol.ruby constant.other.symbol.ruby
+        - clear_scopes: 1
+        - meta_scope: meta.mapping.key.ruby meta.symbol.ruby constant.other.symbol.ruby
         - match: '[^:]*'
           scope: invalid.illegal.ruby
-        - match: ':'
-          scope: punctuation.definition.constant.ruby
-          pop: true
+          set: colon-hash-keys
+
+  colon-hash-keys:
+    - match: ':'
+      scope: punctuation.separator.key-value.ruby
+      set: values
 
   values:
+    - clear_scopes: 1
+    - meta_scope: meta.mapping.value.ruby
+    - match: ','
+      scope: punctuation.separator.sequence.ruby
+      pop: true # pops out of hash pair
+    - match: '}'
+      scope: punctuation.section.mapping.end.ruby
+      pop: 2 # pops out of hash if no trailing comma is present in the last hash pair
     - include: literals
 
 ###[ ARRAYS ]##################################################################
