@@ -27,10 +27,18 @@ contexts:
     - include: arrays
     - include: hashes
     - include: operators
+    - include: illegals
   # TODO: only include things that won't cause errors
   # (i don't think including main will cause erros but who knows)
   literals:
     - include: main
+
+###[ ILLEGALS ]################################################################
+  # for things that show up where they shouldn't
+
+  illegals:
+    - match: '\bend\b|:|,'
+      scope: invalid.illegal.ruby
 
 ###[ OPERATORS ]###############################################################
 
