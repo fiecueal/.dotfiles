@@ -62,22 +62,28 @@ contexts:
 
 
 ###[ HASHES ]##################################################################
-  # why is this so hard
+  # why is this so hard RAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   # currently only checks for { key: val } syntax and quoted variants
   # recognizes any {} block as hash because regular blocks aren't scoped yet
+  # thought process: match keys first and find the first instance of `:`
+  #                  to break out of regexing for keys
+  #                  search for values after `:` and break out when `,` or `}` is found
 
   hashes:
     - match: \{
       scope: punctuation.section.mapping.begin.ruby
       push:
         - meta_scope: meta.mapping.ruby
-        - match: \}
-          scope: punctuation.section.mapping.end.ruby
-          pop: true
         - include: keys
         - include: illegals
 
   keys:
+    # check if comments exist
+    - include: comments
+    # pop out if the first thing found is the closing brace
+    - match: \}
+      scope: punctuation.section.mapping.end.ruby
+      pop: true
     # single-quoted syms
     - match: \'
       scope: punctuation.definition.constant.ruby
