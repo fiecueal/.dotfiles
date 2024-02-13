@@ -15,16 +15,17 @@ font pango:Noto Sans Mono 14
 #########################
 
 assign [class="(?i)firefox"]               1
-assign [class="(?i)ff2"]                   2
-assign [class="(?i)subl"]                  3
-assign [class="(?i)foliate"]               5
+assign [class="(?i)nemo"]                  2
+assign [class="(?i)foliate"]               3
+# assign [class="(?i)subl"]                  4
+assign [class="(?i)ff5"]                   5
 assign [class="(?i)virtualbox"]            6
 assign [class="(?i)minecraft|prism"]       7
 assign [class="(?i)heroic"]                8
-# assign [class="(?i)"]                      9
+assign [class="(?i)ff9"]                   9
 # assign [class="(?i)"]                      10
 # assign [class="(?i)"]                      11
-assign [class="(?i)ff12"]                  12
+# assign [class="(?i)"]                      12
 
 for_window [class="dragonruby"] border none
 
@@ -34,14 +35,17 @@ for_window [class="dragonruby"] border none
 
 # launch programs in dedicated workspaces
 bindsym $super+Shift+F1  exec firefox
-bindsym $super+Shift+F2  exec firefox -P p1 --class ff2
-bindsym $super+Shift+F3  exec subl
-bindsym $super+Shift+F4  exec nemo
-bindsym $super+Shift+F5  exec flatpak run com.github.johnfactotum.Foliate
+bindsym $super+Shift+F2  exec nemo
+bindsym $super+Shift+F3  exec flatpak run com.github.johnfactotum.Foliate
+bindsym $super+Shift+F4  exec subl
+bindsym $super+Shift+F5  exec firefox -P p1 --class ff5
 bindsym $super+Shift+F6  exec virtualbox
 bindsym $super+Shift+F7  exec minecraft-launcher
 bindsym $super+Shift+F8  exec flatpak run com.heroicgameslauncher.hgl
-bindsym $super+Shift+F12 exec firefox -P p2 --class ff12
+bindsym $super+Shift+F9  exec firefox -P p2 --class ff9
+# bindsym $super+Shift+F10 exec
+# bindsym $super+Shift+F11 exec
+# bindsym $super+Shift+F12 exec
 
 # terminal
 bindsym $super+Return exec xfce4-terminal
