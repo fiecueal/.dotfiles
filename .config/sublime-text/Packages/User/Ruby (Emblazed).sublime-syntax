@@ -9,8 +9,8 @@ file_extensions: rb
 scope: source.ruby
 
 variables:
-  digits: '\d+(?:_\d+)*'
-  vars:   '[a-zA-Z_]\w*'
+  decs: '\d+(?:_\d+)*'
+  vars: '[a-zA-Z_]\w*'
 
 
 # TODO: hashes, var/method/module/class declarations, code blocks
@@ -54,26 +54,74 @@ contexts:
 
 
 ###[ HASHES ]##################################################################
+  # why is this so hard
+  # currently only checks for { key: val } syntax and quoted variants
+  # recognizes any {} block as hash because regular blocks aren't scoped yet
 
   hashes:
-    - include: empty-block
-    - match: (?=\{)
-      captures:
-        1: punctuation.section.mapping.begin.ruby
+    - match: \{
+      scope: punctuation.section.mapping.begin.ruby
       push:
         - meta_scope: meta.mapping.ruby
-        - match: (})
+        - match: \}
           scope: punctuation.section.mapping.end.ruby
           pop: true
+        - match: \,
+          scope: punctuation.separator.sequence.ruby
+        - include: key-value-pair
 
-  empty-block:
-    - match: ({)\s*\n(})
-      scope: meta.block.ruby
-      captures:
-        1: punctuation.section.block.begin.ruby
-        2: punctuation.section.block.end.ruby
+  key-value-pair:
+    - include: keys
+    - include: values
+
+  keys:
+    # single-quoted syms
+    - match: \'
+      scope: punctuation.definition.constant.ruby
+      push:
+        - meta_scope: meta.symbol.ruby constant.other.symbol.ruby
+        - match: \'
+          scope: punctuation.definition.constant.ruby
+          push:
+            - match: '[^:]*'
+              scope: invalid.illegal.ruby
+              pop: true
+        - match: ':'
+          scope: punctuation.definition.constant.ruby
+          pop: true
+        - include: single-quoted-escapes
+    # double-quoted syms
+    - match: \"
+      scope: punctuation.definition.constant.ruby
+      push:
+        - meta_scope: meta.symbol.ruby constant.other.symbol.ruby
+        - match: \"
+          scope: punctuation.definition.constant.ruby
+          push:
+            - match: '[^:]*'
+              scope: invalid.illegal.ruby
+              pop: true
+        - match: ':'
+          scope: punctuation.definition.constant.ruby
+          pop: true
+        - include: double-quoted-escapes
+        - include: interpolated
+    # regular syms
+    - match: '{{vars}}'
+      push:
+        - meta_scope: meta.symbol.ruby constant.other.symbol.ruby
+        - match: '[^:]*'
+          scope: invalid.illegal.ruby
+        - match: ':'
+          scope: punctuation.definition.constant.ruby
+          pop: true
+
+  values:
+    - include: literals
 
 ###[ ARRAYS ]##################################################################
+  # all uses of [] generally all use the same literals
+  # inside so this basic match should cover everything
 
   arrays:
     - match: \[
@@ -88,7 +136,7 @@ contexts:
         - include: literals
 
 ###[ ESCAPES AND INTERPOLATION ]###############################################
-###[ https://ruby-doc.org/current/syntax/literals_rdoc.html ]##################
+  # https://ruby-doc.org/current/syntax/literals_rdoc.html
 
   single-quoted-escapes:
     - match: \\[\\']
@@ -166,7 +214,7 @@ contexts:
 
   decimals:
     # floats
-    - match: \b{{digits}}(_)*(?:(\.){{digits}}|(?:(\.){{digits}}(_)*)?[eE][+-]?(_)*{{digits}})(_)*\b
+    - match: \b{{decs}}(_)*(?:(\.){{decs}}|(?:(\.){{decs}}(_)*)?[eE][+-]?(_)*{{decs}})(_)*\b
       scope: meta.number.float.decimal.ruby constant.numeric.value.ruby
       captures:
         1: invalid.illegal.ruby
@@ -176,7 +224,7 @@ contexts:
         5: invalid.illegal.ruby
         6: invalid.illegal.ruby
     # ints
-    - match: \b(0[dD])?({{digits}}(_)*)\b
+    - match: \b(0[dD])?({{decs}}(_)*)\b
       scope: meta.number.integer.decimal.ruby
       captures:
         1: constant.numeric.base.ruby
