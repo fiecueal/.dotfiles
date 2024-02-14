@@ -63,76 +63,93 @@ contexts:
 
 ###[ HASHES ]##################################################################
   # why is this so hard RAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  # WRRRRRRRRRRRRRRYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
   # currently only checks for { key: val } syntax and quoted variants
   # recognizes any {} block as hash because regular blocks aren't scoped yet
-  # thought process: match keys first and find the first instance of `:`
-  #                  to break out of regexing for keys
-  #                  search for values after `:` and break out when `,` or `}` is found
+  # sequence of regex: find key -> find : -> find value -> find , or } -> repeat if ,
 
   hashes:
     - match: \{
       scope: punctuation.section.mapping.begin.ruby
       push:
         - meta_scope: meta.mapping.ruby
-        - include: keys
-        - include: illegals
-
-  keys:
-    # check if comments exist
-    - include: comments
-    # pop out if the first thing found is the closing brace
-    - match: \}
-      scope: punctuation.section.mapping.end.ruby
-      pop: true
-    # single-quoted syms
-    - match: \'
-      scope: punctuation.definition.constant.ruby
-      push:
-        - clear_scopes: 1
-        - meta_scope: meta.mapping.key.ruby meta.symbol.ruby constant.other.symbol.ruby
-        - match: (\')([^:]*)
-          captures:
-            1: punctuation.definition.constant.ruby
-            2: invalid.illegal.ruby
-          set: colon-hash-keys
-        - include: single-quoted-escapes
-    # double-quoted syms
-    - match: \"
-      scope: punctuation.definition.constant.ruby
-      push:
-        - clear_scopes: 1
-        - meta_scope: meta.mapping.key.ruby meta.symbol.ruby constant.other.symbol.ruby
-        - match: (\")([^:]*)
-          captures:
-            1: punctuation.definition.constant.ruby
-            2: invalid.illegal.ruby
-          set: colon-hash-keys
-        - include: double-quoted-escapes
-        - include: interpolated
-    # regular syms
-    - match: '{{vars}}[!?]?'
-      push:
-        - clear_scopes: 1
-        - meta_scope: meta.mapping.key.ruby meta.symbol.ruby constant.other.symbol.ruby
-        - match: '[^:]*'
+        - include: hash-end # pop out if empty
+        - include: comments
+        - match: (?=[a-zA-Z_'"])
+          set: hash-key
+        - match: \S
           scope: invalid.illegal.ruby
-          set: colon-hash-keys
 
-  colon-hash-keys:
+  hash-key:
+    # # single-quoted syms
+      # - match: \'
+      #   scope: punctuation.definition.constant.ruby
+      #   push:
+      #     - meta_scope: meta.mapping.key.ruby meta.symbol.ruby constant.other.symbol.ruby
+      #     - match: (\')([^:]*)
+      #       captures:
+      #         1: punctuation.definition.constant.ruby
+      #         2: invalid.illegal.ruby
+      #       set: hash-separator
+      #     - include: single-quoted-escapes
+      # # double-quoted syms
+      # - match: \"
+      #   scope: punctuation.definition.constant.ruby
+      #   push:
+      #     - meta_scope: meta.mapping.key.ruby meta.symbol.ruby constant.other.symbol.ruby
+      #     - match: (\")([^:]*)
+      #       captures:
+      #         1: punctuation.definition.constant.ruby
+      #         2: invalid.illegal.ruby
+      #       set: hash-separator
+      #     - include: double-quoted-escapes
+      #     - include: interpolated
+    # regular syms
+    - match: '({{vars}}[!?]?)([^:]*)'
+      captures:
+        1: meta.symbol.ruby constant.other.symbol.ruby
+        2: invalid.illegal.ruby
+      push:
+        - meta_scope: meta.mapping.key.ruby
+        - match: ''
+          set: hash-colon
+
+  hash-colon:
     - match: ':'
       scope: punctuation.separator.key-value.ruby
-      set: values
+      push:
+        - meta_scope: meta.mapping.ruby
+        - match: ''
+          set: hash-value
 
-  values:
-    - clear_scopes: 1
-    - meta_scope: meta.mapping.value.ruby
+  hash-value:
+    - match: '[^,}]'
+      push:
+        - meta_scope: meta.mapping.value.ruby
+        - match: (?=,)
+          set: hash-comma
+        - match: (?=})
+          set:
+            - meta_scope: meta.mapping.ruby
+            - include: hash-end
+        - include: literals
+
+  hash-comma:
     - match: ','
       scope: punctuation.separator.sequence.ruby
-      pop: true # pops out of hash pair
-    - match: '}'
+      push:
+        - meta_scope: meta.mapping.ruby
+        - include: hash-end
+        - match: (?=[a-zA-Z_'"])
+          set: hash-key
+
+  hash-end:
+    # if called from comma(the deepest stack it could be called from)
+    # pop out of [comma -> value -> colon -> key -> hash]
+    # seems to behave fine when called from a higher stack
+    - match: \}
       scope: punctuation.section.mapping.end.ruby
-      pop: 2 # pops out of hash if no trailing comma is present in the last hash pair
-    - include: literals
+      pop: 5
 
 ###[ ARRAYS ]##################################################################
   # all uses of [] generally all use the same literals
