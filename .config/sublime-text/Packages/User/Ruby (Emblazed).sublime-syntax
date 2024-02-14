@@ -141,6 +141,7 @@ contexts:
         - meta_scope: meta.mapping.ruby
         - include: hash-end
         - match: (?=[a-zA-Z_'"])
+          pop: 5 # pop out of previous key-val pair scopes
           set: hash-key
 
   hash-end:
