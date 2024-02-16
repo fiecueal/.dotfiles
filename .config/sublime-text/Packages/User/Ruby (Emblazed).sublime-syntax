@@ -38,7 +38,15 @@ contexts:
   # for things that show up where they shouldn't
 
   illegals:
-    - match: '\bend\b|:|,'
+    - include: illegal-keywords
+    - include: illegal-punctuation
+
+  illegal-keywords:
+    - match: '\b(?=elsif|else|then|end|do|rescue|ensure)\b(?![!?])'
+      scope: invalid.illegal.ruby
+
+  illegal-punctuation:
+    - match: '[:,}]'
       scope: invalid.illegal.ruby
 
 ###[ OPERATORS ]###############################################################
