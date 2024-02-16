@@ -26,6 +26,7 @@ contexts:
     - include: symbols
     - include: arrays
     - include: hashes
+    - include: conditionals
     - include: operators
     - include: illegals
   # TODO: only include things that won't cause errors
@@ -58,8 +59,31 @@ contexts:
     # augmented assignment
     - match: <<=|&&=|\|\|=|\*\*=|[-+*&|^]=|<<
       scope: keyword.operator.assignment.augmented.ruby
+###[ BLOCKS ]##################################################################
 
+  block-end:
+    - match: \bend\b(?![!?])
+      scope: keyword.control.block.end.ruby
+      pop: true
 
+###[ CONDITIONALS ]############################################################
+
+  conditionals:
+    - include: ifs
+    # - include: cases
+
+  ifs:
+    - match: \bif\b(?![!?])
+      scope: keyword.control.conditional.if.ruby
+      push:
+        - match: \bthen\b(?![!?])
+          scope: keyword.control.conditional.then.ruby
+        - match: \belsif\b(?![!?])
+          scope: keyword.control.conditional.elseif.ruby
+        - match: \belse\b(?![!?])
+          scope: keyword.control.conditional.else.ruby
+        - include: block-end
+        - include: literals
 
 ###[ HASHES ]##################################################################
   # why is this so hard RAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
