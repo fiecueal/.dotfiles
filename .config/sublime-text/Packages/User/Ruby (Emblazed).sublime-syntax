@@ -78,7 +78,7 @@ contexts:
 
   conditionals:
     - include: ifs
-    # - include: cases
+    - include: cases
 
   ifs:
     - match: \bif\b(?![!?])
@@ -88,6 +88,19 @@ contexts:
           scope: keyword.control.conditional.then.ruby
         - match: \belsif\b(?![!?])
           scope: keyword.control.conditional.elseif.ruby
+        - match: \belse\b(?![!?])
+          scope: keyword.control.conditional.else.ruby
+        - include: block-end
+        - include: literals
+
+  cases:
+    - match: \bcase\b(?![!?])
+      scope: keyword.control.conditional.switch.ruby
+      push:
+        - match: \bwhen\b(?![!?])
+          scope: keyword.control.conditional.case.ruby
+        - match: \bthen\b(?![!?])
+          scope: keyword.control.conditional.then.ruby
         - match: \belse\b(?![!?])
           scope: keyword.control.conditional.else.ruby
         - include: block-end
