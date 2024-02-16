@@ -81,17 +81,20 @@ contexts:
           scope: invalid.illegal.ruby
 
   hash-key:
-    # # single-quoted syms
-      # - match: \'
-      #   scope: punctuation.definition.constant.ruby
-      #   push:
-      #     - meta_scope: meta.mapping.key.ruby meta.symbol.ruby constant.other.symbol.ruby
-      #     - match: (\')([^:]*)
-      #       captures:
-      #         1: punctuation.definition.constant.ruby
-      #         2: invalid.illegal.ruby
-      #       set: hash-separator
-      #     - include: single-quoted-escapes
+    # single-quoted syms
+    - match: \'
+      scope: punctuation.definition.constant.ruby
+      push:
+        - meta_scope: meta.mapping.key.ruby meta.symbol.ruby constant.other.symbol.ruby
+        - match: (\')([^:]*)
+          captures:
+            1: punctuation.definition.constant.ruby
+            2: invalid.illegal.ruby
+          push:
+            - match: ''
+              pop: 2 # pop previous meta_scopes
+              set: hash-colon
+        - include: single-quoted-escapes
     # double-quoted syms
     - match: \"
       scope: punctuation.definition.constant.ruby
@@ -143,8 +146,13 @@ contexts:
       push:
         - meta_scope: meta.mapping.ruby
         - include: hash-end
+        - match: ','
+          scope: invalid.illegal.ruby
         - match: (?=[a-zA-Z_'"])
-          pop: 5 # pop out of previous key-val pair scopes
+          # pop out of [comma -> value -> colon -> key -> hash]
+          # to future me: no i don't know why it needs 5 instead of 4
+          # but it works this way so don't touch it
+          pop: 5
           set: hash-key
 
   hash-end:
