@@ -13,7 +13,7 @@ variables:
   vars: '[a-zA-Z_]\w*'
 
 
-# TODO: hashes, var/method/module/class declarations, code blocks
+# TODO: var/method/module/class declarations, code blocks
 #       procs/lambdas, operators, syntax errors
 # TODO (maybe): hash/array splats, ternary ops, regex(why?),
 #               yardoc in comments, bin/oct/hex ints
@@ -27,6 +27,7 @@ contexts:
     - include: arrays
     - include: hashes
     - include: conditionals
+    # - include: loops
     - include: operators
     - include: illegals
   # TODO: only include things that won't cause errors
@@ -42,7 +43,7 @@ contexts:
     - include: illegal-punctuation
 
   illegal-keywords:
-    - match: '\b(?=elsif|else|then|end|do|rescue|ensure)\b(?![!?])'
+    - match: '\b(?:elsif|else|then|end|do|rescue|ensure)\b(?![!?])'
       scope: invalid.illegal.ruby
 
   illegal-punctuation:
@@ -74,14 +75,16 @@ contexts:
       scope: keyword.control.block.end.ruby
       pop: true
 
+###[ LOOPS ]###################################################################
+
+  # loops:
+
 ###[ CONDITIONALS ]############################################################
 
   conditionals:
-    - include: ifs
-    - include: cases
-
-  ifs:
-    - match: \bif\b(?![!?])
+    # ifs
+    # TODO: check if used as oneliners
+    - match: \b(?:if|unless)\b(?![!?])
       scope: keyword.control.conditional.if.ruby
       push:
         - match: \bthen\b(?![!?])
@@ -92,8 +95,7 @@ contexts:
           scope: keyword.control.conditional.else.ruby
         - include: block-end
         - include: literals
-
-  cases:
+    # cases
     - match: \bcase\b(?![!?])
       scope: keyword.control.conditional.switch.ruby
       push:
@@ -372,23 +374,7 @@ contexts:
     # # blocks
     # - match: \bbegin\b(?![?!])
     #   scope: keyword.control.block.begin.ruby
-    # - match: \bend\b(?![?!])
-    #   scope: keyword.control.block.end.ruby
     # # conditional
-    # - match: \bcase\b(?![?!])
-    #   scope: keyword.control.conditional.case.ruby
-    # - match: \belse\b(?![?!])
-    #   scope: keyword.control.conditional.if.ruby
-    # - match: \belsif\b(?![?!])
-    #   scope: keyword.control.conditional.elseif.ruby
-    # - match: \bif\b(?![?!])
-    #   scope: keyword.control.conditional.if.ruby
-    # - match: \bthen\b(?![?!])
-    #   scope: keyword.control.conditional.then.ruby
-    # - match: \bunless\b(?![?!])
-    #   scope: keyword.control.conditional.unless.ruby
-    # - match: \bwhen\b(?![?!])
-    #   scope: keyword.control.conditional.when.ruby
     # # exception
     # - match: \bensure\b(?![?!])
     #   scope: keyword.control.exception.ensure.ruby
