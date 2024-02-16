@@ -48,6 +48,9 @@ version=$(curl -s https://go.dev/VERSION?m=text | head -1)
 wget https://go.dev/dl/$version.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf $version.linux-amd64.tar.gz
 
+# git-cola
+git clone https://github.com/git-cola/git-cola.git
+
 # install packages
 sudo nala upgrade -y
 sudo nala install -y \
@@ -61,7 +64,6 @@ flameshot \
 font-manager \
 fonts-noto \
 fortunes \
-git-cola \
 git-gui \
 gpick \
 i3 \
@@ -70,6 +72,7 @@ imagemagick \
 inkscape \
 nodejs \
 pavucontrol \
+python3-qtpy \
 redshift \
 redshift-gtk \
 rofi \
@@ -94,7 +97,7 @@ sudo bash -c 'cat > /etc/tlp.d/00-charge-thresh.conf <<EOF
 START_CHARGE_THRESH_BAT0=0
 STOP_CHARGE_THRESH_BAT0=60
 EOF'
-tlp start
+sudo tlp start
 xbacklight set 100
 
 fi
