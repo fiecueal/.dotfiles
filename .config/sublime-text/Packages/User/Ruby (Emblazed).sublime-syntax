@@ -12,9 +12,30 @@ variables:
   decs: '\d+(?:_\d+)*'
   vars: '[a-zA-Z_]\w*'
 
-
-# TODO: var/method/module/class declarations, code blocks
-#       procs/lambdas, operators, syntax errors
+# following https://docs.ruby-lang.org/en/3.2/syntax_rdoc.html
+# implemented:
+#   comments
+#   literals:
+#     bools and nil
+#     numbers (decimal ints and floats only)
+#     strings (no % strings)
+#     symbols
+#     arrays
+#     hashes
+#   control:
+#     conditionals
+#
+# TODO:
+#   control:
+#     one-liner ifs
+#     while loops
+#     one-liner whiles
+#     break/next/redo keyword search
+#   methods/modules/classes
+#   procs
+#   code blocks (do-end, {})
+#   operators
+#   syntax errors
 # TODO (maybe): hash/array splats, ternary ops, regex(why?),
 #               yardoc in comments, bin/oct/hex ints
 contexts:
@@ -260,7 +281,6 @@ contexts:
       scope: constant.character.escape.ruby
 
   interpolated:
-    - meta_scope: meta.interpolation.ruby
     - match: \#{
       scope: punctuation.section.interpolation.begin.ruby
       push:
