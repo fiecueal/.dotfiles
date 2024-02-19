@@ -30,10 +30,32 @@ contexts:
     # - include: loops
     - include: operators
     - include: illegals
+    - include: variables
   # TODO: only include things that won't cause errors
   # (i don't think including main will cause erros but who knows)
   literals:
     - include: main
+
+###[ VARIABLES ]###############################################################
+
+  variables:
+    # dragonruby `args.state` variables. assumes they aren't reassigned
+    - match: (\$?(?:args\.)?state\.){{vars}}\b([!?]*)
+      scope: variable.other.readwrite.dragonruby
+      captures:
+        1: punctuation.definition.variable.dragonruby
+        2: invalid.illegal.dragonruby
+    # scoped variables (instance, global, class)
+    - match: \b([@$]|@@){{vars}}\b([!?]*)
+      scope: variable.other.readwrite.ruby
+      captures:
+        1: punctuation.definition.variable.ruby
+        2: invalid.illegal.ruby
+    # assume anything that is being assigned a value is a variable
+    - match: \b{{vars}}\b([!?]*)(?=\s*(?:<<|&&|\|\||\*\*|[-+*&|^])?=)
+      scope: variable.other.readwrite.ruby
+      captures:
+        1: invalid.illegal.ruby
 
 ###[ ILLEGALS ]################################################################
   # for things that show up where they shouldn't
