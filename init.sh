@@ -48,6 +48,9 @@ version=$(curl -s https://go.dev/VERSION?m=text | head -1)
 wget https://go.dev/dl/$version.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf $version.linux-amd64.tar.gz
 
+# odin
+git clone https://github.com/odin-lang/Odin
+
 # git-cola
 git clone https://github.com/git-cola/git-cola.git
 
@@ -56,6 +59,7 @@ sudo nala upgrade -y
 sudo nala install -y \
 autojump \
 breeze-gtk-theme \
+clang \
 cowsay \
 fcitx \
 fcitx-mozc \
@@ -70,6 +74,7 @@ i3 \
 im-config \
 imagemagick \
 inkscape \
+llvm \
 nodejs \
 pavucontrol \
 python3-qtpy \
@@ -79,6 +84,7 @@ rofi \
 ruby-full \
 simplescreenrecorder \
 sublime-text \
+trash-cli \
 woff2 \
 xfce4-terminal \
 
@@ -101,6 +107,9 @@ sudo tlp start
 xbacklight set 100
 
 fi
+
+# odin
+make -C Odin/
 
 # firewall
 sudo ufw enable
