@@ -215,20 +215,21 @@ contexts:
       scope: punctuation.separator.key-value.ruby
       push:
         - meta_scope: meta.mapping.ruby
+        - match: '\s*'
+        - match: ',|}'
+          scope: invalid.illegal.ruby
         - match: ''
           set: hash-value
 
   hash-value:
-    - match: '[^,}]'
-      push:
-        - meta_scope: meta.mapping.value.ruby
-        - match: (?=,)
-          set: hash-comma
-        - match: (?=})
-          set:
-            - meta_scope: meta.mapping.ruby
-            - include: hash-end
-        - include: literals
+    - meta_scope: meta.mapping.value.ruby
+    - match: (?=,)
+      set: hash-comma
+    - match: (?=})
+      set:
+        - meta_scope: meta.mapping.ruby
+        - include: hash-end
+    - include: literals
 
   hash-comma:
     - match: ','
