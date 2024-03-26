@@ -5,7 +5,8 @@
     // "bg": "#f5f1ef",
     // "bg": "#fffaf0",
     // "bg": "#e6e6e6",
-    "bg": "#faf9f8",
+    // "bg": "#faf9f8",
+    "bg": "whitesmoke",
     // "green": "lightgreen",
     "yellow": "hsl(56, 100%, 87%)",
     // "green": "hsl(81, 23%, 87%)",
@@ -13,6 +14,8 @@
   },
   "globals":
   {
+    "tags_options": "glow",
+    "gutter_foreground": "coral",
     // "line_highlight": "#eae9e8",
     // "shadow": "#0000",
   },
@@ -21,6 +24,7 @@
     {
       "scope": "comment",
       "background": "#eae9e8",
+      "foreground": "dimgrey",
       "font_style": "italic",
     },
     // {
@@ -28,9 +32,14 @@
     //   "background": "var(blue)",
     // },
     {
-      "scope": "constant.other.symbol | meta.mapping.key",
+      "scope": "meta.mapping.key",
       "foreground": "var(fg)",
       "background": "var(magenta)",
+    },
+    {
+      "scope": "entity.name.tag",
+      // "foreground": "#325CC0"
+      "foreground": "darkblue"
     },
     {
       "scope": "keyword.operator",
@@ -40,6 +49,11 @@
       "scope": "meta.interpolation",
       "background": "var(bg)",
     },
+    // {
+    //   "scope": "string",
+    //   "foreground": "green",
+    //   "background": "none"
+    // },
     {
       "scope": "punctuation.definition.string",
       "background": "var(green)",
