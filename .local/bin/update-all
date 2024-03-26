@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+
+sudo nala upgrade -y
+flatpak update -y
+git -C $HOME/Odin/ pull
+make -C $HOME/Odin/
+git -C $HOME/git-cola/ pull
+git -C $HOME/qmk-firmware/ pull
