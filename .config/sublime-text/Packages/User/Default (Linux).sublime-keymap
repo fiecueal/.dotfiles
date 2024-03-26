@@ -20,6 +20,16 @@
     "command": "swap_line_down",
   },
   {
+    "keys": ["ctrl+shift+up"],
+    "command": "expand_selection",
+    "args": { "to": "line_prev" }
+  },
+  {
+    "keys": ["ctrl+shift+down"],
+    "command": "expand_selection",
+    "args": { "to": "line" }
+  },
+  {
     "keys": ["ctrl+q"],
     "command": "open_terminal_project_folder",
   },
@@ -29,7 +39,7 @@
   },
   {
     "keys": ["ctrl+i"],
-    "command": "reindent",
+    "command": "lsp_format_document",
   },
   {
     "keys": ["ctrl+'"],
