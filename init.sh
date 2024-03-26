@@ -146,10 +146,26 @@ EndSection
 EOF
 '
 
+# disable mouse acceleration
+sudo mkdir -p /etc/X11/xorg.conf.d/20-mouseaccel.conf
+sudo bash -c '
+cat > /etc/X11/xorg.conf.d/20-mouseaccel.conf <<EOF
+Section "InputClass"
+  Identifier "libinput pointer catchall"
+  MatchIsPointer "on"
+  Driver "libinput"
+  Option "AccelProfile" "flat"
+  Option "Accel Profile Enabled" "0 1"
+EndSection
+EOF
+'
+
 # for accidental clicks of power switch(especially on laptops)
 sudo mkdir -p /etc/systemd/logind.conf.d
 sudo bash -c '
 cat > /etc/systemd/logind.conf.d/20-powerbutton.conf <<EOF
+[Login]
+
 HandlePowerKey=ignore
 HandlePowerKeyLongPress=poweroff
 EOF
