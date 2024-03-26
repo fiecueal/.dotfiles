@@ -128,45 +128,11 @@ gsettings set org.cinnamon.desktop.default-applications.terminal exec xfce4-term
 # im-config
 im-config -n fcitx
 
-# fix screen tearing
-sudo mkdir -p /etc/X11/xorg.conf.d
-sudo bash -c '
-cat > /etc/X11/xorg.conf.d/20-tearfree.conf <<EOF
-Section "OutputClass"
-  Identifier "AMD"
-  MatchDriver "amdgpu"
-  Driver "amdgpu"
-  Option "TearFree" "true"
-EndSection
-Section "OutputClass"
-  Identifier "Intel Graphics"
-  Driver "intel"
-  Option "TearFree" "true"
-EndSection
-EOF
-'
-
+# fix screen tearing &
 # disable mouse acceleration
-sudo mkdir -p /etc/X11/xorg.conf.d/20-mouseaccel.conf
-sudo bash -c '
-cat > /etc/X11/xorg.conf.d/20-mouseaccel.conf <<EOF
-Section "InputClass"
-  Identifier "libinput pointer catchall"
-  MatchIsPointer "on"
-  Driver "libinput"
-  Option "AccelProfile" "flat"
-  Option "Accel Profile Enabled" "0 1"
-EndSection
-EOF
-'
+sudo cp ~/init-confs/20-screentear.conf \
+~/init-confs/20-mouseaccel.conf \
+/etc/X11/xorg.conf.d/
 
 # for accidental clicks of power switch(especially on laptops)
-sudo mkdir -p /etc/systemd/logind.conf.d
-sudo bash -c '
-cat > /etc/systemd/logind.conf.d/20-powerbutton.conf <<EOF
-[Login]
-
-HandlePowerKey=ignore
-HandlePowerKeyLongPress=poweroff
-EOF
-'
+sudo cp ~/init-confs/20-powerbutton.conf /etc/systemd/logind.conf.d/
