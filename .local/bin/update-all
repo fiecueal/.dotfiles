@@ -5,4 +5,4 @@ flatpak update -y
 git -C $HOME/Odin/ pull
 make -C $HOME/Odin/
 git -C $HOME/git-cola/ pull
-git -C $HOME/qmk-firmware/ pull
+git -C $HOME/qmk_firmware/ pull
