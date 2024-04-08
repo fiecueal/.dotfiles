@@ -1,6 +1,6 @@
 general {
   output_format = i3bar
-  interval = 5
+  interval = 1
   separator = ""
 }
 
@@ -9,17 +9,19 @@ order += "cpu_temperature 0"
 order += "time"
 order += "volume master"
 
-battery 0 {
-  format = "%status %percentage"
-  status_bat = "🔋"
-  status_chr = "⚡"
-  integer_battery_capacity = true
-  # path = "/sys/class/power_supply/BAT0/uevent"
-}
+# battery 0 {
+#   format = "%status %percentage"
+#   status_bat = "🔋"
+#   status_chr = "⚡"
+#   integer_battery_capacity = true
+#   # path = "/sys/class/power_supply/BAT0/uevent"
+# }
 
 cpu_temperature 0 {
-  # 🌡️ is made of two codepoints: 🌡(1F321) and variation selector 16 (FE0F)
-  format = "🌡️ %degrees °C"
+ # 🌡️ is made of two codepoints: 🌡(1F321) and variation selector 16 (FE0F)
+ format = "🌡️ %degrees °C"
+ # path for AMD cpu temp
+ path = "/sys/class/hwmon/hwmon4/temp1_input"
 }
 
 time {
