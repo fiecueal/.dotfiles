@@ -35,6 +35,6 @@ time {
 }
 
 volume master {
-  format = "🔊 (%devicename) %volume"
-  format_muted = "🔇 (%devicename) 0%"
+  format = "🔊 %volume (%devicename)"
+  format_muted = "🔇 0% (%devicename)"
 }
