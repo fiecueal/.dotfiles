@@ -68,6 +68,7 @@ inkscape \
 llvm \
 nodejs \
 pavucontrol \
+playerctl \
 python3-qtpy \
 redshift \
 redshift-gtk \
@@ -103,7 +104,7 @@ EOF'
   xbacklight set 100
 fi
 
-npm i -g pnpm
+sudo npm i -g pnpm
 make -C Odin/
 sudo ufw enable
 sudo gem install solargraph

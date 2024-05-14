@@ -32,6 +32,7 @@ assign [class="(?i)ff9"]                   9
 # assign [class="(?i)"]                      12
 
 for_window [class="dragonruby"] border none
+for_window [class="calculator"] floating enable
 
 ############
 # bindings #
@@ -72,7 +73,10 @@ bindsym --release         $super+Shift+Print exec --no-startup-id flameshot gui 
 bindsym --release       $super+Control+Print exec --no-startup-id flameshot screen -p ~/Pictures/screenshot_$(date +'%Y-%m-%d-%T').png
 bindsym --release $super+Control+Shift+Print exec --no-startup-id flameshot gui -s -p ~/Pictures/screenshot_$(date +'%Y-%m-%d-%T').png
 
-# Use pactl to adjust volume in PulseAudio.
+###################
+# multimedia keys #
+###################
+
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +4% && pactl set-sink-mute @DEFAULT_SINK@ 0 && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -4% && $refresh_i3status
@@ -81,9 +85,9 @@ bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT
 bindsym $super+m             exec --no-startup-id ~/.config/i3/toggle_sink
 bindsym $super+Shift+m       exec --no-startup-id pavucontrol -t 3
 
-# TODO copy qredshift's homework and write a daemon for changing screen gamma
-bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl prev
 
 bindsym --release $super+d exec rofi -modi drun#run -show drun -show-icons
 #config ~/repos/endeavouros-i3wm-setup/.config/rofi/rofidmenu.rasi"
@@ -161,9 +165,7 @@ bindsym $super+$alt+F12 move container to workspace 12, workspace 12
 bindsym $super+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $super+Shift+r restart
-# TODO: do something about exiting the session
-# exit i3 (logs you out of your X session)
-bindsym $super+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $super+Shift+e exec "i3-nagbar -t warning -m 'What do' -B 'logout' 'i3-msg exit' -B 'reboot' 'reboot' -B 'poweroff' 'poweroff' -B 'BIOS' 'systemctl reboot --firmware-setup'"
 
 ###########
 # windows #
