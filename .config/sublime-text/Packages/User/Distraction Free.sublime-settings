@@ -1,8 +1,8 @@
 {
-  "font_size": 20,
+  "font_size": 22,
   "font_face": "Klee One SemiBold",
-  "wrap_width": 60,
-  "tab_size": 4,
+  "wrap_width": 65,
+  "tab_size": 8,
   "block_caret": false,
   "caret_style": "phase",
   "spell_check": true,

@@ -1,6 +1,7 @@
 %YAML 1.2
 ---
 file_extensions: rb
+first_line_match: '#!/usr/bin/ruby'
 scope: source.ruby
 extends: Packages/Ruby/Ruby.sublime-syntax
 

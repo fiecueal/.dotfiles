@@ -1,0 +1,4 @@
+{
+  "cmd": ["rufo", "$file"],
+  "file_patterns": ["*.rb"],
+}

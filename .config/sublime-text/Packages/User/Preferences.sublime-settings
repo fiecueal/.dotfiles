@@ -2,8 +2,8 @@
   "ignored_packages": [
     "Vintage",
   ],
-  "theme": "ayu-light.sublime-theme",
-  "color_scheme": "Alabaster BG.sublime-color-scheme",
+  "theme": "Adaptive.sublime-theme",
+  "color_scheme": "CSSC.sublime-color-scheme",
   "remember_full_screen": true,
   "hardware_acceleration": "opengl",
 
@@ -15,9 +15,10 @@
 
   "block_caret": true,
   "highlight_line": true,
+  // "relative_line_numbers": true,
   "always_show_minimap_viewport": true,
   "scroll_context_lines": 15,
-  "rulers": [[100, "stippled", 2]],
+  "rulers": [[100, "stippled", 2], [80, "stippled", 2]],
 
   "tab_size": 2,
   "translate_tabs_to_spaces": true,

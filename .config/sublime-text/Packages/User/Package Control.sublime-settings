@@ -5,14 +5,10 @@
 	],
 	"installed_packages":
 	[
-		"A File Icon",
 		"Alabaster Color Scheme",
 		"ayu",
-		"Clojure Sublimed",
-		"Emmet",
 		"Flexoki Color Scheme",
-		"GDScript (Godot Engine)",
-		"Liquid",
+		"Gomod",
 		"LSP",
 		"LSP-css",
 		"LSP-gopls",
@@ -28,5 +24,8 @@
 		"SideBarTools",
 		"Svelte",
 		"Terminal",
+	],
+	"repositories":
+	[
 	],
 }
