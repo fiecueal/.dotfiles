@@ -8,6 +8,8 @@
 # global keybinds not in this config:
 # super+e -> emoji picker
 # super+k -> keyboard ime switcher
+# super+r -> obs start/stop recording
+# super+c -> autoclicker
 
 set $super Mod4
 set $alt   Mod1
@@ -200,6 +202,7 @@ exec --no-startup-id fcitx
 exec --no-startup-id flameshot
 exec --no-startup-id redshift-gtk
 exec --no-startup-id flatpak run com.tomjwatson.Emote
+exec --no-startup-id xmodmap ~/.Xmodmap
 # exec --no-startup-id xinput set-prop 'SINOWEALTH Wired Gaming Mouse' 'libinput Accel Profile Enabled' 0, 1
 
 # Start XDG autostart .desktop files using dex. See also
@@ -211,7 +214,7 @@ exec --no-startup-id flatpak run com.tomjwatson.Emote
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -i import jpg:- | convert - -blur 5x4
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -p win
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
