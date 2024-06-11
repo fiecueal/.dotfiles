@@ -1,5 +1,8 @@
 #!/usr/bin/bash
 
+sudo ufw enable
+sudo apt purge -y yt-dlp gucharmap nodejs npm
+
 # Nord theme stuff
 mkdir -p $HOME/.local/share/themes
 git clone https://github.com/EliverLara/Nordic-Polar.git $HOME/.local/share/themes/Nordic-Polar
@@ -22,14 +25,12 @@ wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | 
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 
 # yt-dlp
-sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
-sudo chmod a+rx /usr/local/bin/yt-dlp
+curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o $HOME/.local/bin/yt-dlp
+chmod a+rx $HOME/.local/bin/yt-dlp
 
 # nodejs & npm
-sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
-NODE_MAJOR=21
-echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+nvm install 22
 
 # go
 version=$(curl -s https://go.dev/VERSION?m=text | head -1)
@@ -38,12 +39,11 @@ sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf $version.linux-amd64.ta
 rm $version.linux-amd64.tar.gz
 
 git clone https://github.com/odin-lang/Odin
-git clone https://github.com/git-cola/git-cola.git
+git clone https://github.com/git-cola/git-cola
 
 # install packages
 sudo apt install -y nala
-sudo nala fetch --auto --fetches 3 -y
-sudo nala purge -y yt-dlp gucharmap nodejs npm
+sudo nala fetch --auto -c US --fetches 3 -y
 sudo nala upgrade -y
 sudo nala install -y \
 autojump \
@@ -58,7 +58,6 @@ font-manager \
 fonts-3270 \
 fonts-noto \
 fortunes \
-git-gui \
 gpick \
 i3 \
 i3status \
@@ -66,7 +65,7 @@ im-config \
 imagemagick \
 inkscape \
 llvm \
-nodejs \
+mypaint \
 pavucontrol \
 playerctl \
 python3-qtpy \
@@ -74,11 +73,11 @@ redshift \
 redshift-gtk \
 rofi \
 ruby-full \
-simplescreenrecorder \
 sublime-text \
 trash-cli \
 woff2 \
 xfce4-terminal \
+xsct \
 
 # install flatpaks
 flatpak install -y flathub \
@@ -106,8 +105,7 @@ fi
 
 sudo npm i -g pnpm
 make -C Odin/
-sudo ufw enable
-sudo gem install solargraph
+sudo gem install solargraph rufo ruby-lsp
 wget https://packagecontrol.io/Package%20Control.sublime-package -P $HOME/.config/sublime-text/Installed\ Packages
 
 sudo update-alternatives --set x-terminal-emulator /usr/bin/xfce4-terminal.wrapper
