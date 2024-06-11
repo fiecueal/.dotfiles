@@ -31,6 +31,9 @@ chmod a+rx $HOME/.local/bin/yt-dlp
 # nodejs & npm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 nvm install 22
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # go
 version=$(curl -s https://go.dev/VERSION?m=text | head -1)
@@ -103,7 +106,7 @@ EOF'
   xbacklight set 100
 fi
 
-sudo npm i -g pnpm
+npm i -g pnpm
 make -C Odin/
 sudo gem install solargraph rufo ruby-lsp
 wget https://packagecontrol.io/Package%20Control.sublime-package -P $HOME/.config/sublime-text/Installed\ Packages
