@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+cd $HOME # start script in home dir
 sudo ufw enable
 sudo apt purge -y yt-dlp gucharmap nodejs npm
 
@@ -53,8 +54,8 @@ autojump \
 breeze-gtk-theme \
 clang \
 cowsay \
-fcitx \
-fcitx-mozc \
+fcitx5 \
+fcitx5-mozc \
 ffmpeg \
 flameshot \
 font-manager \
@@ -115,7 +116,7 @@ sudo update-alternatives --set x-terminal-emulator /usr/bin/xfce4-terminal.wrapp
 gsettings set org.cinnamon.desktop.default-applications.terminal exec xfce4-terminal
 
 # TODO: add mozc to active input methods
-im-config -n fcitx
+im-config -n fcitx5
 
 # fix screen tearing & disable mouse acceleration
 sudo mkdir -p /etc/X11/xorg.conf.d
