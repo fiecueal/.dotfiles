@@ -29,7 +29,6 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 #[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# PS1='\[\033[1;33m\]\w\[\033[00m\]\$ '
 PS1='\[\e[33;1m\][\W]\[\e[0m\] '
 PS2='\[\e[33;1;7m\]>\[\e[0m\] '
 
@@ -71,20 +70,15 @@ alias ls='ls -A --color=auto'
 alias path='echo $PATH | tr ":" "\n"'
 alias pn='pnpm'
 alias pnx='pnpm dlx'
+alias config='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 
-if [ -e ~/.dotfiles ]; then
-  alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-elif [ -e ~/.dotfiles.git ]; then
-  alias config='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
-else
-  echo -e '\e[1;7m
-********************************************
-***                                      ***
-***  .dotfiles bare repo does not exist  ***
-***                                      ***
-********************************************
-\e[0m'
-fi
+mkcd() {
+  if [ ! -d "$1" ]; then
+    mkdir -p "$1"
+  fi
+  cd $1
+  pwd
+}
 
 # autojump
 . /usr/share/autojump/autojump.bash
