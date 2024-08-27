@@ -1,0 +1,225 @@
+# i3 config file (v4)
+
+# modified from the default i3-config-wizard config and
+# mildly inspired by the default EndeavourOS i3 config
+# official i3 docs: https://i3wm.org/docs/userguide.html
+# EndeavourOS i3 config repo: https://github.com/endeavouros-team/endeavouros-i3wm-setup
+
+# global keybinds not in this config:
+# super+e -> emote(flatpak)
+# super+k -> fcitx5
+# super+r -> obs start/stop recording
+# super+c -> xclicker
+
+set $super Mod4
+set $alt   Mod1
+
+font pango:Noto Sans Mono 14
+
+#########################
+# workspace assignments #
+#########################
+
+assign [class="(?i)firefox"]               1
+assign [class="(?i)thunar"]                2
+assign [class="(?i)foliate"]               3
+# assign [class="(?i)subl"]                  4
+assign [class="(?i)ff5"]                   5
+assign [class="(?i)virtualbox"]            6
+assign [class="(?i)minecraft|prism"]       7
+assign [class="(?i)heroic"]                8
+assign [class="(?i)ff9"]                   9
+# assign [class="(?i)"]                      10
+# assign [class="(?i)"]                      11
+# assign [class="(?i)"]                      12
+
+for_window [class="dragonruby"] border none
+for_window [class="calculator"] floating enable
+
+############
+# bindings #
+############
+
+# launch programs in dedicated workspaces
+bindsym $super+Shift+F1  exec firefox
+bindsym $super+Shift+F2  exec thunar
+bindsym $super+Shift+F3  exec flatpak run com.github.johnfactotum.Foliate
+bindsym $super+Shift+F4  exec subl
+bindsym $super+Shift+F5  exec firefox -P p1 --class ff5
+bindsym $super+Shift+F6  exec virtualbox
+bindsym $super+Shift+F7  exec minecraft-launcher
+bindsym $super+Shift+F8  exec flatpak run com.heroicgameslauncher.hgl
+bindsym $super+Shift+F9  exec firefox -P p2 --class ff9
+# bindsym $super+Shift+F10 exec
+# bindsym $super+Shift+F11 exec
+# bindsym $super+Shift+F12 exec
+
+# rofi
+bindsym --release $super+d exec rofi -modi drun#run -show drun -show-icons
+
+# terminal
+bindsym $super+Return exec xfce4-terminal
+
+# kill focused window
+bindsym $super+Shift+q kill
+
+# switch/iterate between workspaces
+bindsym $super+Tab       workspace next
+bindsym $super+Shift+Tab workspace prev
+
+# screenshots using flameshot
+bindsym --release               Print exec --no-startup-id flameshot screen -c
+bindsym --release         Shift+Print exec --no-startup-id flameshot gui -s -c
+bindsym --release       Control+Print exec --no-startup-id flameshot screen -p ~/Pictures/screenshot_$(date +'%Y-%m-%d-%T').png
+bindsym --release Control+Shift+Print exec --no-startup-id flameshot gui -s -p ~/Pictures/screenshot_$(date +'%Y-%m-%d-%T').png
+# just so they work even when super key is held
+bindsym --release               $super+Print exec --no-startup-id flameshot screen -c
+bindsym --release         $super+Shift+Print exec --no-startup-id flameshot gui -s -c
+bindsym --release       $super+Control+Print exec --no-startup-id flameshot screen -p ~/Pictures/screenshot_$(date +'%Y-%m-%d-%T').png
+bindsym --release $super+Control+Shift+Print exec --no-startup-id flameshot gui -s -p ~/Pictures/screenshot_$(date +'%Y-%m-%d-%T').png
+
+###################
+# multimedia keys #
+###################
+
+set $refresh_i3status killall -SIGUSR1 i3status
+# volume
+bindsym F16 exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym F20 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +4% && pactl set-sink-mute @DEFAULT_SINK@ 0 && $refresh_i3status
+bindsym F24 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -4% && $refresh_i3status
+# playback
+bindsym F15 exec --no-startup-id playerctl play-pause
+bindsym F19 exec --no-startup-id playerctl next
+bindsym F23 exec --no-startup-id playerctl prev
+# mic toggle / pavucontrol / switch sink
+bindsym F14 exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym F18 exec --no-startup-id ~/.config/i3/set_default_sink
+bindsym F22 exec --no-startup-id pavucontrol -t 3
+# screen brightness
+bindsym F13 exec --no-startup-id ~/.config/i3/bright_temp dim
+bindsym F17 exec --no-startup-id ~/.config/i3/bright_temp up
+bindsym F21 exec --no-startup-id ~/.config/i3/bright_temp down
+# screen temp
+bindsym Shift+F13 exec --no-startup-id ~/.config/i3/bright_temp reset_temp
+bindsym Shift+F17 exec --no-startup-id xsct -d 200
+bindsym Shift+F21 exec --no-startup-id xsct -d -200
+
+# change focus
+bindsym $super+Left focus left
+bindsym $super+Down focus down
+bindsym $super+Up focus up
+bindsym $super+Right focus right
+
+# move focused window
+bindsym $super+Shift+Left move left
+bindsym $super+Shift+Down move down
+bindsym $super+Shift+Up move up
+bindsym $super+Shift+Right move right
+
+# enter fullscreen mode for the focused container
+bindsym $super+f fullscreen toggle
+
+# change container layout
+bindsym $super+y layout stacking
+bindsym $super+u layout tabbed
+bindsym $super+i layout toggle split
+bindsym $super+o split h
+bindsym $super+p split v
+
+# toggle tiling / floating
+bindsym $super+Shift+f floating toggle
+
+# change focus between tiling / floating windows
+bindsym $super+space focus mode_toggle
+
+bindsym $super+a focus parent
+bindsym $super+s focus child
+
+# switch to workspace
+bindsym $super+F1  workspace 1
+bindsym $super+F2  workspace 2
+bindsym $super+F3  workspace 3
+bindsym $super+F4  workspace 4
+bindsym $super+F5  workspace 5
+bindsym $super+F6  workspace 6
+bindsym $super+F7  workspace 7
+bindsym $super+F8  workspace 8
+bindsym $super+F9  workspace 9
+bindsym $super+F10 workspace 10
+bindsym $super+F11 workspace 11
+bindsym $super+F12 workspace 12
+
+# move focused container to workspace then switch to workspace
+bindsym $super+$alt+F1  move container to workspace 1,  workspace 1
+bindsym $super+$alt+F2  move container to workspace 2,  workspace 2
+bindsym $super+$alt+F3  move container to workspace 3,  workspace 3
+bindsym $super+$alt+F4  move container to workspace 4,  workspace 4
+bindsym $super+$alt+F5  move container to workspace 5,  workspace 5
+bindsym $super+$alt+F6  move container to workspace 6,  workspace 6
+bindsym $super+$alt+F7  move container to workspace 7,  workspace 7
+bindsym $super+$alt+F8  move container to workspace 8,  workspace 8
+bindsym $super+$alt+F9  move container to workspace 9,  workspace 9
+bindsym $super+$alt+F10 move container to workspace 10, workspace 10
+bindsym $super+$alt+F11 move container to workspace 11, workspace 11
+bindsym $super+$alt+F12 move container to workspace 12, workspace 12
+
+# reload the configuration file
+bindsym $super+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $super+Shift+r restart
+bindsym $super+Shift+e exec "i3-nagbar -t warning -m 'What do' \
+-B 'screen lock' '~/.config/i3/lock' \
+-B 'logout'      'i3-msg exit' \
+-B 'suspend'     'systemctl suspend' \
+-B 'reboot'      'systemctl reboot' \
+-B 'poweroff'    'systemctl poweroff' \
+-B 'BIOS'        'systemctl reboot --firmware-setup'"
+
+###########
+# windows #
+###########
+
+# borders
+default_border pixel 3
+hide_edge_borders both
+
+focus_follows_mouse no
+
+# Use Mouse+$super to drag floating windows to their wanted position
+floating_modifier $super
+
+# move tiling windows via drag & drop by left-clicking into the title bar,
+# or left-clicking anywhere into the window while holding the floating modifier.
+tiling_drag modifier titlebar
+
+bar {
+  mode hide
+  hidden_state hide
+  modifier $super
+
+  status_command i3status
+}
+
+################
+# startup exec #
+################
+
+exec --no-startup-id fcitx5
+exec --no-startup-id flameshot
+exec --no-startup-id flatpak run com.tomjwatson.Emote
+exec --no-startup-id xmodmap ~/.Xmodmap
+
+# Start XDG autostart .desktop files using dex. See also
+# https://wiki.archlinux.org/index.php/XDG_Autostart
+# exec --no-startup-id dex --autostart --environment i3
+
+# The combination of xss-lock, nm-applet and pactl is a popular choice, so
+# they are included here as an example. Modify as you see fit.
+
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/i3/lock
+
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-applet

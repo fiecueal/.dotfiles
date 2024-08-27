@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+if [ -e "app/main.rb" ]; then
+  dr $(pwd)
+else
+  echo "Not a dragonruby directory"
+fi

@@ -1,0 +1,40 @@
+%YAML 1.2
+---
+file_extensions: rb
+first_line_match: '#!/usr/bin/ruby'
+scope: source.ruby
+extends: Packages/Ruby/Ruby.sublime-syntax
+
+contexts:
+  main:
+    - include: dragons
+    - include: comments
+    - include: expressions # include everything from default Ruby syntax
+
+  dragons:
+    # variables assigned to args.state
+    - match: (\$?(?:args\.)?state\.)[a-zA-Z_]\w*
+      scope: variable.other.readwrite.global.dragonruby
+      captures:
+        1: punctuation.definition.variable.dragonruby
+    # built-in dr attributes
+    - match: attr_gtk|attr_rect|attr_sprite
+      scope: keyword.other.special-method.dragonruby
+    # invalid args re-assignments
+    # (i don't know what half this stuff does, i just copied and slightly changed something from the default syntax)
+    - match: args\s*(<<=|&&=|\|\|=|\*\*=|[-+*&|^]?=|<<).*
+      scope: invalid.illegal.dragonruby
+
+  comments:
+    - match: (\#+).*
+      scope: comment.line.number-sign.ruby
+      captures:
+        1: punctuation.definition.comment.ruby
+    - match: ^=begin
+      scope: punctuation.definition.comment.begin.ruby
+      push:
+        - meta_scope: comment.block.ruby
+        - match: ^=end
+          scope: punctuation.definition.comment.end.ruby
+          pop: true
+

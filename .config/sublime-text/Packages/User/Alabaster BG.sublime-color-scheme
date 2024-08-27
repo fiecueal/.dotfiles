@@ -1,0 +1,71 @@
+// Documentation at https://www.sublimetext.com/docs/color_schemes.html
+{
+  "variables":
+  {
+    // "bg": "#f5f1ef",
+    // "bg": "#fffaf0",
+    // "bg": "#e6e6e6",
+    // "bg": "#faf9f8",
+    "bg": "whitesmoke",
+    // "green": "lightgreen",
+    "yellow": "hsl(56, 100%, 87%)",
+    // "green": "hsl(81, 23%, 87%)",
+    // "chocolate": "hsl(25,75%,47%)", // css-colors chocolate == #D2691E
+  },
+  "globals":
+  {
+    "tags_options": "glow",
+    "gutter_foreground": "coral",
+    // "line_highlight": "#eae9e8",
+    // "shadow": "#0000",
+  },
+  "rules":
+  [
+    {
+      "scope": "comment",
+      "background": "#eae9e8",
+      "foreground": "dimgrey",
+      "font_style": "italic",
+    },
+    // {
+    //   "scope": "variable",
+    //   "background": "var(blue)",
+    // },
+    {
+      "scope": "meta.mapping.key",
+      "foreground": "var(fg)",
+      "background": "var(magenta)",
+    },
+    {
+      "scope": "entity.name.tag",
+      // "foreground": "#325CC0"
+      "foreground": "darkblue"
+    },
+    {
+      "scope": "keyword.operator",
+      "foreground": "chocolate",
+    },
+    {
+      "scope": "meta.interpolation",
+      "background": "var(bg)",
+    },
+    // {
+    //   "scope": "string",
+    //   "foreground": "green",
+    //   "background": "none"
+    // },
+    {
+      "scope": "punctuation.definition.string",
+      "background": "var(green)",
+    },
+    {
+      "scope": "punctuation.section.interpolation, constant.character.escape",
+      "background": "var(dark_green)",
+      "foreground": "#7A3E9D",
+    },
+    {
+      "scope": "keyword.control.flow | keyword.control.conditional | keyword.control.loop",
+      "background": "bisque",
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"CSSC-sublime-text-scheme",
+		"Gomod",
+		"LSP",
+		"LSP-css",
+		"LSP-gopls",
+		"LSP-html",
+		"LSP-svelte",
+		"LSP-tailwindcss",
+		"LSP-typescript",
+		"MarkdownPreview",
+		"Package Control",
+		"PackageDev",
+		"SideBarTools",
+		"Svelte",
+		"Terminal",
+	],
+	"repositories":
+	[
+		"https://github.com/fiecueal/CSSC-sublime-text-scheme",
+	],
+}

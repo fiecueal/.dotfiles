@@ -1,0 +1,41 @@
+#!/usr/bin/bash
+
+mkdir -p old-versions
+mkdir -p zips
+
+# unzips to 2 files `dragonruby-linux-amd64/` and `.itch.toml`
+unzip dragonruby-gtk-linux-amd64.zip
+mv dragonruby-linux-amd64/ new-base/
+rm .itch.toml
+
+if [ -d 'base' ]; then
+  mv base/proj/ new-base/proj/
+  mv base/newproj new-base/newproj
+  # rename old dr dir with its version
+  version=$(head -1 base/CHANGELOG-CURR.txt | cut -c 3-)
+  mv base/ old-versions/$version
+else
+  mkdir new-base/proj
+  cat > dragonruby-linux-amd64/newproj <<EOF
+#!/usr/bin/bash
+
+if [ -z \$1 ]; then
+  echo "Failed: No directory supplied"
+elif [ -d proj/\$1 ]; then
+  echo "Failed: Directory already exists"
+else
+  cp -r mygame/ proj/\$1
+fi
+EOF
+
+  chmod +x new-base/newproj
+fi
+
+mv new-base/ base/
+# replace default font with monogram font
+mv base/font.ttf base/font-og.ttf
+cp font.ttf base/font.ttf
+
+prefix=`head -1 base/CHANGELOG-CURR.txt | cut -c 3-`
+filename="dragonruby-gtk-linux-amd64.zip"
+mv dragonruby-gtk-linux-amd64.zip zips/${prefix}${filename}

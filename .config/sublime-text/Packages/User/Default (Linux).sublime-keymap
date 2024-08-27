@@ -1,0 +1,55 @@
+[
+  {
+    "keys": ["ctrl+b"],
+    "command": "toggle_side_bar"
+  },
+  {
+    "keys": ["ctrl+tab"],
+    "command": "next_view",
+  },
+  {
+    "keys": ["ctrl+shift+tab"],
+    "command": "prev_view",
+  },
+  {
+    "keys": ["alt+up"],
+    "command": "swap_line_up",
+  },
+  {
+    "keys": ["alt+down"],
+    "command": "swap_line_down",
+  },
+  {
+    "keys": ["ctrl+shift+up"],
+    "command": "expand_selection",
+    "args": { "to": "line_prev" }
+  },
+  {
+    "keys": ["ctrl+shift+down"],
+    "command": "expand_selection",
+    "args": { "to": "line" }
+  },
+  {
+    "keys": ["ctrl+q"],
+    "command": "open_terminal_project_folder",
+  },
+  {
+    "keys": ["ctrl+alt+q"],
+    "command": "open_terminal",
+  },
+  {
+    "keys": ["ctrl+i"],
+    "command": "lsp_format_document",
+  },
+  {
+    "keys": ["ctrl+'"],
+    "command": "emmet_rename_tag",
+  },
+  { // TODO: find how to set path to default to the project directory when current file not open
+    "keys": ["alt+n"],
+    "command": "side_bar_new",
+    "args": {
+      "paths": []
+    },
+  }
+]

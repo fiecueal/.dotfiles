@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Godot
+Terminal=false
+Exec=godot
+Icon=godot

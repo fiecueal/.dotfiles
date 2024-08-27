@@ -1,0 +1,31 @@
+// Settings in here override those in "LSP/LSP.sublime-settings"
+{
+  // "lsp_format_on_save": true,
+  "clients": {
+    "solargraph": {
+      "enabled": true,
+      "command": ["solargraph", "stdio"],
+      "selector": "source.ruby | text.html.ruby",
+      "initializationOptions": {
+        "diagnostics": false
+      }
+    },
+    "ruby-lsp": {
+      "enabled": false,
+      "command": ["ruby-lsp"],
+      "selector": "source.ruby | text.html.ruby",
+      "initializationOptions": {
+        "enabledFeatures": {
+          "diagnostics": false
+        },
+        "experimentalFeaturesEnabled": true
+      }
+    },
+    // needs to have a godot instance running to work properly
+    "godot-lsp": {
+      "enabled": true,
+      "tcp_port": 6005,
+      "selector": "source.gdscript"
+    }
+  }
+}

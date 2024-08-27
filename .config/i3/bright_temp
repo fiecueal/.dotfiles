@@ -1,0 +1,12 @@
+#!/usr/bin/ruby
+
+output = `xsct`.split(" ")
+temp = output[-2].to_i
+bright = output[-1].to_f
+
+case ARGV[0]
+when "up"         then `xsct #{temp} #{bright + 0.1}`
+when "down"       then `xsct #{temp} #{bright - 0.1}`
+when "dim"        then `xsct #{temp} 0`
+when "reset_temp" then `xsct 0 #{bright}`
+end

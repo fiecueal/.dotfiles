@@ -1,0 +1,18 @@
+#!/usr/bin/bash
+
+current_sink="$(pactl get-default-sink)"
+sinks=($(pactl list sinks short | cut -f2))
+
+next=false
+
+for sink in ${sinks[@]}; do
+  if [ $next = true ]; then
+    pactl set-default-sink "$sink"
+    exit
+  elif [ "$sink" = "$current_sink" ]; then
+    next=true
+  fi
+done
+
+# if $current_sink == last of $sinks, assign the first one
+pactl set-default-sink ${sinks[0]}

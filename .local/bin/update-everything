@@ -1,0 +1,18 @@
+#!/usr/bin/bash
+
+sudo nala upgrade -y
+flatpak update -y
+npm up -g pnpm
+sudo yt-dlp -U
+git -C $HOME/git-cola/ pull
+git -C $HOME/qmk_firmware/ pull
+
+# check current version of golang and update if necessary
+current=$(go version | awk '{print $3}')
+latest=$(curl -s https://go.dev/VERSION?m=text | head -1)
+
+if [ "$current" != "$latest" ]; then
+  wget https://go.dev/dl/$latest.linux-amd64.tar.gz
+  sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf $latest.linux-amd64.tar.gz
+  rm $latest.linux-amd64.tar.gz
+fi

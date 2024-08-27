@@ -1,0 +1,12 @@
+[cola]
+	startupmode = list
+	spellcheck = false
+	theme = default
+	icontheme = default
+[init]
+	defaultBranch = main
+[user]
+	name = fiecueal
+	email = fiecueal@proton.me
+[credential]
+	username = fiecueal
