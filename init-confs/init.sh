@@ -32,6 +32,10 @@ wget https://go.dev/dl/$version.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf $version.linux-amd64.tar.gz
 rm $version.linux-amd64.tar.gz
 
+# java 21
+wget -qO - https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/adoptium.gpg > /dev/null
+echo "deb https://packages.adoptium.net/artifactory/deb $(awk -F= '/^UBUNTU_CODENAME/{print$2}' /etc/os-release) main" | sudo tee /etc/apt/sources.list.d/adoptium.list
+
 git clone https://github.com/git-cola/git-cola
 git clone https://github.com/fiecueal/qmk_firmware
 
@@ -60,6 +64,7 @@ playerctl \
 rofi \
 ruby-full \
 sublime-text \
+temurin-21-jdk \
 trash-cli \
 woff2 \
 xsct \
