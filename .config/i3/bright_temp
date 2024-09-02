@@ -4,9 +4,17 @@ output = `xsct`.split(" ")
 temp = output[-2].to_i
 bright = output[-1].to_f
 
+# add a check that prevents 0 brightness from looping back
+# to max brightness
+def lower_brightness temp, bright
+  return if bright < 0.1
+
+  `xsct #{temp} #{bright - 0.1}`
+end
+
 case ARGV[0]
 when "up"         then `xsct #{temp} #{bright + 0.1}`
-when "down"       then `xsct #{temp} #{bright - 0.1}`
+when "down"       then lower_brightness temp, bright
 when "dim"        then `xsct #{temp} 0`
 when "reset_temp" then `xsct 0 #{bright}`
 end
