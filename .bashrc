@@ -55,6 +55,7 @@ alias ls='ls -A --color=auto'
 alias path='echo $PATH | tr ":" "\n"'
 alias pn='pnpm'
 alias pnx='pnpm dlx'
+alias drun='dragonruby $(pwd)'
 alias config='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 
 mkcd() {
