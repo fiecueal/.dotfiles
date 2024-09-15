@@ -1,0 +1,23 @@
+<snippet>
+  <content><![CDATA[
+class Main
+  attr_gtk
+
+  def initialize args
+    @args = args
+    $0
+  end
+
+  def tick args
+    @args = args
+  end
+end
+
+def tick args
+  args.state.main ||= Main.new args
+  args.state.main.tick args
+end
+]]></content>
+  <tabTrigger>main</tabTrigger>
+  <scope>source.ruby</scope>
+</snippet>

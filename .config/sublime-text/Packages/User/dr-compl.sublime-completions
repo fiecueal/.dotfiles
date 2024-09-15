@@ -1,0 +1,31 @@
+{
+  "scope": "source.ruby",
+
+  "completions": [
+    // kernel
+    "Kernel.tick_count",
+    // gtk
+    "GTK.reset",
+    // outputs
+    { "trigger": "outputs.solids",      "contents": "outputs.solids << "      },
+    { "trigger": "outputs.sprites",     "contents": "outputs.sprites << "     },
+    { "trigger": "outputs.primitives",  "contents": "outputs.primitives << "  },
+    { "trigger": "outputs.labels",      "contents": "outputs.labels << "      },
+    { "trigger": "outputs.lines",       "contents": "outputs.lines << "       },
+    { "trigger": "outputs.borders",     "contents": "outputs.borders << "     },
+    { "trigger": "outputs.debug",       "contents": "outputs.debug << "       },
+    { "trigger": "outputs.screenshots", "contents": "outputs.screenshots << " },
+    { "trigger": "outputs.background_color", "contents": "outputs.background_color = [$1]" },
+    // inputs
+    { "trigger": "keydown",    "contents": "inputs.keyboard.key_down." },
+    { "trigger": "keyup",      "contents": "inputs.keyboard.key_up."   },
+    { "trigger": "keyheld",    "contents": "inputs.keyboard.key_held." },
+    { "trigger": "mouse",      "contents": "inputs.mouse."             },
+    { "trigger": "controller", "contents": "inputs.controller_"        },
+    // geometry
+    "to_degrees",
+    "to_radians",
+    { "trigger": "Geometry.angle_to",   "contents": "Geometry.angle_to($1, $2)"   },
+    { "trigger": "Geometry.angle_from", "contents": "Geometry.angle_from($1, $2)" },
+  ]
+}
