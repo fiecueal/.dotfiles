@@ -1,3 +1,4 @@
+! Using QMK, F13-24 is assigned these keycodes but don't actually correspond to these F keys in Linux by default
 keycode 191 = F13
 keycode 192 = F14
 keycode 193 = F15
