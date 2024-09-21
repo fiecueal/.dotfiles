@@ -40,15 +40,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# exports & aliases
-export PATH=$PATH:$HOME/.local/share/pnpm
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$HOME/intellij2024.1.1/bin
-export DOTNET_CLI_TELEMETRY_OPTOUT=true
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 alias dlp='yt-dlp -f "bv*+ba/b"'
 alias dlp720='yt-dlp -f "bv*[height<=720]+ba/b[height<=720]"'
 alias ls='ls -A --color=auto'

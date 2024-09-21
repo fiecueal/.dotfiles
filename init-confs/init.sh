@@ -61,6 +61,7 @@ inkscape \
 mypaint \
 pavucontrol \
 playerctl \
+python3-qtpy \
 rofi \
 ruby-full \
 sublime-text \
@@ -85,10 +86,9 @@ xyz.xclicker.xclicker \
 if [[ $1 == "laptop" ]]; then
   sudo nala install -y tlp
   sudo mkdir -p /etc/tlp.d
-  sudo bash -c 'cat > /etc/tlp.d/00-charge-thresh.conf <<EOF
-START_CHARGE_THRESH_BAT0=0
-STOP_CHARGE_THRESH_BAT0=60
-EOF'
+  sudo cp $HOME/init-confs/00-charge-thresh.conf \
+          $HOME/init-confs/00-low-power-cpu.conf \
+          /etc/tlp.d/
   sudo tlp start
 fi
 
@@ -97,8 +97,8 @@ sudo gem install solargraph
 # fix screen tearing & disable mouse acceleration
 sudo mkdir -p /etc/X11/xorg.conf.d
 sudo cp $HOME/init-confs/20-screentear.conf \
-$HOME/init-confs/20-mouseaccel.conf \
-/etc/X11/xorg.conf.d/
+        $HOME/init-confs/20-mouseaccel.conf \
+        /etc/X11/xorg.conf.d/
 
 # shutdown on power button held instead of pressed
 sudo mkdir -p /etc/systemd/logind.conf.d
