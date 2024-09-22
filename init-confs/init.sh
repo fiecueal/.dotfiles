@@ -2,7 +2,12 @@
 
 cd $HOME # start script in home dir
 sudo ufw enable
-sudo apt purge -y yt-dlp nodejs npm
+sudo apt purge -y \
+gucharmap \
+nodejs \
+npm \
+xfce4-xapp-status-plugin \
+yt-dlp
 
 # Victor Mono
 wget https://rubjo.github.io/victor-mono/VictorMonoAll.zip -P $HOME/Downloads/
@@ -50,6 +55,8 @@ fcitx5 \
 fcitx5-mozc \
 ffmpeg \
 flameshot \
+font-manager \
+font-viewer \
 fonts-3270 \
 fonts-klee \
 fonts-noto \
