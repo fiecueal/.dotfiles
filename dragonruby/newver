@@ -19,6 +19,7 @@ rm .itch.toml
 mv base/font.ttf base/font-og.ttf
 cp font.ttf base/font.ttf
 
-prefix=`head -1 base/CHANGELOG-CURR.txt | cut -c 3-`
+# move zip file to zips
+prefix=$(head -1 base/CHANGELOG-CURR.txt | cut -c 3-)
 filename="dragonruby-gtk-linux-amd64.zip"
 mv dragonruby-gtk-linux-amd64.zip zips/${prefix}${filename}
