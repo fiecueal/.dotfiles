@@ -1,6 +1,7 @@
 CC0 [monogram font](https://datagoblin.itch.io/monogram) in `.local/share/fonts/`
 
 Setup is done this way: https://www.atlassian.com/git/tutorials/dotfiles
+
 script:
 ```sh
 sudo apt install git -y

@@ -45,14 +45,11 @@ alias dlp720='yt-dlp -f "bv*[height<=720]+ba/b[height<=720]"'
 alias ls='ls -A --color=auto'
 alias path='echo $PATH | tr ":" "\n"'
 alias pn='pnpm'
-alias pnx='pnpm dlx'
 alias drun='dragonruby $(pwd)'
 alias config='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 
 mkcd() {
-  if [ ! -d "$1" ]; then
-    mkdir -p "$1"
-  fi
+  mkdir -p "$1"
   cd $1
   pwd
 }
