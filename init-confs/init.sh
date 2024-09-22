@@ -60,6 +60,7 @@ imagemagick \
 inkscape \
 mypaint \
 pavucontrol \
+pcmanfm \
 playerctl \
 python3-qtpy \
 rofi \
