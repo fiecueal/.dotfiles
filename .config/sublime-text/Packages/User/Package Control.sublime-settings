@@ -6,6 +6,7 @@
 	"installed_packages":
 	[
 		"CSSC-sublime-text-scheme",
+		"FileIcons",
 		"Gomod",
 		"LSP",
 		"LSP-css",
