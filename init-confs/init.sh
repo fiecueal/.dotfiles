@@ -46,7 +46,7 @@ git clone https://github.com/fiecueal/qmk_firmware
 
 # install packages
 sudo apt install -y nala
-sudo nala fetch --auto -c US --fetches 3 -y
+sudo nala fetch --auto --fetches 3 -y
 sudo nala upgrade -y
 sudo nala install -y \
 autojump \

@@ -3,7 +3,7 @@
 sudo nala upgrade -y
 flatpak update -y
 npm up -g pnpm
-sudo yt-dlp -U
+yt-dlp -U
 git -C $HOME/git-cola/ pull
 git -C $HOME/qmk_firmware/ pull
 

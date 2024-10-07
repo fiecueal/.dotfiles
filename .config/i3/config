@@ -29,9 +29,9 @@ assign [class="(?i)foliate"]               6
 assign [class="(?i)virtualbox"]            7
 # assign [class="(?i)"]                      8
 assign [class="(?i)ff9"]                   9
-# assign [class="(?i)atlauncher"]          10
-# assign [class="(?i)heroic"]              11
-# assign [class="(?i)"]                      12
+assign [class="(?i)atlauncher"]            10
+assign [class="(?i)heroic"]                11
+assign [class="(?i)steam"]                 12
 
 for_window [class="dragonruby"] border none
 for_window [class="calculator"] floating enable
@@ -52,7 +52,7 @@ bindsym $super+$alt+F7  exec virtualbox
 bindsym $super+$alt+F9  exec firefox -P p2 --class ff9
 bindsym $super+$alt+F10 exec flatpak run com.atlauncher.ATLauncher
 bindsym $super+$alt+F11 exec flatpak run com.heroicgameslauncher.hgl
-# bindsym $super+$alt+F12 exec
+bindsym $super+$alt+F12 exec steam
 
 # rofi
 bindsym --release $super+d exec rofi -modi drun#run -show drun -show-icons
@@ -82,17 +82,19 @@ bindsym --release $super+Control+Shift+Print exec --no-startup-id flameshot gui 
 # multimedia keys #
 ###################
 
-set $refresh_i3status killall -SIGUSR1 i3status
+# the default i3 config had this command but removing it seems to do nothing. leaving it here just in case
+# set $refresh_i3status killall -SIGUSR1 i3status
+
 # volume
-bindsym F16 exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym F20 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +4% && pactl set-sink-mute @DEFAULT_SINK@ 0 && $refresh_i3status
-bindsym F24 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -4% && $refresh_i3status
+bindsym F16 exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ toggle
+bindsym F20 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +4% && pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym F24 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -4%
 # playback
 bindsym F15 exec --no-startup-id playerctl play-pause
 bindsym F19 exec --no-startup-id playerctl next
 bindsym F23 exec --no-startup-id playerctl prev
 # mic toggle / pavucontrol / switch sink
-bindsym F14 exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym F14 exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym F18 exec --no-startup-id ~/.config/i3/set_default_sink
 bindsym F22 exec --no-startup-id pavucontrol -t 3
 # screen brightness
