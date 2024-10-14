@@ -24,7 +24,7 @@ curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o $HOM
 chmod a+rx $HOME/.local/bin/yt-dlp
 
 # nodejs, npm, pnpm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -34,12 +34,20 @@ npm i -g pnpm
 # go
 version=$(curl -s https://go.dev/VERSION?m=text | head -1)
 wget https://go.dev/dl/$version.linux-amd64.tar.gz
-sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf $version.linux-amd64.tar.gz
+sudo rm -rf /opt/go && sudo tar -C /opt -xzf $version.linux-amd64.tar.gz
 rm $version.linux-amd64.tar.gz
 
 # java 21
 wget -qO - https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/adoptium.gpg > /dev/null
 echo "deb https://packages.adoptium.net/artifactory/deb $(awk -F= '/^UBUNTU_CODENAME/{print$2}' /etc/os-release) main" | sudo tee /etc/apt/sources.list.d/adoptium.list
+
+# intellij idea
+# TODO: check for latest version
+version='2024.2.3'
+wget https://download-cdn.jetbrains.com/idea/ideaIC-$version.tar.gz
+sudo tar -xzf ideaIC-$version.tar.gz -C /opt
+sudo find /opt -mindepth 1 -maxdepth 1 -type d -name "idea-IC-*" -exec mv {} /opt/idea-ce-$version-test \;
+rm ideaIC-$version.tar.gz
 
 git clone https://github.com/git-cola/git-cola
 git clone https://github.com/fiecueal/qmk_firmware
