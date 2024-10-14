@@ -45,8 +45,8 @@ echo "deb https://packages.adoptium.net/artifactory/deb $(awk -F= '/^UBUNTU_CODE
 # TODO: check for latest version
 version='2024.2.3'
 wget https://download-cdn.jetbrains.com/idea/ideaIC-$version.tar.gz
-sudo tar -xzf ideaIC-$version.tar.gz -C /opt
-sudo find /opt -mindepth 1 -maxdepth 1 -type d -name "idea-IC-*" -exec mv {} /opt/idea-ce-$version-test \;
+sudo mkdir /opt/idea-ce-$version
+sudo tar -xzf ideaIC-$version.tar.gz --strip-components=1 -C /opt/idea-ce-$version
 rm ideaIC-$version.tar.gz
 
 git clone https://github.com/git-cola/git-cola
