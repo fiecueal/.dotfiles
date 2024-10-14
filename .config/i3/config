@@ -23,11 +23,11 @@ font pango:Noto Sans Mono 14
 assign [class="(?i)firefox"]               1
 assign [class="(?i)pcmanfm"]               2
 assign [class="(?i)git-cola"]              3
-assign [class="(?i)subl"]                  4
+assign [class="(?i)sublime-text"]          4
 assign [class="(?i)ff5"]                   5
 assign [class="(?i)foliate"]               6
 assign [class="(?i)virtualbox"]            7
-# assign [class="(?i)"]                      8
+assign [class="(?i)jetbrains-idea-ce"]     8
 assign [class="(?i)ff9"]                   9
 assign [class="(?i)atlauncher"]            10
 assign [class="(?i)heroic"]                11
@@ -48,7 +48,7 @@ bindsym $super+$alt+F4  exec subl
 bindsym $super+$alt+F5  exec firefox -P p1 --class ff5
 bindsym $super+$alt+F6  exec flatpak run com.github.johnfactotum.Foliate
 bindsym $super+$alt+F7  exec virtualbox
-# bindsym $super+$alt+F8 exec
+bindsym $super+$alt+F8  exec idea
 bindsym $super+$alt+F9  exec firefox -P p2 --class ff9
 bindsym $super+$alt+F10 exec flatpak run com.atlauncher.ATLauncher
 bindsym $super+$alt+F11 exec flatpak run com.heroicgameslauncher.hgl
