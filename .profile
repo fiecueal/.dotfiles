@@ -16,9 +16,11 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-PATH="$HOME/intellij2024.1.1/bin:$PATH"
+PATH="/opt/go/bin:$PATH"
+PATH="/opt/idea-ce-2024.2.3/bin:$PATH"
+PATH="/opt/idea-ce-2024.2.3/plugins/maven/lib/maven3/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
-PATH="/usr/local/go/bin:$PATH"
+# PATH="/opt/apache-maven-3.9.9/bin:$PATH"
 NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -13,6 +13,6 @@ latest=$(curl -s https://go.dev/VERSION?m=text | head -1)
 
 if [ "$current" != "$latest" ]; then
   wget https://go.dev/dl/$latest.linux-amd64.tar.gz
-  sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf $latest.linux-amd64.tar.gz
+  sudo rm -rf /opt/go && sudo tar -C /opt -xzf $latest.linux-amd64.tar.gz
   rm $latest.linux-amd64.tar.gz
 fi
