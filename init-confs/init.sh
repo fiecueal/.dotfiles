@@ -48,7 +48,7 @@ wget https://download-cdn.jetbrains.com/idea/ideaIC-$version.tar.gz
 sudo tar -xzf ideaIC-$version.tar.gz --strip-components=1 --one-top-level="/opt/idea-ce-$version"
 rm ideaIC-$version.tar.gz
 
-git clone https://github.com/git-cola/git-cola
+sudo git clone https://github.com/git-cola/git-cola /opt/git-cola
 git clone https://github.com/fiecueal/qmk_firmware
 
 # install packages

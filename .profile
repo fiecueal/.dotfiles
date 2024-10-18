@@ -16,6 +16,7 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
+PATH="/opt/git-cola/bin:$PATH"
 PATH="/opt/go/bin:$PATH"
 PATH="/opt/idea-ce-2024.2.3/bin:$PATH"
 PATH="/opt/idea-ce-2024.2.3/plugins/maven/lib/maven3/bin:$PATH"
