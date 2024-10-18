@@ -57,6 +57,7 @@ sudo nala fetch --auto --fetches 3 -y
 sudo nala upgrade -y
 sudo nala install -y \
 autojump \
+clang-18 \
 cowsay \
 fcitx5 \
 fcitx5-mozc \
@@ -72,6 +73,7 @@ gpick \
 i3 \
 imagemagick \
 inkscape \
+llvm-18 \
 mypaint \
 pavucontrol \
 pcmanfm \
@@ -84,6 +86,12 @@ temurin-21-jdk \
 trash-cli \
 woff2 \
 xsct \
+
+# odin
+sudo git clone https://github.com/odin-lang/Odin /opt/odin
+cd /opt/odin
+sudo make release-native
+cd $HOME
 
 # install flatpaks
 flatpak install -y flathub \

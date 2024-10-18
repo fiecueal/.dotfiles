@@ -19,6 +19,7 @@ fi
 PATH="/opt/go/bin:$PATH"
 PATH="/opt/idea-ce-2024.2.3/bin:$PATH"
 PATH="/opt/idea-ce-2024.2.3/plugins/maven/lib/maven3/bin:$PATH"
+PATH="/opt/odin/:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 # PATH="/opt/apache-maven-3.9.9/bin:$PATH"
 NVM_DIR="$HOME/.nvm"
