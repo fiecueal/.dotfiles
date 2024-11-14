@@ -9,6 +9,10 @@ npm \
 xfce4-xapp-status-plugin \
 yt-dlp
 
+# Brave browser
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+
 # Victor Mono
 wget https://rubjo.github.io/victor-mono/VictorMonoAll.zip -P $HOME/Downloads/
 unzip $HOME/Downloads/VictorMonoAll.zip -d $HOME/Downloads/VictorMonoAll/
@@ -57,6 +61,7 @@ sudo nala fetch --auto --fetches 3 -y
 sudo nala upgrade -y
 sudo nala install -y \
 autojump \
+brave-browser \
 clang-18 \
 cowsay \
 fcitx5 \
