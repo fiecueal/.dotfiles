@@ -3,8 +3,8 @@
 sudo nala upgrade -y
 flatpak update -y
 npm up -g pnpm
-yt-dlp -U
 git -C $HOME/git-cola/ pull
+sudo yt-dlp -U
 git -C $HOME/qmk_firmware/ pull
 
 # check current version of golang and update if necessary
