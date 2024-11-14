@@ -47,7 +47,7 @@ echo "deb https://packages.adoptium.net/artifactory/deb $(awk -F= '/^UBUNTU_CODE
 
 # intellij idea
 # TODO: check for latest version
-version='2024.2.3'
+version='2024.2.4'
 wget https://download-cdn.jetbrains.com/idea/ideaIC-$version.tar.gz
 sudo tar -xzf ideaIC-$version.tar.gz --strip-components=1 --one-top-level="/opt/idea-ce-$version"
 rm ideaIC-$version.tar.gz
@@ -68,6 +68,7 @@ fcitx5 \
 fcitx5-mozc \
 ffmpeg \
 flameshot \
+foliate \
 font-manager \
 font-viewer \
 fonts-3270 \
@@ -79,7 +80,9 @@ i3 \
 imagemagick \
 inkscape \
 llvm-18 \
+mpv \
 mypaint \
+obs-studio \
 pavucontrol \
 pcmanfm \
 playerctl \
@@ -101,13 +104,10 @@ cd $HOME
 # install flatpaks
 flatpak install -y flathub \
 com.atlauncher.ATLauncher \
-com.github.johnfactotum.Foliate \
 com.github.tchx84.Flatseal \
 com.heroicgameslauncher.hgl \
-com.obsproject.Studio \
 com.tomjwatson.Emote \
 io.mgba.mGBA \
-org.pitivi.Pitivi \
 xyz.xclicker.xclicker \
 
 # install tlp for power management and charge thresholds if 'laptop' passed as arg
