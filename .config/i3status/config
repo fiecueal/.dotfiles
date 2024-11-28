@@ -28,6 +28,10 @@ cpu_temperature cpu {
 cpu_temperature gpu {
   format = "🌡️ %degrees °C"
   path = "/sys/class/hwmon/hwmon2/temp1_input"
+memory {
+  format = "🐏 %percentage_used / %total"
+  decimals = "0"
+  unit = "G"
 }
 
 time {

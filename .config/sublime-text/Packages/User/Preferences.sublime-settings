@@ -7,11 +7,24 @@
   "remember_full_screen": true,
   "hardware_acceleration": "opengl",
 
-  "font_face": "Victor Mono Medium",
-  "font_options": ["ss02"],
-  "font_size": 16,
-  "line_padding_top": 2,
-  "line_padding_bottom": 2,
+  // "font_face": "monoid",
+  // "font_size": 10,
+
+  // "font_face": "mononoki",
+  // "font_size": 12,
+
+  "font_face": "anonymous pro",
+  "font_size": 13,
+
+  // "font_face": "Victor Mono Medium",
+  // "font_options": ["ss02"],
+  // "font_size": 12,
+
+  // "font_face": "monofur",
+  // "font_size": 14,
+
+  // "line_padding_top": 2,
+  // "line_padding_bottom": 2,
 
   "block_caret": true,
   "highlight_line": true,

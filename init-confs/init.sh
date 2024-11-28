@@ -72,7 +72,11 @@ foliate \
 font-manager \
 font-viewer \
 fonts-3270 \
+fonts-anonymous-pro \
+fonts-comfortaa \
 fonts-klee \
+fonts-monofur \
+fonts-monoid* \
 fonts-noto \
 fortunes \
 gpick \

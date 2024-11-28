@@ -3,8 +3,8 @@
 sudo nala upgrade -y
 flatpak update -y
 npm up -g pnpm
-sudo yt-dlp -U
-sudo git -C /opt/git-cola/ pull
+sudo /opt/yt-dlp/yt-dlp -U
+printf "git-cola: " && sudo git -C /opt/git-cola/ pull
 git -C $HOME/qmk_firmware/ pull
 
 # check current version of golang and update if necessary
@@ -16,5 +16,5 @@ if [ "$current" != "$latest" ]; then
   sudo rm -rf /opt/go && sudo tar -C /opt -xzf $latest.linux-amd64.tar.gz
   rm $latest.linux-amd64.tar.gz
 else
-  echo "golang is up to date($current)"
+  echo "go up to date ($current)"
 fi
