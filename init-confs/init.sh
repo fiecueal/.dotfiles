@@ -88,13 +88,13 @@ mpv \
 mypaint \
 obs-studio \
 pavucontrol \
-pcmanfm \
 playerctl \
 python3-qtpy \
 rofi \
 ruby-full \
 sublime-text \
 temurin-21-jdk \
+thunar \
 trash-cli \
 woff2 \
 xsct \
