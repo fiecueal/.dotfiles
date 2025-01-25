@@ -68,15 +68,15 @@ bindsym $super+Tab       workspace next
 bindsym $super+Shift+Tab workspace prev
 
 # screenshots using flameshot
-bindsym --release               Print exec --no-startup-id flameshot screen -c
-bindsym --release         Shift+Print exec --no-startup-id flameshot gui -s -c
-bindsym --release       Control+Print exec --no-startup-id flameshot screen -p ~/Pictures/screenshot_$(date +'%Y-%m-%d-%T').png
-bindsym --release Control+Shift+Print exec --no-startup-id flameshot gui -s -p ~/Pictures/screenshot_$(date +'%Y-%m-%d-%T').png
+bindsym --release               Print exec --no-startup-id mkdir -p ~/Pictures/screenshots && flameshot screen -p ~/Pictures/screenshots/$(date +'%Y-%m-%d-%T').png
+bindsym --release         Shift+Print exec --no-startup-id mkdir -p ~/Pictures/screenshots && flameshot gui -s -p ~/Pictures/screenshots/$(date +'%Y-%m-%d-%T').png
+bindsym --release       Control+Print exec --no-startup-id flameshot screen -c
+bindsym --release Control+Shift+Print exec --no-startup-id flameshot gui -s -c
 # just so they work even when super key is held
-bindsym --release               $super+Print exec --no-startup-id flameshot screen -c
-bindsym --release         $super+Shift+Print exec --no-startup-id flameshot gui -s -c
-bindsym --release       $super+Control+Print exec --no-startup-id flameshot screen -p ~/Pictures/screenshot_$(date +'%Y-%m-%d-%T').png
-bindsym --release $super+Control+Shift+Print exec --no-startup-id flameshot gui -s -p ~/Pictures/screenshot_$(date +'%Y-%m-%d-%T').png
+bindsym --release               $super+Print exec --no-startup-id mkdir -p ~/Pictures/screenshots && flameshot screen -p ~/Pictures/screenshots/$(date +'%Y-%m-%d-%T').png
+bindsym --release         $super+Shift+Print exec --no-startup-id mkdir -p ~/Pictures/screenshots && flameshot gui -s -p ~/Pictures/screenshots/$(date +'%Y-%m-%d-%T').png
+bindsym --release       $super+Control+Print exec --no-startup-id flameshot screen -c
+bindsym --release $super+Control+Shift+Print exec --no-startup-id flameshot gui -s -c
 
 ###################
 # multimedia keys #
