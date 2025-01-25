@@ -85,6 +85,7 @@ bindsym --release $super+Control+Shift+Print exec --no-startup-id flameshot gui 
 # the default i3 config had this command but removing it seems to do nothing. leaving it here just in case
 # set $refresh_i3status killall -SIGUSR1 i3status
 
+## set up in columns from right to left
 # volume
 bindsym F16 exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ toggle
 bindsym F20 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +4% && pactl set-sink-mute @DEFAULT_SINK@ 0
@@ -105,6 +106,29 @@ bindsym F21 exec --no-startup-id ~/.config/i3/bright_temp down
 bindsym Shift+F13 exec --no-startup-id ~/.config/i3/bright_temp reset_temp
 bindsym Shift+F17 exec --no-startup-id xsct -d 200
 bindsym Shift+F21 exec --no-startup-id xsct -d -200
+
+# # when .Xmodmap isn't available cus i can't use my keyboard
+# volume
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +4% && pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -4%
+# playback
+bindsym $alt+Xf86AudioMute        exec --no-startup-id playerctl play-pause
+bindsym $alt+Xf86AudioRaiseVolume exec --no-startup-id playerctl next
+bindsym $alt+Xf86AudioLowerVolume exec --no-startup-id playerctl prev
+# # mic toggle / pavucontrol / switch sink
+bindsym Shift+Xf86AudioMute        exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym $super+Shift+s             exec --no-startup-id ~/.config/i3/set_default_sink
+bindsym Shift+Xf86AudioLowerVolume exec --no-startup-id pavucontrol -t 3
+# screen brightness
+bindsym XF86ScreenSaver       exec --no-startup-id ~/.config/i3/bright_temp dim
+bindsym XF86MonBrightnessUp   exec --no-startup-id ~/.config/i3/bright_temp up
+bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/bright_temp down
+# screen temp
+bindsym Shift+XF86ScreenSaver       exec --no-startup-id ~/.config/i3/bright_temp reset_temp
+bindsym Shift+XF86MonBrightnessUp   exec --no-startup-id xsct -d 200
+bindsym Shift+XF86MonBrightnessDown exec --no-startup-id xsct -d -200
+
 
 # change focus
 bindsym $super+Left focus left
