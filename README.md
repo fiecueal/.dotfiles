@@ -13,7 +13,7 @@ if [ $? -ne 0 ]; then
   config checkout 2>&1 | egrep "\s+\." | awk '{print $1}' | xargs -I{} mv {} .config-backup
   config checkout
 fi
-init-confs/init.sh
+.config/fiecueal/init.sh
 ```
 
 explanation for myself because I don't use bash enough to remember:
