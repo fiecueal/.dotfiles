@@ -4,16 +4,17 @@ Setup is done this way: https://www.atlassian.com/git/tutorials/dotfiles
 
 script:
 ```sh
+cd $HOME
 sudo apt install git -y
 git clone --bare https://github.com/fiecueal/.dotfiles
 alias config="git --work-tree=$HOME --git-dir=$HOME/.dotfiles.git/"
 config checkout
 if [ $? -ne 0 ]; then
-  mkdir -p .config-backup
-  config checkout 2>&1 | egrep "\s+\." | awk '{print $1}' | xargs -I{} mv {} .config-backup
+  mkdir -p .config/fiecueal/backup
+  config checkout 2>&1 | egrep "\s+\." | awk '{print $1}' | xargs -I{} mv {} .config/fiecueal/backup
   config checkout
 fi
-.config/fiecueal/init.sh
+$HOME/.config/fiecueal/init.sh
 ```
 
 explanation for myself because I don't use bash enough to remember:
