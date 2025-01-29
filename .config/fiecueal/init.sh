@@ -86,6 +86,7 @@ thunar \
 trash-cli \
 woff2 \
 xsct \
+xfce4-terminal
 
 # install flatpaks
 flatpak install -y flathub \
@@ -106,6 +107,13 @@ if [[ $1 == "laptop" ]]; then
 fi
 
 sudo gem install solargraph
+
+# add Betterfox + personal additions to default firefox profile
+git clone https://github.com/fiecueal/Betterfox Projects/Betterfox
+cd Projects/Betterfox
+profile=$(find $HOME/.mozilla/firefox -maxdepth 1 -name "*.default-release")
+cp -r --backup=numbered chrome/ user.js $profile
+cat user.js-extras >> $profile/user.js
 
 # fix screen tearing & disable mouse acceleration
 sudo mkdir -p /etc/X11/xorg.conf.d
