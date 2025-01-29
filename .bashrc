@@ -50,7 +50,7 @@ alias config='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 
 mkcd() {
   mkdir -p "$1"
-  cd $1
+  cd "$1"
   pwd
 }
 
@@ -58,9 +58,3 @@ mkcd() {
 . /usr/share/autojump/autojump.bash
 
 fortune | cowsay
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-. "/home/fiecueal/.deno/env"
-. "$HOME/.cargo/env"

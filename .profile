@@ -18,14 +18,5 @@ fi
 
 PATH="/opt/git-cola/bin:$PATH"
 PATH="/opt/go/bin:$PATH"
-PATH="/opt/idea-ce-2024.2/bin:$PATH"
-PATH="/opt/idea-ce-2024.2/plugins/maven/lib/maven3/bin:$PATH"
-PATH="/opt/odin:$PATH"
 PATH="/opt/yt-dlp:$PATH"
 PATH="$HOME/.local/bin:$PATH"
-# PATH="/opt/apache-maven-3.9.9/bin:$PATH"
-NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-. "/home/fiecueal/.deno/env"
-. "$HOME/.cargo/env"
