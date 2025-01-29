@@ -7,6 +7,7 @@ general {
 # order += "battery 0"
 order += "cpu_temperature cpu"
 order += "cpu_temperature gpu"
+order += "memory"
 order += "time"
 order += "volume master"
 
@@ -20,14 +21,16 @@ order += "volume master"
 
 cpu_temperature cpu {
   # 🌡️ is made of two codepoints: 🌡(1F321) and variation selector 16 (FE0F)
-  format = "🌡️ %degrees °C"
+  format = "🌡️CPU %degrees °C"
   # path for AMD cpu temp
   path = "/sys/class/hwmon/hwmon4/temp1_input"
 }
 
 cpu_temperature gpu {
-  format = "🌡️ %degrees °C"
+  format = "🌡️GPU %degrees °C"
   path = "/sys/class/hwmon/hwmon2/temp1_input"
+}
+
 memory {
   format = "🐏 %percentage_used / %total"
   decimals = "0"
