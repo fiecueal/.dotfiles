@@ -78,9 +78,9 @@ mypaint \
 obs-studio \
 pavucontrol \
 playerctl \
-python3-qtpy \
 rofi \
 ruby-full \
+steam-installer \
 sublime-text \
 temurin-21-jdk \
 thunar \
@@ -125,3 +125,5 @@ sudo cp $HOME/.config/fiecueal/20-screentear.conf \
 # shutdown on power button held instead of pressed
 sudo mkdir -p /etc/systemd/logind.conf.d
 sudo cp $HOME/.config/fiecueal/20-powerbutton.conf /etc/systemd/logind.conf.d/
+
+steam
