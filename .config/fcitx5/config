@@ -25,12 +25,11 @@ NextPage=
 PrevCandidate=
 # Default Next Candidate
 NextCandidate=
+# Toggle embedded preedit
+TogglePreedit=
 
 [Hotkey/TriggerKeys]
 0=Super+K
-
-[Hotkey/TogglePreedit]
-0=Control+Alt+P
 
 [Behavior]
 # Active By Default
@@ -57,9 +56,16 @@ CustomXkbOption=
 EnabledAddons=
 # Preload input method to be used by default
 PreloadInputMethod=True
+# Allow input method in the password field
+AllowInputMethodForPassword=False
+# Show preedit text when typing password
+ShowPreeditForPassword=False
+# Interval of saving user data in minutes
+AutoSavePeriod=30
 
 [Behavior/DisabledAddons]
 0=clipboard
 1=emoji
 2=quickphrase
 3=spell
+
