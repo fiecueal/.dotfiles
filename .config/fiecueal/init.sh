@@ -122,6 +122,11 @@ sudo cp $HOME/.config/fiecueal/20-screentear.conf \
         $HOME/.config/fiecueal/20-mouseaccel.conf \
         /etc/X11/xorg.conf.d/
 
+# fix 8bitdo controller recognition
+sudo mkdir -p /etc/udev/rules.d/ /etc/modules-load.d/
+sudo cp $HOME/.config/fiecueal/71-8bitdo-controllers.rules /etc/udev/rules.d/
+sudo cp $HOME/.config/fiecueal/uinput.conf /etc/modules-load.d/uinput.conf
+
 # shutdown on power button held instead of pressed
 sudo mkdir -p /etc/systemd/logind.conf.d
 sudo cp $HOME/.config/fiecueal/20-powerbutton.conf /etc/systemd/logind.conf.d/
