@@ -192,11 +192,11 @@ bindsym $super+Shift+c reload
 bindsym $super+Shift+r restart
 bindsym $super+Shift+e exec "i3-nagbar -t warning -m 'What do' \
 -B 'screen lock' '~/.config/i3/lock' \
--B 'logout'      'i3-msg exit' \
 -B 'suspend'     'systemctl suspend' \
--B 'reboot'      'systemctl reboot' \
--B 'poweroff'    'systemctl poweroff' \
--B 'BIOS'        'systemctl reboot --firmware-setup'"
+-B 'logout'      '~/.config/i3/exit logout' \
+-B 'poweroff'    '~/.config/i3/exit poweroff' \
+-B 'reboot'      '~/.config/i3/exit reboot' \
+-B 'BIOS'        '~/.config/i3/exit bios'"
 
 ###########
 # windows #
@@ -232,6 +232,7 @@ exec --no-startup-id flameshot
 exec --no-startup-id flatpak run com.tomjwatson.Emote
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id xrdb -merge ~/.Xresources
+exec --no-startup-id ~/.config/i3/bright_temp_on_shutdown
 # exec --no-startup-id xset s off -dpms
 
 # Start XDG autostart .desktop files using dex. See also
