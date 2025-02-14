@@ -13,15 +13,15 @@
   // "font_face": "mononoki",
   // "font_size": 12,
 
-  "font_face": "anonymous pro",
-  "font_size": 13,
+  // "font_face": "anonymous pro",
+  // "font_size": 14,
 
   // "font_face": "Victor Mono Medium",
   // "font_options": ["ss02"],
   // "font_size": 12,
 
-  // "font_face": "monofur",
-  // "font_size": 14,
+  "font_face": "monofur",
+  "font_size": 15,
 
   // "line_padding_top": 2,
   // "line_padding_bottom": 2,

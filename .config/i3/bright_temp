@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/bin/ruby
 
 output = `xsct`.split(" ")
 temp = output[-2].to_i

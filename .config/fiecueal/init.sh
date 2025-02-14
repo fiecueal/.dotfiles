@@ -95,7 +95,8 @@ com.atlauncher.ATLauncher \
 com.github.tchx84.Flatseal \
 com.heroicgameslauncher.hgl \
 com.tomjwatson.Emote \
-io.mgba.mGBA
+io.mgba.mGBA \
+net.lutris.Lutris
 
 # install tlp for power management and charge thresholds if 'laptop' passed as arg
 if [[ $1 == "laptop" ]]; then
