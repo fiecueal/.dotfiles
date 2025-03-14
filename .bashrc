@@ -77,7 +77,7 @@ drupgrade() {
   if [ "$1" ]; then
     zip="$1"
   fi
-  ziptype=$(file --mime-type $zip | awk '{print $2}')
+  ziptype=$(file -b --mime-type $zip)
   if [ $ziptype != "application/zip" ]; then
     echo "FAILED: $zip is not a zip file"
   else
