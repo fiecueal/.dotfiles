@@ -10,7 +10,8 @@ xfce4-xapp-status-plugin \
 yt-dlp
 
 mkdir -p Projects
-sudo mkdir -p /opt/dragonruby/zips
+sudo mkdir -p /opt/dragonruby/zips /opt/godot
+sudo mv $HOME/.config/fiecueal/godot.svg /opt/godot/
 
 # Brave browser
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg

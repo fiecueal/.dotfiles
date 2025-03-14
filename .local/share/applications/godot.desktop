@@ -2,5 +2,5 @@
 Type=Application
 Name=Godot
 Terminal=false
-Exec=godot
-Icon=godot
+Exec=/opt/godot/main/godot
+Icon=/opt/godot/godot.svg
