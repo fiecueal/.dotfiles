@@ -54,6 +54,42 @@ mkcd() {
   pwd
 }
 
+mvcd() {
+  mv "$1" "$2"
+  cd "$2"
+  pwd
+}
+
+drinit() {
+  if [ -z "$1" ]; then
+    echo "FAILED: No directory name supplied"
+  elif [ -d "$HOME/Projects/$1" ]; then
+    echo "FAILED: $1 directory already exists"
+  else
+    cp -r /opt/dragonruby/main/mygame "$HOME/Projects/$1"
+    cd "$HOME/Projects/$1"
+    echo "New project created at: $HOME/Projects/$1"
+  fi
+}
+
+drupgrade() {
+  zip="$HOME/Downloads/dragonruby-gtk-linux-amd64.zip"
+  if [ "$1" ]; then
+    zip="$1"
+  fi
+  ziptype=$(file --mime-type $zip | awk '{print $2}')
+  if [ $ziptype != "application/zip" ]; then
+    echo "FAILED: $zip is not a zip file"
+  else
+    unzip $zip
+    rm .itch.toml
+    version=$(dragonruby-linux-amd64/dragonruby version)
+    sudo mv $zip /opt/dragonruby/zips/$version
+    sudo mv dragonruby-linux-amd64 /opt/dragonruby/$version
+    sudo ln -sfn /opt/dragonruby/$version /opt/dragonruby/main
+  fi
+}
+
 # autojump
 . /usr/share/autojump/autojump.bash
 

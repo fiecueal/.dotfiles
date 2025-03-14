@@ -9,7 +9,8 @@ npm \
 xfce4-xapp-status-plugin \
 yt-dlp
 
-mkdir -p Projects dragonruby/projects
+mkdir -p Projects
+sudo mkdir -p /opt/dragonruby/zips
 
 # Brave browser
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
@@ -96,7 +97,8 @@ com.github.tchx84.Flatseal \
 com.heroicgameslauncher.hgl \
 com.tomjwatson.Emote \
 io.mgba.mGBA \
-net.lutris.Lutris
+net.lutris.Lutris \
+com.vysp3r.ProtonPlus
 
 # install tlp for power management and charge thresholds if 'laptop' passed as arg
 if [[ $1 == "laptop" ]]; then
@@ -113,9 +115,10 @@ sudo gem install solargraph
 # add Betterfox + personal additions to default firefox profile
 git clone https://github.com/fiecueal/Betterfox Projects/Betterfox
 cd Projects/Betterfox
-profile=$(find $HOME/.mozilla/firefox -maxdepth 1 -name "*.default-release")
-cp -r --backup=numbered chrome/ user.js $profile
-cat user.js-extras >> $profile/user.js
+./install.sh default-release
+./install.sh p1
+./install.sh p2
+cd $HOME
 
 # fix screen tearing & disable mouse acceleration
 sudo mkdir -p /etc/X11/xorg.conf.d

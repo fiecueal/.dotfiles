@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Intellij IDEA CE
+Terminal=false
+Icon=/opt/intellij-idea/main/bin/idea.svg
+Exec=/opt/intellij-idea/main/bin/idea

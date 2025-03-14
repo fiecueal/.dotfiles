@@ -27,8 +27,8 @@ assign [class="(?i)sublime_text"]          4
 assign [class="(?i)ff5"]                   5
 assign [class="(?i)foliate"]               6
 assign [class="(?i)xreader"]               6
-# assign [class="(?i)virtualbox"]            7
-# assign [class="(?i)jetbrains-idea-ce"]     8
+assign [class="(?i)Grayjay"]               7
+assign [class="(?i)jetbrains-idea-ce"]     8
 assign [class="(?i)ff9"]                   9
 assign [class="(?i)lutris"]                10
 assign [class="(?i)heroic"]                11
@@ -48,7 +48,7 @@ bindsym $super+$alt+F3  exec git cola
 bindsym $super+$alt+F4  exec subl
 bindsym $super+$alt+F5  exec firefox -P p1 --class ff5
 bindsym $super+$alt+F6  exec foliate
-bindsym $super+$alt+F7  exec virtualbox
+bindsym $super+$alt+F7  exec grayjay
 bindsym $super+$alt+F8  exec idea
 bindsym $super+$alt+F9  exec firefox -P p2 --class ff9
 bindsym $super+$alt+F10 exec flatpak run net.lutris.Lutris
@@ -79,10 +79,6 @@ bindsym --release $super+Shift+Print exec --no-startup-id mkdir -p ~/Pictures/sc
 # multimedia keys #
 ###################
 
-# the default i3 config had this command but removing it seems to do nothing. leaving it here just in case
-# set $refresh_i3status killall -SIGUSR1 i3status
-
-## set up in columns from right to left
 # volume
 bindsym F16 exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ toggle
 bindsym F20 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +4% && pactl set-sink-mute @DEFAULT_SINK@ 0
@@ -104,7 +100,7 @@ bindsym Shift+F13 exec --no-startup-id ~/.config/i3/bright_temp reset_temp
 bindsym Shift+F17 exec --no-startup-id xsct -d 200
 bindsym Shift+F21 exec --no-startup-id xsct -d -200
 
-# # when .Xmodmap isn't available cus i can't use my keyboard
+# when I'm not on my keyboard
 # volume
 bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ toggle
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +4% && pactl set-sink-mute @DEFAULT_SINK@ 0
@@ -230,10 +226,10 @@ bar {
 exec --no-startup-id fcitx5
 exec --no-startup-id flameshot
 exec --no-startup-id flatpak run com.tomjwatson.Emote
-exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id ~/.config/i3/bright_temp_on_shutdown
-# exec --no-startup-id xset s off -dpms
+exec --no-startup-id xmodmap ~/.Xmodmap
+exec --no-startup-id xset s off -dpms
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
