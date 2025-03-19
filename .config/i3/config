@@ -20,19 +20,20 @@ font pango:Noto Sans Mono 14
 # workspace assignments #
 #########################
 
-assign [class="(?i)firefox"]               1
-assign [class="(?i)thunar"]                2
-assign [class="(?i)git-cola"]              3
-assign [class="(?i)sublime_text"]          4
-assign [class="(?i)ff5"]                   5
-assign [class="(?i)foliate"]               6
-assign [class="(?i)xreader"]               6
-assign [class="(?i)Grayjay"]               7
-assign [class="(?i)jetbrains-idea-ce"]     8
-assign [class="(?i)ff9"]                   9
-assign [class="(?i)lutris"]                10
-assign [class="(?i)heroic"]                11
-assign [class="(?i)steam"]                 12
+assign [class="(?i)firefox"]           1
+assign [class="(?i)thunar"]            2
+assign [class="(?i)git-cola"]          3
+assign [class="(?i)sublime_text"]      4
+assign [class="(?i)ff5"]               5
+assign [class="(?i)foliate"]           6
+assign [class="(?i)xreader"]           6
+assign [class="(?i)grayjay"]           7
+assign [class="(?i)jetbrains-idea-ce"] 8
+assign [class="(?i)godot"]             8
+assign [class="(?i)ff9"]               9
+assign [class="(?i)lutris"]            10
+assign [class="(?i)heroic"]            11
+assign [class="(?i)steam"]             12
 
 for_window [class="dragonruby"] border none
 for_window [class="calculator"] floating enable

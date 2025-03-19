@@ -9,7 +9,7 @@ npm \
 xfce4-xapp-status-plugin \
 yt-dlp
 
-mkdir -p Projects
+mkdir -p Projects Tools/deno
 sudo mkdir -p /opt/dragonruby/zips /opt/godot
 sudo mv $HOME/.config/fiecueal/godot.svg /opt/godot/
 
@@ -33,7 +33,8 @@ sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o
 sudo chmod a+rx /opt/yt-dlp/yt-dlp
 
 # deno
-curl -fsSL https://deno.land/install.sh | sh
+curl -fsSL https://deno.land/install.sh | DENO_INSTALL="$HOME/Tools/deno" sh
+ln -s $HOME/Tools/deno/bin/deno $HOME/.local/bin/deno
 
 # go
 version=$(curl -s https://go.dev/VERSION?m=text | head -1)

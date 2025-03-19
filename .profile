@@ -18,7 +18,8 @@ fi
 
 PATH="/opt/dragonruby/main:$PATH"
 PATH="/opt/git-cola/bin:$PATH"
-PATH="/opt/intellij-idea/main/bin:$PATH"
 PATH="/opt/go/bin:$PATH"
+PATH="/opt/godot/main:$PATH"
+PATH="/opt/intellij-idea/main/bin:$PATH"
 PATH="/opt/yt-dlp:$PATH"
 PATH="$HOME/.local/bin:$PATH"
