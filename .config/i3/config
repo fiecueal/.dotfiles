@@ -20,7 +20,7 @@ font pango:Noto Sans Mono 14
 # workspace assignments #
 #########################
 
-assign [class="(?i)firefox"]           1
+assign [class="(?i)ff1"]               1
 assign [class="(?i)thunar"]            2
 assign [class="(?i)git-cola"]          3
 assign [class="(?i)sublime_text"]      4
@@ -43,15 +43,15 @@ for_window [class="calculator"] floating enable
 ############
 
 # launch programs in dedicated workspaces
-bindsym $super+$alt+F1  exec firefox
+bindsym $super+$alt+F1  exec firefox -P p1 --class ff1
 bindsym $super+$alt+F2  exec thunar
 bindsym $super+$alt+F3  exec git cola
 bindsym $super+$alt+F4  exec subl
-bindsym $super+$alt+F5  exec firefox -P p1 --class ff5
+bindsym $super+$alt+F5  exec firefox -P p5 --class ff5
 bindsym $super+$alt+F6  exec foliate
 bindsym $super+$alt+F7  exec grayjay
 bindsym $super+$alt+F8  exec idea
-bindsym $super+$alt+F9  exec firefox -P p2 --class ff9
+bindsym $super+$alt+F9  exec firefox -P p9 --class ff9
 bindsym $super+$alt+F10 exec flatpak run net.lutris.Lutris
 bindsym $super+$alt+F11 exec flatpak run com.heroicgameslauncher.hgl
 bindsym $super+$alt+F12 exec steam

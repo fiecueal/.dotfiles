@@ -114,12 +114,27 @@ fi
 
 sudo gem install solargraph
 
-# add Betterfox + personal additions to default firefox profile
-git clone https://github.com/fiecueal/Betterfox Projects/Betterfox
-cd Projects/Betterfox
-./install.sh default-release
+# setup firefox profiles
+cd $HOME/.mozilla/firefox
+profile=$(find -name *.default-release)
+cp -r $profile fiecueal.p1
+cp -r $profile fiecueal.p5
+cp -r $profile fiecueal.p9
+
+install=$(head -1 installs.ini)
+sed -i "1i[Install$(echo $install | cut -c2-)" profiles.ini
+cat > installs.ini <<EOF
+$install
+Default=fiecueal.p1
+Locked=1
+EOF
+
+cd $HOME/Projects
+git clone https://github.com/fiecueal/Betterfox
+cd Betterfox
 ./install.sh p1
-./install.sh p2
+./install.sh p5
+./install.sh p9
 cd $HOME
 
 # fix screen tearing & disable mouse acceleration
