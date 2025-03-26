@@ -1,0 +1,27 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+			"file_include_patterns": [
+				"fiecueal.sublime-project",
+				".bashrc",
+				".gitconfig",
+				".gtkrc-2.0",
+				".profile",
+				".Xmodmap",
+				".Xresources",
+				"LICENSE.md",
+				"README.md",
+			],
+			"folder_exclude_patterns": ["*"],
+		},
+		{ "path": ".config/fiecueal" },
+		{ "path": ".config/fcitx5" },
+		{ "path": ".config/gtk-3.0" },
+		{ "path": ".config/i3" },
+		{ "path": ".config/i3status" },
+		{ "path": ".config/sublime-text" },
+		{ "path": ".config/xfce4" },
+	]
+}

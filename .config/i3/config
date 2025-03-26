@@ -102,27 +102,26 @@ bindsym Shift+F17 exec --no-startup-id xsct -d 200
 bindsym Shift+F21 exec --no-startup-id xsct -d -200
 
 # when I'm not on my keyboard
-# volume
-bindsym $super+1 exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ toggle
-bindsym $super+2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +4% && pactl set-sink-mute @DEFAULT_SINK@ 0
-bindsym $super+3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -4%
-# playback
-bindsym $super+4 exec --no-startup-id playerctl play-pause
-bindsym $super+5 exec --no-startup-id playerctl next
-bindsym $super+6 exec --no-startup-id playerctl prev
-# # mic toggle / pavucontrol / switch sink
-bindsym $super+7 exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym $super+8 exec --no-startup-id ~/.config/i3/set_default_sink
-bindsym $super+9 exec --no-startup-id pavucontrol -t 3
-# screen brightness
-bindsym $super+0     exec --no-startup-id ~/.config/i3/bright_temp dim
-bindsym $super+minus exec --no-startup-id ~/.config/i3/bright_temp up
-bindsym $super+equal exec --no-startup-id ~/.config/i3/bright_temp down
-# screen temp
-bindsym $super+Shift+0     exec --no-startup-id ~/.config/i3/bright_temp reset_temp
-bindsym $super+Shift+minus exec --no-startup-id xsct -d 200
-bindsym $super+Shift+equal exec --no-startup-id xsct -d -200
-
+## volume
+#bindsym $super+1 exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ toggle
+#bindsym $super+2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +4% && pactl #set-sink-mute @DEFAULT_SINK@ 0
+#bindsym $super+3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -4%
+## playback
+#bindsym $super+4 exec --no-startup-id playerctl play-pause
+#bindsym $super+5 exec --no-startup-id playerctl next
+#bindsym $super+6 exec --no-startup-id playerctl prev
+## # mic toggle / pavucontrol / switch sink
+#bindsym $super+7 exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+#bindsym $super+8 exec --no-startup-id ~/.config/i3/set_default_sink
+#bindsym $super+9 exec --no-startup-id pavucontrol -t 3
+## screen brightness
+#bindsym $super+0     exec --no-startup-id ~/.config/i3/bright_temp dim
+#bindsym $super+minus exec --no-startup-id ~/.config/i3/bright_temp up
+#bindsym $super+equal exec --no-startup-id ~/.config/i3/bright_temp down
+## screen temp
+#bindsym $super+Shift+0     exec --no-startup-id ~/.config/i3/bright_temp reset_temp
+#bindsym $super+Shift+minus exec --no-startup-id xsct -d 200
+#bindsym $super+Shift+equal exec --no-startup-id xsct -d -200
 
 # change focus
 bindsym $super+Left focus left
@@ -229,8 +228,8 @@ exec --no-startup-id flameshot
 exec --no-startup-id flatpak run com.tomjwatson.Emote
 exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id ~/.config/i3/bright_temp_on_shutdown
-exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id xset s off -dpms
+exec_always --no-startup-id xmodmap ~/.Xmodmap
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart

@@ -36,6 +36,10 @@ sudo chmod a+rx /opt/yt-dlp/yt-dlp
 curl -fsSL https://deno.land/install.sh | DENO_INSTALL="$HOME/Tools/deno" sh
 ln -s $HOME/Tools/deno/bin/deno $HOME/.local/bin/deno
 
+# pnpm, node
+curl -fsSL https://get.pnpm.io/install.sh | PNPM_HOME="$HOME/Tools/pnpm" sh -
+$HOME/Tools/pnpm env use --global lts
+
 # go
 version=$(curl -s https://go.dev/VERSION?m=text | head -1)
 wget https://go.dev/dl/$version.linux-amd64.tar.gz
