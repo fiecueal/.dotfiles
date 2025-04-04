@@ -36,7 +36,7 @@ assign [class="(?i)heroic"]            11
 assign [class="(?i)steam"]             12
 
 for_window [class="dragonruby"] border none
-for_window [class="calculator"] floating enable
+for_window [class="(?i)calculator|protonvpn-app"] floating enable
 
 ############
 # bindings #
@@ -181,6 +181,12 @@ bindsym $super+Shift+F9  move container to workspace 9,  workspace 9
 bindsym $super+Shift+F10 move container to workspace 10, workspace 10
 bindsym $super+Shift+F11 move container to workspace 11, workspace 11
 bindsym $super+Shift+F12 move container to workspace 12, workspace 12
+
+# move workspace to different screen
+bindsym $super+Control+Up    move workspace to output up
+bindsym $super+Control+Down  move workspace to output down
+bindsym $super+Control+Left  move workspace to output left
+bindsym $super+Control+Right move workspace to output right
 
 # reload the configuration file
 bindsym $super+Shift+c reload
