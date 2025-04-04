@@ -25,8 +25,3 @@ explanation for myself because I don't use bash enough to remember:
 - `awk '{print $1}'` outputs the first word in every line without any whitespace
 - `xargs` runs the command for every arg from stdin (input is split by whitespace)
 - `I{}` replaces instances of {} in the command with entries from the input (e.g. mv {} becomes mv .bashrc)
-
-TODO:
-- script install dragonruby
-- script install godot
-- script install intellij

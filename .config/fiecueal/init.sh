@@ -156,4 +156,12 @@ sudo cp $HOME/.config/fiecueal/uinput.conf /etc/modules-load.d/uinput.conf
 sudo mkdir -p /etc/systemd/logind.conf.d
 sudo cp $HOME/.config/fiecueal/20-powerbutton.conf /etc/systemd/logind.conf.d/
 
-steam
+cat <<EOF
+Not yet done:
+* Download Dragonruby
+* Download Godot
+* Download Grayjay
+* Download Intellij Idea
+* Monospacify monofur font
+* Install firefox extensions
+EOF
