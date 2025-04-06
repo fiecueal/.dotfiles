@@ -120,12 +120,11 @@ sudo gem install solargraph
 
 # setup firefox profiles
 cd $HOME/.mozilla/firefox
-profile=$(find -name *.default-release)
-cp -r $profile fiecueal.p1
-cp -r $profile fiecueal.p5
-cp -r $profile fiecueal.p9
+mv $(find -name *.default-release) fiecueal.p1
+cp -r fiecueal.p1 fiecueal.p5
+cp -r fiecueal.p1 fiecueal.p9
 
-install=$(head -1 installs.ini)
+install=$(grep "\[.*\]" installs.ini)
 sed -i "1i[Install$(echo $install | cut -c2-)" profiles.ini
 cat > installs.ini <<EOF
 $install
