@@ -20,20 +20,20 @@ font pango:Noto Sans Mono 14
 # workspace assignments #
 #########################
 
-assign [class="(?i)ff1"]               1
-assign [class="(?i)thunar"]            2
-assign [class="(?i)git-cola"]          3
-assign [class="(?i)sublime_text"]      4
-assign [class="(?i)ff5"]               5
-assign [class="(?i)foliate"]           6
-assign [class="(?i)xreader"]           6
-assign [class="(?i)grayjay"]           7
-assign [class="(?i)jetbrains-idea-ce"] 8
-assign [class="(?i)godot"]             8
-assign [class="(?i)ff9"]               9
-assign [class="(?i)lutris"]            10
-assign [class="(?i)heroic"]            11
-assign [class="(?i)steam"]             12
+assign [class="(?i)ff1"]                        1
+assign [class="(?i)thunar"]                     2
+assign [class="(?i)(git-cola|sublime_merge)"]   3
+assign [class="(?i)sublime_text"]               4
+assign [class="(?i)ff5"]                        5
+assign [class="(?i)foliate"]                    6
+assign [class="(?i)xreader"]                    6
+assign [class="(?i)grayjay"]                    7
+assign [class="(?i)jetbrains-idea-ce"]          8
+assign [class="(?i)godot"]                      8
+assign [class="(?i)ff9"]                        9
+assign [class="(?i)lutris"]                     10
+assign [class="(?i)heroic"]                     11
+assign [class="(?i)steam"]                      12
 
 for_window [class="dragonruby"] border none
 for_window [class="(?i)calculator|protonvpn-app"] floating enable
@@ -45,7 +45,7 @@ for_window [class="(?i)calculator|protonvpn-app"] floating enable
 # launch programs in dedicated workspaces
 bindsym $super+$alt+F1  exec firefox -P p1 --class ff1
 bindsym $super+$alt+F2  exec thunar
-bindsym $super+$alt+F3  exec git cola
+bindsym $super+$alt+F3  exec smerge
 bindsym $super+$alt+F4  exec subl
 bindsym $super+$alt+F5  exec firefox -P p5 --class ff5
 bindsym $super+$alt+F6  exec foliate
