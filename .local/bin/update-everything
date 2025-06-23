@@ -3,6 +3,8 @@
 sudo nala upgrade -y
 flatpak update -y
 deno upgrade
+pnpm self-update
+pnpm env use --global lts
 sudo /opt/yt-dlp/yt-dlp -U
 printf "git-cola: " && sudo git -C /opt/git-cola/ pull
 # git -C $HOME/qmk_firmware/ pull

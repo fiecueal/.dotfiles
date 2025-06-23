@@ -48,6 +48,8 @@ alias pn='pnpm'
 alias drun='dragonruby $(pwd)'
 alias config='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 
+export PNPM_HOME="$HOME/Tools/pnpm"
+
 mkcd() {
   mkdir -p "$1"
   cd "$1"
