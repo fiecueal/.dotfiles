@@ -88,6 +88,7 @@ playerctl \
 rofi \
 ruby-full \
 steam-installer \
+sublime-merge \
 sublime-text \
 temurin-21-jdk \
 thunar \
