@@ -28,14 +28,14 @@ assign [class="(?i)ff5"]                        5
 assign [class="(?i)foliate"]                    6
 assign [class="(?i)xreader"]                    6
 assign [class="(?i)grayjay"]                    7
-assign [class="(?i)jetbrains-idea-ce"]          8
+assign [class="(?i)thunderbird-esr"]            8
 assign [class="(?i)godot"]                      8
 assign [class="(?i)ff9"]                        9
 assign [class="(?i)lutris"]                     10
 assign [class="(?i)heroic"]                     11
 assign [class="(?i)steam"]                      12
 
-for_window [class="dragonruby"] border none
+for_window [class="(?i)dragonruby"] border none
 for_window [class="(?i)calculator|protonvpn-app"] floating enable
 
 ############
@@ -50,7 +50,7 @@ bindsym $super+$alt+F4  exec subl
 bindsym $super+$alt+F5  exec firefox -P p5 --class ff5
 bindsym $super+$alt+F6  exec foliate
 bindsym $super+$alt+F7  exec grayjay
-bindsym $super+$alt+F8  exec idea
+bindsym $super+$alt+F8  exec thunderbird
 bindsym $super+$alt+F9  exec firefox -P p9 --class ff9
 bindsym $super+$alt+F10 exec flatpak run net.lutris.Lutris
 bindsym $super+$alt+F11 exec flatpak run com.heroicgameslauncher.hgl
@@ -229,13 +229,16 @@ bar {
 # startup exec #
 ################
 
+# one xmodmap command does not work
+exec_always xmodmap ~/.Xmodmap
+exec_always xmodmap ~/.Xmodmap
 exec --no-startup-id fcitx5
 exec --no-startup-id flameshot
 exec --no-startup-id flatpak run com.tomjwatson.Emote
 exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id ~/.config/i3/bright_temp_on_shutdown
 exec --no-startup-id xset s off -dpms
-exec_always --no-startup-id xmodmap ~/.Xmodmap
+exec thunderbird
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart

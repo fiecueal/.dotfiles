@@ -5,6 +5,7 @@
   "theme": "Adaptive.sublime-theme",
   "color_scheme": "CSSC.sublime-color-scheme",
   "remember_full_screen": true,
+  "remember_workspace": false,
   "hardware_acceleration": "opengl",
 
   // "font_face": "monoid",
