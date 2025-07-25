@@ -14,7 +14,7 @@
 set $super Mod4
 set $alt   Mod1
 
-font pango:Noto Sans Mono 14
+font pango:Noto Mono 14
 
 #########################
 # workspace assignments #
@@ -218,6 +218,17 @@ floating_modifier $super
 tiling_drag modifier titlebar
 
 bar {
+  colors {
+    background #eeeeee
+    statusline #010101
+    # separator #666666
+
+    focused_workspace  #000000 #ffffff #000000
+    #active_workspace   #333333 #5f676a #ffffff
+    inactive_workspace #eeeeee #eeeeee #000000
+    urgent_workspace   #ffffff #000000 #ffffff
+    #binding_mode       #2f343a #900000 #ffffff
+  }
   mode hide
   hidden_state hide
   modifier $super
@@ -229,15 +240,13 @@ bar {
 # startup exec #
 ################
 
-# one xmodmap command does not work
-exec_always xmodmap ~/.Xmodmap
-exec_always xmodmap ~/.Xmodmap
 exec --no-startup-id fcitx5
 exec --no-startup-id flameshot
 exec --no-startup-id flatpak run com.tomjwatson.Emote
 exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id ~/.config/i3/bright_temp_on_shutdown
 exec --no-startup-id xset s off -dpms
+exec_always --no-startup-id xmodmap ~/.Xmodmap
 exec thunderbird
 
 # Start XDG autostart .desktop files using dex. See also

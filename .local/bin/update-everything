@@ -20,3 +20,5 @@ if [ "$current" != "$latest" ]; then
 else
   echo "go up to date ($current)"
 fi
+
+
