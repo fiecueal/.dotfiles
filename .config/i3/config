@@ -98,8 +98,8 @@ bindsym F17 exec --no-startup-id ~/.config/i3/bright_temp up
 bindsym F21 exec --no-startup-id ~/.config/i3/bright_temp down
 # screen temp
 bindsym Shift+F13 exec --no-startup-id ~/.config/i3/bright_temp reset_temp
-bindsym Shift+F17 exec --no-startup-id xsct -d 200
-bindsym Shift+F21 exec --no-startup-id xsct -d -200
+bindsym Shift+F17 exec --no-startup-id ~/.config/i3/bright_temp cool
+bindsym Shift+F21 exec --no-startup-id ~/.config/i3/bright_temp warm
 
 # when I'm not on my keyboard
 ## volume
@@ -120,8 +120,8 @@ bindsym Shift+F21 exec --no-startup-id xsct -d -200
 #bindsym $super+equal exec --no-startup-id ~/.config/i3/bright_temp down
 ## screen temp
 #bindsym $super+Shift+0     exec --no-startup-id ~/.config/i3/bright_temp reset_temp
-#bindsym $super+Shift+minus exec --no-startup-id xsct -d 200
-#bindsym $super+Shift+equal exec --no-startup-id xsct -d -200
+#bindsym $super+Shift+minus exec --no-startup-id ~/.config/i3/bright_temp cool
+#bindsym $super+Shift+equal exec --no-startup-id ~/.config/i3/bright_temp warm
 
 # change focus
 bindsym $super+Left focus left
