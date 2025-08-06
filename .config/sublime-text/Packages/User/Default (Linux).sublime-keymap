@@ -46,8 +46,9 @@
     "command": "lsp_format_document",
   },
   {
-    "keys": ["ctrl+'"],
-    "command": "emmet_rename_tag",
+    "keys": ["f12"],
+    "command": "lsp_hover",
+    "context": [{"key": "lsp.session_with_capability", "operand": "hoverProvider"}]
   },
   { // TODO: find how to set path to default to the project directory when current file not open
     "keys": ["alt+n"],
@@ -55,5 +56,5 @@
     "args": {
       "paths": []
     },
-  }
+  },
 ]
