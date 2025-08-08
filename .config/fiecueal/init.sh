@@ -76,6 +76,7 @@ fonts-monofur \
 fonts-monoid* \
 fonts-noto \
 fortunes \
+gnome-commander \
 gpick \
 i3 \
 imagemagick \
@@ -91,7 +92,6 @@ steam-installer \
 sublime-merge \
 sublime-text \
 temurin-21-jdk \
-thunar \
 trash-cli \
 woff2 \
 xsct \
@@ -121,7 +121,7 @@ sudo gem install solargraph
 
 # setup firefox profiles
 cd $HOME/.mozilla/firefox
-mv $(find -name *.default-release) fiecueal.p1
+mv $(find -name *.default) fiecueal.p1
 cp -r fiecueal.p1 fiecueal.p5
 cp -r fiecueal.p1 fiecueal.p9
 

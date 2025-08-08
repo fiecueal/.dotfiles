@@ -21,7 +21,7 @@ font pango:Noto Mono 14
 #########################
 
 assign [class="(?i)ff1"]                        1
-assign [class="(?i)thunar"]                     2
+assign [class="(?i)gnome-commander"]            2
 assign [class="(?i)(git-cola|sublime_merge)"]   3
 assign [class="(?i)sublime_text"]               4
 assign [class="(?i)ff5"]                        5
@@ -44,7 +44,7 @@ for_window [class="(?i)calculator|protonvpn-app"] floating enable
 
 # launch programs in dedicated workspaces
 bindsym $super+$alt+F1  exec firefox -P p1 --class ff1
-bindsym $super+$alt+F2  exec thunar
+bindsym $super+$alt+F2  exec gnome-commander
 bindsym $super+$alt+F3  exec smerge
 bindsym $super+$alt+F4  exec subl
 bindsym $super+$alt+F5  exec firefox -P p5 --class ff5
