@@ -26,8 +26,8 @@ shopt -s checkwinsize
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
-PS1='\[\e[33;1m\][\W]\[\e[0m\] '
-PS2='\[\e[33;1;7m\]>\[\e[0m\] '
+PS1='\[\e[33;1;7m\]\W $\[\e[0m\] '
+PS2='\[\e[33;1;7m\]\W >\[\e[0m\] '
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
