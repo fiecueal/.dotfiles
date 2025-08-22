@@ -1,5 +1,5 @@
 # i3 config file (v4)
-
+# v4.24
 # global keybinds not in this config:
 # super+e -> emote(flatpak)
 # super+k -> fcitx5
@@ -169,10 +169,10 @@ bar {
     statusline #010101
     # separator #666666
 
-    focused_workspace  #000000 #ffffff #000000
+    focused_workspace  #000000 #aaffaa #000000
     #active_workspace   #333333 #5f676a #ffffff
     inactive_workspace #eeeeee #eeeeee #000000
-    urgent_workspace   #ffffff #000000 #ffffff
+    urgent_workspace   #000000 #ff7777 #000000
     #binding_mode       #2f343a #900000 #ffffff
   }
   mode hide
