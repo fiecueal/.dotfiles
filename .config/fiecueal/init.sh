@@ -86,7 +86,6 @@ mypaint \
 obs-studio \
 pavucontrol \
 playerctl \
-rofi \
 ruby-full \
 steam-installer \
 sublime-merge \
