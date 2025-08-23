@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Godot
-Terminal=false
-Exec=/opt/godot/main/godot
-Icon=/opt/godot/godot.svg

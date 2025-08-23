@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Git Cola
-Terminal=false
-Exec=git-cola
-Icon=git
