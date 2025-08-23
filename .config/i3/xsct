@@ -1,4 +1,5 @@
 #!/usr/bin/ruby
+# version <= 2.2
 
 output = `xsct`.split(" ")
 temp = output[-2].to_i
@@ -6,10 +7,10 @@ bright = output[-1].to_f
 
 case ARGV[0]
 # temp gets set to 700 when dimmed and needs to be reset without -d
-when "up"         then `xsct #{temp} #{bright + (bright > 0.4 ? 0.05 : 0.01)}`
-when "down"       then `xsct -d 0 -#{bright > 0.4 ? 0.05 : 0.01}`
-when "dim"        then `xsct 0 0`
-when "warm"       then `xsct -d -100`
-when "cool"       then `xsct -d 100`
-when "reset_temp" then `xsct 0 #{bright}`
+when "up"         ; `xsct #{temp} #{bright + (bright > 0.4 ? 0.05 : 0.01)}`
+when "down"       ; `xsct -d 0 -#{bright > 0.4 ? 0.05 : 0.01}`
+when "dim"        ; `xsct 0 0`
+when "warm"       ; `xsct -d -100`
+when "cool"       ; `xsct -d 100`
+when "reset_temp" ; `xsct 0 #{bright}`
 end

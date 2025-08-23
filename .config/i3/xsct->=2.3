@@ -1,0 +1,14 @@
+#!/usr/bin/ruby
+# version >= 2.3
+
+bright = `xsct`.split(" ")[-1].to_f
+step = bright > 0.4 ? 0.05 : 0.01
+
+case ARGV[0]
+when "up"         ; `xsct -d 0 #{step}`
+when "down"       ; `xsct -d 0 -#{step}`
+when "dim"        ; `xsct 0 0`
+when "warm"       ; `xsct -d -100`
+when "cool"       ; `xsct -d 100`
+when "reset_temp" ; `xsct 0 #{bright}`
+end
