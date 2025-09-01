@@ -43,6 +43,7 @@ fi
 alias dlp='yt-dlp -f "bv*+ba/b"'
 alias dlp720='yt-dlp -f "bv*[height<=720]+ba/b[height<=720]"'
 alias ls='ls -A --color=auto'
+alias ll='ls -Ahl --color=auto'
 alias path='echo $PATH | tr ":" "\n"'
 alias pn='pnpm'
 alias drun='dragonruby $(pwd)'
@@ -53,12 +54,6 @@ export PNPM_HOME="$HOME/Tools/pnpm"
 mkcd() {
   mkdir -p "$1"
   cd "$1"
-  pwd
-}
-
-mvcd() {
-  mv "$1" "$2"
-  cd "$2"
   pwd
 }
 
