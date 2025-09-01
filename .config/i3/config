@@ -149,7 +149,7 @@ bindsym $super+Shift+c reload
 bindsym $super+Shift+r restart
 
 bindsym $super+Shift+e exec "pgrep i3-nagbar || i3-nagbar -t warning -m 'What do' \
--B 'lock'     'loginctl lock-session' \
+-B 'lock'     'xset dpms force off && pkill i3-nagbar && xset -dpms' \
 -B 'suspend'  'systemctl suspend' \
 -B 'logout'   'i3-msg exit' \
 -B 'poweroff' 'systemctl poweroff' \
