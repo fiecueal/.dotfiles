@@ -14,8 +14,12 @@ class Main
 end
 
 def tick args
-  args.state.main ||= Main.new args
-  args.state.main.tick args
+  \$main ||= Main.new args
+  \$main.tick args
+end
+
+def reset
+  \$main = nil
 end
 ]]></content>
   <tabTrigger>main</tabTrigger>

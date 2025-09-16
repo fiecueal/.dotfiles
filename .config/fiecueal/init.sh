@@ -9,18 +9,16 @@ npm \
 xfce4-xapp-status-plugin \
 yt-dlp
 
-mkdir -p Projects Tools/deno
-sudo mkdir -p /opt/dragonruby/zips /opt/godot
-sudo mv $HOME/.config/fiecueal/godot.svg /opt/godot/
+mkdir -p Projects .local/bin
 
 # Brave browser
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 
 # Victor Mono
-wget https://rubjo.github.io/victor-mono/VictorMonoAll.zip -P $HOME/Downloads/
-unzip $HOME/Downloads/VictorMonoAll.zip -d $HOME/Downloads/VictorMonoAll/
-cp -rT $HOME/Downloads/VictorMonoAll/OTF/ $HOME/.local/share/fonts/
+#wget https://rubjo.github.io/victor-mono/VictorMonoAll.zip -P $HOME/Downloads/
+#unzip $HOME/Downloads/VictorMonoAll.zip -d $HOME/Downloads/VictorMonoAll/
+#cp -rT $HOME/Downloads/VictorMonoAll/OTF/ $HOME/.local/share/fonts/
 
 # Sublime text
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
@@ -28,13 +26,12 @@ echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sou
 wget https://packagecontrol.io/Package%20Control.sublime-package -P $HOME/.config/sublime-text/Installed\ Packages
 
 # yt-dlp
-sudo mkdir /opt/yt-dlp
-sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /opt/yt-dlp/yt-dlp
-sudo chmod a+rx /opt/yt-dlp/yt-dlp
+curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o .local/bin/yt-dlp
+chmod a+rx .local/bin/yt-dlp
 
 # deno
-curl -fsSL https://deno.land/install.sh | DENO_INSTALL="$HOME/Tools/deno" sh
-ln -s $HOME/Tools/deno/bin/deno $HOME/.local/bin/deno
+curl -fsSL https://deno.land/install.sh | sh
+ln -s $DENO_ISNTALL/bin/deno $HOME/.local/bin/deno
 
 # pnpm, node
 curl -fsSL https://get.pnpm.io/install.sh | sh -
@@ -50,7 +47,6 @@ rm $version.linux-amd64.tar.gz
 wget -qO - https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/adoptium.gpg > /dev/null
 echo "deb https://packages.adoptium.net/artifactory/deb $(awk -F= '/^UBUNTU_CODENAME/{print$2}' /etc/os-release) main" | sudo tee /etc/apt/sources.list.d/adoptium.list
 
-sudo git clone https://github.com/git-cola/git-cola /opt/git-cola
 # git clone https://github.com/fiecueal/qmk_firmware
 
 # install packages
@@ -76,6 +72,7 @@ fonts-monofur \
 fonts-monoid* \
 fonts-noto \
 fortunes \
+git-cola \
 gnome-commander \
 gpick \
 i3 \

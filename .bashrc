@@ -49,7 +49,9 @@ alias pn='pnpm'
 alias drun='dragonruby $(pwd)'
 alias config='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 
-export PNPM_HOME="$HOME/Tools/pnpm"
+export PNPM_HOME="$HOME/.local/pnpm"
+export DENO_INSTALL="$HOME/.local/deno"
+export DRAGONRUBY_HOME="$HOME/.local/dragonruby"
 
 mkcd() {
   mkdir -p "$1"
@@ -63,17 +65,14 @@ drinit() {
   elif [ -d "$HOME/Projects/$1" ]; then
     echo "FAILED: $1 directory already exists"
   else
-    cp -r /opt/dragonruby/main/mygame "$HOME/Projects/$1"
+    cp -r $DRAGONRUBY_HOME/mygame "$HOME/Projects/$1"
     cd "$HOME/Projects/$1"
     echo "New project created at: $HOME/Projects/$1"
   fi
 }
 
 drupgrade() {
-  zip="$HOME/Downloads/dragonruby-gtk-linux-amd64.zip"
-  if [ "$1" ]; then
-    zip="$1"
-  fi
+  zip="${1:-$HOME/Downloads/dragonruby-gtk-linux-amd64.zip}"
   ziptype=$(file -b --mime-type $zip)
   if [ $ziptype != "application/zip" ]; then
     echo "FAILED: $zip is not a zip file"
@@ -81,9 +80,9 @@ drupgrade() {
     unzip $zip
     rm .itch.toml
     version=$(dragonruby-linux-amd64/dragonruby version)
-    sudo mv $zip /opt/dragonruby/zips/$version
-    sudo mv dragonruby-linux-amd64 /opt/dragonruby/$version
-    sudo ln -sfn /opt/dragonruby/$version /opt/dragonruby/main
+    mv $zip $HOME/.local/dragonruby-zips/$version
+    rm -rf $DRAGONRUBY_HOME
+    mv dragonruby-linux-amd64 $DRAGONRUBY_HOME
   fi
 }
 

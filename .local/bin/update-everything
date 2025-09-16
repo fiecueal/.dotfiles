@@ -5,7 +5,7 @@ flatpak update -y
 deno upgrade
 pnpm self-update
 pnpm env use --global lts
-sudo /opt/yt-dlp/yt-dlp -U
+yt-dlp -U
 printf "git-cola: " && sudo git -C /opt/git-cola/ pull
 # git -C $HOME/qmk_firmware/ pull
 
@@ -20,5 +20,3 @@ if [ "$current" != "$latest" ]; then
 else
   echo "go up to date ($current)"
 fi
-
-
