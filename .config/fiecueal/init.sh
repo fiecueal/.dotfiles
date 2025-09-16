@@ -150,7 +150,7 @@ sudo cp $HOME/.config/fiecueal/uinput.conf /etc/modules-load.d/uinput.conf
 
 # shutdown on power button held instead of pressed
 sudo mkdir -p /etc/systemd/logind.conf.d
-sudo cp $HOME/.config/fiecueal/20-powerbutton.conf /etc/systemd/logind.conf.d/
+sudo cp $HOME/.config/fiecueal/00-powerkey-lidswitch.conf /etc/systemd/logind.conf.d/
 
 cat <<EOF
 Not yet done:
