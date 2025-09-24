@@ -1,13 +1,14 @@
 #!/usr/bin/bash
 
 cd $HOME # start script in home dir
-sudo ufw enable
 sudo apt purge -y \
 gucharmap \
 nodejs \
 npm \
 xfce4-xapp-status-plugin \
 yt-dlp
+
+sudo apt-mark yt-dlp *wacom* nodejs npm
 
 mkdir -p Projects .local/bin
 
@@ -43,17 +44,11 @@ wget https://go.dev/dl/$version.linux-amd64.tar.gz
 sudo rm -rf /opt/go && sudo tar -C /opt -xzf $version.linux-amd64.tar.gz
 rm $version.linux-amd64.tar.gz
 
-# java 21
-wget -qO - https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/adoptium.gpg > /dev/null
-echo "deb https://packages.adoptium.net/artifactory/deb $(awk -F= '/^UBUNTU_CODENAME/{print$2}' /etc/os-release) main" | sudo tee /etc/apt/sources.list.d/adoptium.list
-
 # git clone https://github.com/fiecueal/qmk_firmware
 
 # install packages
-sudo apt install -y nala
-sudo nala fetch --auto --fetches 3 -y
-sudo nala upgrade -y
-sudo nala install -y \
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y \
 autojump \
 brave-browser \
 cowsay \
@@ -65,11 +60,8 @@ foliate \
 font-manager \
 font-viewer \
 fonts-3270 \
-fonts-anonymous-pro \
-fonts-comfortaa \
 fonts-klee \
 fonts-monofur \
-fonts-monoid* \
 fonts-noto \
 fortunes \
 git-cola \
@@ -80,18 +72,24 @@ imagemagick \
 inkscape \
 mpv \
 mypaint \
+network-manager \
+network-manager-applet \
 obs-studio \
+openjdk-21-jdk \
 pavucontrol \
 playerctl \
 ruby-full \
 steam-installer \
 sublime-merge \
 sublime-text \
-temurin-21-jdk \
 trash-cli \
+ufw \
 woff2 \
-xsct \
+xfce4-clipman \
 xfce4-terminal
+xsct \
+
+sudo ufw enable
 
 # install flatpaks
 flatpak install -y flathub \
@@ -112,8 +110,6 @@ if [[ $1 == "laptop" ]]; then
           /etc/tlp.d/
   sudo tlp start
 fi
-
-sudo gem install solargraph
 
 # setup firefox profiles
 cd $HOME/.mozilla/firefox

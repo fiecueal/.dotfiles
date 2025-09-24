@@ -3,7 +3,7 @@
 {
   "selector": "text.html.basic | embedding.php | text.html.liquid | text.html.webc",
   "settings": {
-    "html.format.wrapLineLength": "92",
+    "html.format.wrapLineLength": "100",
     "html.format.wrapAttributes": "aligned-multiple",
   }
 }

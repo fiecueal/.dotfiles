@@ -8,21 +8,12 @@
   "remember_workspace": false,
   "hardware_acceleration": "opengl",
 
-  // "font_face": "monoid",
-  // "font_size": 10,
-
-  // "font_face": "mononoki",
-  // "font_size": 12,
-
-  // "font_face": "anonymous pro",
-  // "font_size": 14,
-
   // "font_face": "Victor Mono Medium",
   // "font_options": ["ss02"],
   // "font_size": 12,
 
-  "font_face": "monofur",
-  "font_size": 15,
+  "font_face": "mymonofur",
+  "font_size": 14,
 
   // "line_padding_top": 2,
   // "line_padding_bottom": 2,
@@ -32,10 +23,10 @@
   // "relative_line_numbers": true,
   "always_show_minimap_viewport": true,
   "scroll_context_lines": 15,
-  "rulers": [[100, "stippled", 2], [80, "stippled", 2]],
+  "rulers": [99],
 
   "tab_size": 2,
-  "translate_tabs_to_spaces": true,
+  "translate_tabs_to_spaces": false,
   "trim_trailing_white_space_on_save": "not_on_caret",
   "ensure_newline_at_eof_on_save": true,
   "indent_to_bracket": true,

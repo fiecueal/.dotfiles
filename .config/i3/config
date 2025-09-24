@@ -28,7 +28,7 @@ assign [class="(?i)steam"]                      12
 
 for_window [class="(?i)dragonruby"] border none
 for_window [class="(?i)calculator|protonvpn-app"] floating enable
-for_window [floating] resize set 1280 720
+# for_window [floating] resize set 1280 720
 for_window [floating] border pixel 3
 for_window [floating] move position center
 
@@ -181,13 +181,3 @@ bar {
 
   status_command i3status
 }
-
-exec --no-startup-id fcitx5
-exec --no-startup-id flameshot
-exec --no-startup-id flatpak run com.tomjwatson.Emote
-exec --no-startup-id xrdb -merge ~/.Xresources
-exec --no-startup-id xset s off -dpms
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id nm-applet
-exec_always --no-startup-id xmodmap ~/.Xmodmap
-exec thunderbird

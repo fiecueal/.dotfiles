@@ -1,0 +1,16 @@
+// Settings in here override those in "Default/Preferences.sublime-settings",
+// and are overridden in turn by syntax-specific settings.
+{
+  "remember_workspace": false,
+
+	"always_show_command_status": true,
+	"diff_algorithm": "match_git",
+	"diff_style": "side-by-side",
+	"font_face": "liberation mono",
+	"font_size": 12,
+	"hardware_acceleration": "opengl",
+	"image_diff_style": "side-by-side",
+	"side_bar_layout": "tabs",
+	"tab_size": 2,
+	"trim_trailing_white_space_on_save": true,
+}

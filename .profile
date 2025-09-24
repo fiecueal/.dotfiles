@@ -18,5 +18,5 @@ $HOME/.local/bin
 [ -n "$BASH_VERSION" ] && . "$HOME/.bashrc"
 
 case "$(tty)" in
-"/dev/tty1") pgrep i3 || startx ;;
+"/dev/tty1") pgrep i3 || exec startx $HOME/.config/X11/xinitrc ;;
 esac

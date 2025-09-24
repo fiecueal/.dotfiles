@@ -1,33 +1,22 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
-# If not running interactively, don't do anything
 case $- in
     *i*) ;;
       *) return;;
 esac
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
 HISTCONTROL=ignoreboth:erasedups
-
-shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=2000
+HISTSIZE=10000
 HISTFILESIZE=20000
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
 
 PS1='\[\e[33;1;7m\]\W $\[\e[0m\] '
 PS2='\[\e[33;1;7m\]\W >\[\e[0m\] '
+
+if [ -n "$SSH_CLIENT" ]; then
+  PS1='\[\e[32;1;7m\]\W $\[\e[0m\] '
+  PS2='\[\e[32;1;7m\]\W >\[\e[0m\] '
+fi
+
+shopt -s histappend
+shopt -s checkwinsize
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -40,18 +29,19 @@ if ! shopt -oq posix; then
   fi
 fi
 
-alias dlp='yt-dlp -f "bv*+ba/b"'
-alias dlp720='yt-dlp -f "bv*[height<=720]+ba/b[height<=720]"'
+#alias dlp='yt-dlp -f "bv*+ba/b"'
+#alias dlp720='yt-dlp -f "bv*[height<=720]+ba/b[height<=720]"'
 alias ls='ls -A --color=auto'
 alias ll='ls -Ahl --color=auto'
 alias path='echo $PATH | tr ":" "\n"'
 alias pn='pnpm'
 alias drun='dragonruby $(pwd)'
-alias config='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 
+export DOTS="--git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
 export PNPM_HOME="$HOME/.local/pnpm"
 export DENO_INSTALL="$HOME/.local/deno"
 export DRAGONRUBY_HOME="$HOME/.local/dragonruby"
+export DRAGONRUBY_ZIPS="$HOME/.local/dragonruby-zips"
 
 mkcd() {
   mkdir -p "$1"
@@ -80,13 +70,12 @@ drupgrade() {
     unzip $zip
     rm .itch.toml
     version=$(dragonruby-linux-amd64/dragonruby version)
-    mv $zip $HOME/.local/dragonruby-zips/$version
+    mv $zip $DRAGONRUBY_ZIPS/$version
     rm -rf $DRAGONRUBY_HOME
     mv dragonruby-linux-amd64 $DRAGONRUBY_HOME
   fi
 }
 
-# autojump
 . /usr/share/autojump/autojump.bash
 
 fortune | cowsay
