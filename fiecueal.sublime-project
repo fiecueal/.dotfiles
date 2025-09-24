@@ -9,8 +9,6 @@
 				".gitconfig",
 				".gtkrc-2.0",
 				".profile",
-				".Xmodmap",
-				".Xresources",
 				"LICENSE.md",
 				"README.md",
 			],
@@ -22,6 +20,7 @@
 		{ "path": ".config/i3" },
 		{ "path": ".config/i3status" },
 		{ "path": ".config/sublime-text/Packages/User", "name": "sublime (User)", },
+		{ "path": ".config/X11" },
 		{ "path": ".config/xfce4" },
 		{ "path": ".local/bin" },
 	]
