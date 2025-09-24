@@ -1,12 +1,11 @@
 #!/usr/bin/bash
 
-sudo nala upgrade -y
+sudo apt update && sudo apt upgrade -y
 flatpak update -y
 deno upgrade
 pnpm self-update
 pnpm env use --global lts
 yt-dlp -U
-printf "git-cola: " && sudo git -C /opt/git-cola/ pull
 # git -C $HOME/qmk_firmware/ pull
 
 # check current version of golang and update if necessary
