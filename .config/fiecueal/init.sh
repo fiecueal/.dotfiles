@@ -41,10 +41,6 @@ ln -s $DENO_ISNTALL/bin/deno $HOME/.local/bin/deno
 # pnpm, node
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 pnpm env use --global lts
-ln -s $PNPM_HOME/node $HOME/.local/bin/node
-ln -s $PNPM_HOME/npm $HOME/.local/bin/npm
-ln -s $PNPM_HOME/npx $HOME/.local/bin/npx
-ln -s $PNPM_HOME/pnpm $HOME/.local/bin/pnpm
 
 # go
 version=$(curl -s https://go.dev/VERSION?m=text | head -1)
@@ -69,11 +65,15 @@ rm Godot_v4.5-stable_linux.x86_64.zip
 sudo apt install -y \
 autojump \
 brave-browser \
+btop \
 cowsay \
+dunst \
 fcitx5 \
 fcitx5-mozc \
 ffmpeg \
+firefox-esr \
 flameshot \
+flatpak \
 foliate \
 font-manager \
 font-viewer \
@@ -85,9 +85,11 @@ fortunes \
 git-cola \
 gnome-commander \
 gpick \
-i3 \
+i3-wm \
+i3lock \
 imagemagick \
 inkscape \
+micro \
 mpv \
 mypaint \
 network-manager \
@@ -96,20 +98,28 @@ obs-studio \
 openjdk-21-jdk \
 pavucontrol \
 playerctl \
+pulseaudio \
 ruby-full \
 steam-installer \
 sublime-merge \
 sublime-text \
+suckless-tools \
 trash-cli \
+udisks2 \
 ufw \
 woff2 \
+xdg-utils \
 xfce4-clipman \
 xfce4-terminal \
+xinit \
 xsct \
+xss-lock \
 
 sudo ufw enable
+sudo ufw allow from 10.0.0.0/24 to any port 22 proto tcp
 
 # install flatpaks
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install -y flathub \
 com.atlauncher.ATLauncher \
 com.github.tchx84.Flatseal \
@@ -120,7 +130,7 @@ net.lutris.Lutris \
 com.vysp3r.ProtonPlus
 
 # install tlp for power management and charge thresholds if 'laptop' passed as arg
-if [[ $1 == "laptop" ]]; then
+if [ $1 = "laptop" ]; then
   sudo nala install -y tlp
   sudo mkdir -p /etc/tlp.d
   sudo cp $HOME/.config/fiecueal/00-charge-thresh.conf \
@@ -130,6 +140,7 @@ if [[ $1 == "laptop" ]]; then
 fi
 
 # setup firefox profiles
+firefox &
 cd $HOME/.mozilla/firefox
 mv $(find -name *.default) fiecueal.p1
 cp -r fiecueal.p1 fiecueal.p5
@@ -169,7 +180,6 @@ sudo cp $HOME/.config/fiecueal/00-powerkey-lidswitch.conf /etc/systemd/logind.co
 cat <<EOF
 Not yet done:
 * Download Dragonruby
-* Download Godot
 * Download Grayjay
 * Download Intellij Idea
 * Monospacify monofur font

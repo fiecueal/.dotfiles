@@ -1,6 +1,7 @@
 umask 022
 
-PATH=$(printf "$HOME/.local/bin
+PATH=$(printf "$HOME/.local/pnpm
+$HOME/.local/bin
 /opt/intellij-idea/bin
 /opt/go/bin
 /opt/odin
