@@ -37,7 +37,8 @@ alias path='echo $PATH | tr ":" "\n"'
 alias pn='pnpm'
 alias drun='dragonruby $(pwd)'
 
-export DOTS="--git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
+dots="--git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
+
 export PNPM_HOME="$HOME/.local/pnpm"
 export DENO_INSTALL="$HOME/.local/deno"
 export DRAGONRUBY_HOME="$HOME/.local/dragonruby"

@@ -5,12 +5,16 @@ sudo apt purge -y \
 gucharmap \
 nodejs \
 npm \
-xfce4-xapp-status-plugin \
 yt-dlp
 
-sudo apt-mark yt-dlp *wacom* nodejs npm
+sudo apt-mark nodejs npm yt-dlp *wacom*
 
-mkdir -p Projects .local/bin
+sudo apt update
+sudo apt upgrade -y
+sudo apt dist-upgrade -y
+sudo apt install -y curl wget unzip
+
+mkdir -p Archives Projects .local/bin
 
 # Brave browser
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
@@ -37,6 +41,10 @@ ln -s $DENO_ISNTALL/bin/deno $HOME/.local/bin/deno
 # pnpm, node
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 pnpm env use --global lts
+ln -s $PNPM_HOME/node $HOME/.local/bin/node
+ln -s $PNPM_HOME/npm $HOME/.local/bin/npm
+ln -s $PNPM_HOME/npx $HOME/.local/bin/npx
+ln -s $PNPM_HOME/pnpm $HOME/.local/bin/pnpm
 
 # go
 version=$(curl -s https://go.dev/VERSION?m=text | head -1)
@@ -44,10 +52,20 @@ wget https://go.dev/dl/$version.linux-amd64.tar.gz
 sudo rm -rf /opt/go && sudo tar -C /opt -xzf $version.linux-amd64.tar.gz
 rm $version.linux-amd64.tar.gz
 
+# dragonruby
+ln -s $DRAGONRUBY_HOME/dragonruby $HOME/.local/bin/dragonruby
+ln -s $DRAGONRUBY_HOME/dragonruby-httpd $HOME/.local/bin/dragonruby-httpd
+ln -s $DRAGONRUBY_HOME/dragonruby-publish $HOME/.local/bin/dragonruby-publish
+
+# godot
+wget https://github.com/godotengine/godot/releases/download/4.5-stable/Godot_v4.5-stable_linux.x86_64.zip
+unzip Godot_v4.5-stable_linux.x86_64.zip
+mv Godot_v4.5-stable_linux.x86_64 $HOME/.local/bin/godot
+rm Godot_v4.5-stable_linux.x86_64.zip
+
 # git clone https://github.com/fiecueal/qmk_firmware
 
 # install packages
-sudo apt update && sudo apt upgrade -y
 sudo apt install -y \
 autojump \
 brave-browser \
@@ -86,7 +104,7 @@ trash-cli \
 ufw \
 woff2 \
 xfce4-clipman \
-xfce4-terminal
+xfce4-terminal \
 xsct \
 
 sudo ufw enable

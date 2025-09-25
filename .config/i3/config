@@ -178,6 +178,7 @@ bar {
   mode hide
   hidden_state hide
   modifier $super
+  tray_output primary
 
   status_command i3status
 }
