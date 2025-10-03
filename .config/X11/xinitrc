@@ -1,13 +1,13 @@
-dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY &
+xrandr --output HDMI-A-0 --off &
 yt-dlp -U &
 xmodmap $HOME/.config/X11/xmodmap &
 xrdb -merge $HOME/.config/X11/xresources &
 xset s off -dpms &
-xss-lock --transfer-sleep-lock -- i3lock -en -c 334455 &
+xss-lock --transfer-sleep-lock -- i3lock -en -c 000000 &
 nm-applet &
 fcitx5 &
 xfce4-clipman &
 flatpak run com.tomjwatson.Emote &
 flameshot &
 thunderbird &
-exec i3
+exec dbus-run-session i3
