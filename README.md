@@ -1,5 +1,4 @@
 [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) [monogram font](https://datagoblin.itch.io/monogram) in `.local/share/fonts/`
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) [godot logo](https://godotengine.org/press/) in `.config/fiecueal/`
 
 Setup is done this way: https://www.atlassian.com/git/tutorials/dotfiles
 
