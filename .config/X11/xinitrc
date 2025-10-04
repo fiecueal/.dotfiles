@@ -8,6 +8,5 @@ nm-applet &
 fcitx5 &
 xfce4-clipman &
 flatpak run com.tomjwatson.Emote &
-flameshot &
 thunderbird &
 exec dbus-run-session i3

@@ -6,6 +6,9 @@
 # super+r -> obs start/stop recording
 # super+c -> xclicker
 
+# needs i3 dbus session to save to clipboard
+exec --no-startup-id flameshot
+
 set $super Mod4
 set $alt   Mod1
 
@@ -49,11 +52,11 @@ bindsym $super+d exec i3-dmenu-desktop
 bindsym $super+Return exec xfce4-terminal
 bindsym $super+Shift+q kill
 
-bindsym --release       Print exec --no-startup-id mkdir -p ~/Pictures/screenshots && flameshot screen -c -p ~/Pictures/screenshots/$(date +'%Y-%m-%d-%T').png
-bindsym --release Shift+Print exec --no-startup-id mkdir -p ~/Pictures/screenshots && flameshot gui -s -c -p ~/Pictures/screenshots/$(date +'%Y-%m-%d-%T').png
+bindsym --release       Print exec --no-startup-id flameshot screen -c -p ~/Pictures/screenshots/$(date +'%Y-%m-%d-%T').png
+bindsym --release Shift+Print exec --no-startup-id flameshot gui -s -c -p ~/Pictures/screenshots/$(date +'%Y-%m-%d-%T').png
 # just so they work even when super key is held
-bindsym --release       $super+Print exec --no-startup-id mkdir -p ~/Pictures/screenshots && flameshot screen -c -p ~/Pictures/screenshots/$(date +'%Y-%m-%d-%T').png
-bindsym --release $super+Shift+Print exec --no-startup-id mkdir -p ~/Pictures/screenshots && flameshot gui -s -c -p ~/Pictures/screenshots/$(date +'%Y-%m-%d-%T').png
+bindsym --release       $super+Print exec --no-startup-id flameshot screen -c -p ~/Pictures/screenshots/$(date +'%Y-%m-%d-%T').png
+bindsym --release $super+Shift+Print exec --no-startup-id flameshot gui -s -c -p ~/Pictures/screenshots/$(date +'%Y-%m-%d-%T').png
 
 bindsym F16       exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ toggle
 bindsym F20       exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +4% && pactl set-sink-mute @DEFAULT_SINK@ 0
