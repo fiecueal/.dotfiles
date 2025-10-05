@@ -6,9 +6,6 @@
 # super+r -> obs start/stop recording
 # super+c -> xclicker
 
-# needs i3 dbus session to save to clipboard
-exec --no-startup-id flameshot
-
 set $super Mod4
 set $alt   Mod1
 
