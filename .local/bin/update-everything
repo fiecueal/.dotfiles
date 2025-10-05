@@ -1,21 +1,12 @@
 #!/usr/bin/bash
 
-sudo apt update && sudo apt upgrade -y
+sudo apt update
+sudo apt upgrade -y
+sudo apt dist-upgrade -y
 flatpak update -y
 deno upgrade
 pnpm self-update
 pnpm env use --global lts
+mise up
 yt-dlp -U
 # git -C $HOME/qmk_firmware/ pull
-
-# check current version of golang and update if necessary
-current=$(go version | awk '{print $3}')
-latest=$(curl -s https://go.dev/VERSION?m=text | head -1)
-
-if [ "$current" != "$latest" ]; then
-  wget https://go.dev/dl/$latest.linux-amd64.tar.gz
-  sudo rm -rf /opt/go && sudo tar -C /opt -xzf $latest.linux-amd64.tar.gz
-  rm $latest.linux-amd64.tar.gz
-else
-  echo "go up to date ($current)"
-fi

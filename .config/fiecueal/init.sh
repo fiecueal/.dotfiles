@@ -14,7 +14,7 @@ sudo apt upgrade -y
 sudo apt dist-upgrade -y
 sudo apt install -y curl wget unzip
 
-mkdir -p Archives Projects .local/bin
+mkdir -p Archives Pictures/screenshots Projects .local/bin
 
 # Brave browser
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
@@ -42,12 +42,6 @@ ln -s $DENO_ISNTALL/bin/deno $HOME/.local/bin/deno
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 pnpm env use --global lts
 
-# go
-version=$(curl -s https://go.dev/VERSION?m=text | head -1)
-wget https://go.dev/dl/$version.linux-amd64.tar.gz
-sudo rm -rf /opt/go && sudo tar -C /opt -xzf $version.linux-amd64.tar.gz
-rm $version.linux-amd64.tar.gz
-
 # dragonruby
 ln -s $DRAGONRUBY_HOME/dragonruby $HOME/.local/bin/dragonruby
 ln -s $DRAGONRUBY_HOME/dragonruby-httpd $HOME/.local/bin/dragonruby-httpd
@@ -66,6 +60,7 @@ sudo apt install -y \
 autojump \
 brave-browser \
 btop \
+build-essential \
 cowsay \
 dunst \
 fcitx5 \
@@ -89,7 +84,11 @@ i3-wm \
 i3lock \
 imagemagick \
 inkscape \
+libgmp-dev \
+libssl-dev \
+libyaml-dev \
 micro \
+mise \
 mpv \
 mypaint \
 network-manager \
@@ -99,7 +98,7 @@ openjdk-21-jdk \
 pavucontrol \
 playerctl \
 pulseaudio \
-ruby-full \
+rustc \
 steam-installer \
 sublime-merge \
 sublime-text \
@@ -114,6 +113,7 @@ xfce4-terminal \
 xinit \
 xsct \
 xss-lock \
+zlib1g-dev \
 
 sudo ufw enable
 sudo ufw allow from 10.0.0.0/24 to any port 22 proto tcp
@@ -128,6 +128,11 @@ com.tomjwatson.Emote \
 io.mgba.mGBA \
 net.lutris.Lutris \
 com.vysp3r.ProtonPlus
+
+curl https://mise.run | sh
+eval "$(mise activate)"
+mise use -g go@latest
+mise use -g ruby@latest
 
 # install tlp for power management and charge thresholds if 'laptop' passed as arg
 if [ $1 = "laptop" ]; then
