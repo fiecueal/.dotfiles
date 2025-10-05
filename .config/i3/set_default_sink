@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 current = `pactl get-default-sink`.chomp
 sinks = `pactl list sinks short`.lines.map {|line| line.split[1]}
 
