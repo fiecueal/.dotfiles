@@ -9,7 +9,7 @@
 set $super Mod4
 set $alt   Mod1
 
-font pango:Noto Mono 14
+font pango:Noto Mono 13
 
 assign [class="(?i)ff1"]                        1
 assign [class="(?i)(thunar|gnome-commander)"]   2
@@ -164,21 +164,21 @@ floating_modifier $super
 tiling_drag modifier titlebar
 
 bar {
-  colors {
-    background #eeeeee
-    statusline #010101
-    # separator #666666
+	colors {
+		background #eeeeee
+		statusline #010101
+		# separator #666666
 
-    focused_workspace  #000000 #aaffaa #000000
-    #active_workspace   #333333 #5f676a #ffffff
-    inactive_workspace #eeeeee #eeeeee #000000
-    urgent_workspace   #000000 #ff7777 #000000
-    #binding_mode       #2f343a #900000 #ffffff
-  }
-  mode hide
-  hidden_state hide
-  modifier $super
-  tray_output primary
+		focused_workspace  #000000 #aaffaa #000000
+		#active_workspace   #333333 #5f676a #ffffff
+		inactive_workspace #eeeeee #eeeeee #000000
+		urgent_workspace   #000000 #ff7777 #000000
+		#binding_mode       #2f343a #900000 #ffffff
+	}
+	mode hide
+	hidden_state hide
+	modifier $super
+	tray_output primary
 
-  status_command i3status
+	status_command i3status
 }

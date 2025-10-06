@@ -1,12 +1,7 @@
-general {
-  output_format = i3bar
-  interval = 1
-  separator = ""
-}
-
 # order += "battery 0"
 order += "cpu_temperature cpu"
 order += "cpu_temperature gpu"
+order += "disk /"
 order += "memory"
 order += "time"
 order += "volume master"
@@ -14,34 +9,34 @@ order += "volume master"
 # battery 0 {
 #   format = "%status %percentage"
 #   status_bat = "🔋"
+#   status_idle = "🔋"
 #   status_chr = "⚡"
-#   integer_battery_capacity = true
 #   # path = "/sys/class/power_supply/BAT0/uevent"
 # }
 
 cpu_temperature cpu {
-  # 🌡️ is made of two codepoints: 🌡(1F321) and variation selector 16 (FE0F)
-  format = "🌡️CPU %degrees °C"
-  # path for AMD cpu temp
-  path = "/sys/class/hwmon/hwmon4/temp1_input"
+	format = "🌡️CPU %degrees °C"
+	path = "/sys/class/hwmon/hwmon4/temp1_input"
 }
 
 cpu_temperature gpu {
-  format = "🌡️GPU %degrees °C"
-  path = "/sys/class/hwmon/hwmon2/temp1_input"
+	format = "🌡️GPU %degrees °C"
+	path = "/sys/class/hwmon/hwmon2/temp1_input"
+}
+
+disk / {
+	format = "💾 %percentage_used_of_avail / %total"
 }
 
 memory {
-  format = "🐏 %percentage_used / %total"
-  decimals = "0"
-  unit = "G"
+	format = "🐏 %percentage_used / %total"
 }
 
 time {
-  format = "📅 %a %Y-%m-%d 🕒 %H:%M:%S"
+	format = "📅 %a %Y-%m-%d 🕒 %H:%M:%S"
 }
 
 volume master {
-  format = "🔊 %volume (%devicename)"
-  format_muted = "🔇 0% (%devicename)"
+	format = "🔊 %volume (%devicename)"
+	format_muted = "🔇 0% (%devicename)"
 }
