@@ -12,7 +12,7 @@ set $alt   Mod1
 font pango:Noto Mono 14
 
 assign [class="(?i)ff1"]                        1
-assign [class="(?i)gnome-commander"]            2
+assign [class="(?i)(thunar|gnome-commander)"]   2
 assign [class="(?i)(git-cola|sublime_merge)"]   3
 assign [class="(?i)sublime_text"]               4
 assign [class="(?i)ff5"]                        5

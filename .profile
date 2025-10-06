@@ -13,7 +13,7 @@ $HOME/.local/bin
 /usr/local/games
 /usr/games" | tr "\n" ":")
 
-[ -n "$BASH_VERSION" ] && . "$HOME/.bashrc"
+. "$HOME/.bashrc"
 
 case "$(tty)" in
 "/dev/tty1") pgrep i3 || exec startx $HOME/.config/X11/xinitrc ;;
