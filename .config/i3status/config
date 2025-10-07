@@ -1,3 +1,7 @@
+general {
+	separator = ""
+}
+
 # order += "battery 0"
 order += "cpu_temperature cpu"
 order += "cpu_temperature gpu"
@@ -15,12 +19,12 @@ order += "volume master"
 # }
 
 cpu_temperature cpu {
-	format = "🌡️CPU %degrees °C"
+	format = "🌡️CPU %degrees°C"
 	path = "/sys/class/hwmon/hwmon4/temp1_input"
 }
 
 cpu_temperature gpu {
-	format = "🌡️GPU %degrees °C"
+	format = "🌡️GPU %degrees°C"
 	path = "/sys/class/hwmon/hwmon2/temp1_input"
 }
 
