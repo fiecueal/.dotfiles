@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 # version >= 2.3
 
 bright = `xsct`.split(" ")[-1].to_f
@@ -8,7 +8,7 @@ case ARGV[0]
 when "up"         ; `xsct -d 0 #{step}`
 when "down"       ; `xsct -d 0 -#{step}`
 when "dim"        ; `xsct 0 0`
-when "warm"       ; `xsct -d -100`
-when "cool"       ; `xsct -d 100`
+when "warm"       ; `xsct -d -100 0`
+when "cool"       ; `xsct -d 100 0`
 when "reset_temp" ; `xsct 0 #{bright}`
 end

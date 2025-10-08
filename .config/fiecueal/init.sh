@@ -11,7 +11,7 @@ for arg in "$@"; do
 done
 
 cd $HOME
-mkdir -p Archives Pictures/screenshots Projects .local/bin
+mkdir -p Archives Pictures/screenshots Projects Minecraft .local/bin
 
 sudo mkdir -p /etc/systemd/logind.conf.d
 sudo cp $HOME/.config/fiecueal/00-powerkey-lidswitch.conf /etc/systemd/logind.conf.d/
@@ -29,14 +29,13 @@ autojump \
 btop \
 build-essential \
 curl \
-ffmpeg \
-imagemagick \
 libgmp-dev \
 libssl-dev \
 libyaml-dev \
 micro \
 network-manager \
 nnn \
+openjdk-21-jdk-headless \
 rustc \
 tar \
 trash-cli \
@@ -45,8 +44,6 @@ unzip \
 wget \
 zip \
 zlib1g-dev \
-
-sudo ufw enable
 
 curl https://mise.run | sh
 eval "$(mise activate)"
@@ -57,27 +54,39 @@ gem install rails
 
 if $is_server; then
 
-sudo ufw allow from 10.0.0.0/24 to any port 22 proto tcp
-
 sudo apt install -y \
+nfs-kernel-server \
+openssh-server \
 samba \
 
-sudo ufw allow from 10.0.0.0/24 to any app Samba
-sudo mkdir -p /etc/samba
-[ -f /etc/samba/smb.conf ] && sudo mv --backup=numbered /etc/samba/smb.conf /etc/samba/smb.conf.old
+sudo mv /etc/samba/smb.conf /etc/samba/smb.conf.old
 sudo cp $HOME/.config/fiecueal/smb.conf /etc/samba/smb.conf
 sudo systemctl restart smbd nmbd
 
+sudo mkdir -p /srv/nfs
+sudo chown nobody:nogroup /srv/nfs
+sudo chmod 777 /srv/nfs
+echo '/srv/nfs 10.0.0.0/24(rw,sync,no_subtree_check)' | sudo tee -a /etc/exports
+sudo exportfs -ra
+
+PORT=$(ruby -e "puts rand(32768..60999)")
+echo $PORT > Minecraft/port.txt
+
+sudo ufw allow from 10.0.0.0/24 to any app SSH
+sudo ufw allow from 10.0.0.0/24 to any app Samba
+sudo ufw allow from 10.0.0.0/24 to any app NFS
+sudo ufw allow ${PORT}/tcp
+
 else # client
 
+cd $HOME/.config/fiecueal
+
 sudo mkdir -p /etc/X11/xorg.conf.d
-sudo cp $HOME/.config/fiecueal/20-screentear.conf \
-        $HOME/.config/fiecueal/20-mouseaccel.conf \
-        /etc/X11/xorg.conf.d/
+sudo cp 20-screentear.conf 20-mouseaccel.conf /etc/X11/xorg.conf.d/
 
 sudo mkdir -p /etc/udev/rules.d/ /etc/modules-load.d/
-sudo cp $HOME/.config/fiecueal/71-8bitdo-controllers.rules /etc/udev/rules.d/
-sudo cp $HOME/.config/fiecueal/uinput.conf /etc/modules-load.d/uinput.conf
+sudo cp 71-8bitdo-controllers.rules /etc/udev/rules.d/
+sudo cp uinput.conf /etc/modules-load.d/uinput.conf
 
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
@@ -111,6 +120,7 @@ cowsay \
 dunst \
 fcitx5 \
 fcitx5-mozc \
+ffmpeg \
 firefox-esr \
 flameshot \
 flatpak \
@@ -127,13 +137,15 @@ gpick \
 gpicview \
 i3-wm \
 i3lock \
+imagemagick \
 inkscape \
 libglib2.0-bin \
 mpv \
 mtpaint \
 network-manager-applet \
+nfs-common \
 obs-studio \
-openjdk-21-jdk \
+openssh-client \
 pavucontrol \
 playerctl \
 pulseaudio \
@@ -180,6 +192,8 @@ cd Betterfox
 
 fi # $is_server
 
+sudo ufw enable
+
 if $is_laptop; then
 sudo apt install -y tlp
 sudo mkdir -p /etc/tlp.d
@@ -197,5 +211,6 @@ Not yet done:
 * Monospacify monofur font
 * Install firefox extensions
 * Add samba users
+* Share nfs
 * Reboot
 EOF
