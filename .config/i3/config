@@ -6,6 +6,8 @@
 # super+r -> obs start/stop recording
 # super+c -> xclicker
 
+exec_always --no-startup-id xmodmap ~/.config/X11/xmodmap
+
 set $super Mod4
 set $alt   Mod1
 

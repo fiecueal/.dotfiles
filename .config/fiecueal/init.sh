@@ -19,6 +19,9 @@ mkdir -p Archives Pictures/screenshots Projects Minecraft .local/bin
 sudo mkdir -p /etc/systemd/logind.conf.d
 sudo cp $HOME/.config/fiecueal/00-powerkey-lidswitch.conf /etc/systemd/logind.conf.d/
 
+sudo apt purge -y yt-dlp
+sudo apt-mark hold yt-dlp fonts-noto-hinted
+
 sudo apt update
 sudo apt upgrade -y
 sudo apt dist-upgrade -y
@@ -44,8 +47,6 @@ wget \
 zip \
 zlib1g-dev \
 
-sudo apt purge -y yt-dlp
-sudo apt-mark hold yt-dlp
 curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o .local/bin/yt-dlp
 chmod a+rx .local/bin/yt-dlp
 
@@ -137,7 +138,7 @@ font-viewer \
 fonts-3270 \
 fonts-klee \
 fonts-monofur \
-fonts-noto \
+fonts-noto-* \
 fortunes \
 git-cola \
 gpick \
