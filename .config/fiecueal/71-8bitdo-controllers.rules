@@ -1,3 +1,4 @@
+# from https://codeberg.org/fabiscafe/game-devices-udev
 # 8Bitdo F30 P1
 SUBSYSTEM=="input", ATTRS{name}=="8Bitdo FC30 GamePad", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
 
@@ -54,4 +55,3 @@ SUBSYSTEMS=="input", ATTRS{id/product}=="3010", ATTRS{id/vendor}=="2dc8", ENV{ID
 
 # 8BitDo Ultimate Wired Controller for Xbox; USB
 SUBSYSTEM=="usb", ATTR{idProduct}=="2003", ATTR{idVendor}=="2dc8", ENV{ID_INPUT_JOYSTICK}="1", TAG+="uaccess"
-

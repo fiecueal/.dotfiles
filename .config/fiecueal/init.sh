@@ -1,12 +1,15 @@
 #!/usr/bin/bash
 
-is_server=false
-is_laptop=false
+set -e
+
+is_server=
+is_laptop=
 
 for arg in "$@"; do
   case "$arg" in
   server) is_server=true ;;
   laptop) is_laptop=true ;;
+       *) echo "unrecognized arg: $arg" && exit 1
   esac
 done
 
@@ -16,15 +19,10 @@ mkdir -p Archives Pictures/screenshots Projects Minecraft .local/bin
 sudo mkdir -p /etc/systemd/logind.conf.d
 sudo cp $HOME/.config/fiecueal/00-powerkey-lidswitch.conf /etc/systemd/logind.conf.d/
 
-sudo apt purge -y yt-dlp
-sudo apt-mark hold yt-dlp
-curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o .local/bin/yt-dlp
-chmod a+rx .local/bin/yt-dlp
-
 sudo apt update
 sudo apt upgrade -y
 sudo apt dist-upgrade -y
-sudo apt install -y \
+sudo apt install --no-install-recommends -y \
 autojump \
 btop \
 build-essential \
@@ -37,6 +35,7 @@ network-manager \
 nnn \
 openjdk-21-jdk-headless \
 rustc \
+smartmontools \
 tar \
 trash-cli \
 ufw \
@@ -44,6 +43,11 @@ unzip \
 wget \
 zip \
 zlib1g-dev \
+
+sudo apt purge -y yt-dlp
+sudo apt-mark hold yt-dlp
+curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o .local/bin/yt-dlp
+chmod a+rx .local/bin/yt-dlp
 
 curl https://mise.run | sh
 eval "$(mise activate)"
@@ -54,7 +58,7 @@ gem install rails
 
 if $is_server; then
 
-sudo apt install -y \
+sudo apt install --no-install-recommends -y \
 nfs-kernel-server \
 openssh-server \
 samba \
@@ -66,16 +70,19 @@ sudo systemctl restart smbd nmbd
 sudo mkdir -p /srv/nfs
 sudo chown nobody:nogroup /srv/nfs
 sudo chmod 777 /srv/nfs
-echo '/srv/nfs 10.0.0.0/24(rw,sync,no_subtree_check)' | sudo tee -a /etc/exports
+sudo mv /etc/exports /etc/exports.old
+echo '/srv/nfs 10.0.0.0/24(rw,sync,no_subtree_check)' | sudo tee /etc/exports
 sudo exportfs -ra
 
+# sysctl net.ipv4.ip_local_port_range
 PORT=$(ruby -e "puts rand(32768..60999)")
-echo $PORT > Minecraft/port.txt
+echo $PORT > $HOME/Minecraft/port.txt
 
 sudo ufw allow from 10.0.0.0/24 to any app SSH
 sudo ufw allow from 10.0.0.0/24 to any app Samba
 sudo ufw allow from 10.0.0.0/24 to any app NFS
-sudo ufw allow ${PORT}/tcp
+sudo ufw allow from 10.0.0.0/24 to any port 5678 comment "n8n"
+sudo ufw allow ${PORT}/tcp comment "Minecraft"
 
 else # client
 
@@ -114,7 +121,7 @@ pnpm env use --global lts
 
 # git clone https://github.com/fiecueal/qmk_firmware
 
-sudo apt install -y \
+sudo apt install --no-install-recommends -y \
 brave-browser \
 cowsay \
 dunst \
@@ -192,10 +199,10 @@ cd Betterfox
 
 fi # $is_server
 
-sudo ufw enable
+sudo ufw --force enable
 
 if $is_laptop; then
-sudo apt install -y tlp
+sudo apt install --no-install-recommends -y tlp
 sudo mkdir -p /etc/tlp.d
 sudo cp $HOME/.config/fiecueal/00-charge-thresh.conf \
         $HOME/.config/fiecueal/00-low-power-cpu.conf \
@@ -204,6 +211,7 @@ sudo tlp start
 fi
 
 cat <<EOF
+Installed: $([ "$is_server" ] && echo server || echo client) $([ "$is_laptop" ] && echo laptop)
 Not yet done:
 * Download Dragonruby
 * Download Grayjay
