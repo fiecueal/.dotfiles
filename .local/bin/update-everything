@@ -4,7 +4,6 @@ sudo apt update
 sudo apt upgrade -y
 sudo apt dist-upgrade -y
 flatpak update -y
-deno upgrade
 pnpm self-update
 pnpm env use --global lts
 mise up
