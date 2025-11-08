@@ -4,7 +4,7 @@ xrandr --output HDMI-A-0 --off &
 yt-dlp -U &
 xmodmap $HOME/.config/X11/xmodmap &
 xrdb -merge $HOME/.config/X11/xresources
-xset s off -dpms &
+xset s off dpms 0 0 0 &
 xss-lock --transfer-sleep-lock -- i3lock -en -c 000000 &
 nm-applet &
 fcitx5 &

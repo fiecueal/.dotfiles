@@ -25,8 +25,8 @@ assign [class="(?i)godot"]                       7
 assign [class="(?i)thunderbird-esr"]             8
 assign [class="(?i)ff9"]                         9
 assign [class="(?i)(lutris|com-atlauncher-app)"] 10
-assign [class="(?i)heroic"]                      11
-assign [class="(?i)steam"]                       12
+assign [class="(?i)(heroic|steam)"]              11
+assign [class="(?i)minecraft*"]                  12
 
 for_window [class="(?i)dragonruby"] border none
 for_window [class="(?i)calculator|protonvpn-app"] floating enable
@@ -120,6 +120,8 @@ bindsym $super+s     focus child
 
 bindsym $super+Tab       workspace next
 bindsym $super+Shift+Tab workspace prev
+bindsym --whole-window $super+button5 workspace next
+bindsym --whole-window $super+button4 workspace prev
 
 bindsym $super+F1  workspace 1
 bindsym $super+F2  workspace 2
@@ -151,7 +153,7 @@ bindsym $super+Shift+c reload
 bindsym $super+Shift+r restart
 
 bindsym $super+Shift+e exec "pgrep i3-nagbar || i3-nagbar -t warning -m 'What do' \
--B 'lock'     'xset dpms force off && pkill i3-nagbar && xset -dpms' \
+-B 'lock'     'pkill i3-nagbar && xset dpms force off' \
 -B 'suspend'  'systemctl suspend' \
 -B 'logout'   'i3-msg exit' \
 -B 'poweroff' 'systemctl poweroff' \
@@ -166,21 +168,21 @@ floating_modifier $super
 tiling_drag modifier titlebar
 
 bar {
-	colors {
-		background #eeeeee
-		statusline #010101
-		# separator #666666
+  colors {
+    background #eeeeee
+    statusline #010101
+    # separator #666666
 
-		focused_workspace  #000000 #aaffaa #000000
-		#active_workspace   #333333 #5f676a #ffffff
-		inactive_workspace #eeeeee #eeeeee #000000
-		urgent_workspace   #000000 #ff7777 #000000
-		#binding_mode       #2f343a #900000 #ffffff
-	}
-	mode hide
-	hidden_state hide
-	modifier $super
-	tray_output primary
+    focused_workspace  #000000 #aaffaa #000000
+    #active_workspace   #333333 #5f676a #ffffff
+    inactive_workspace #eeeeee #eeeeee #000000
+    urgent_workspace   #000000 #ff7777 #000000
+    #binding_mode       #2f343a #900000 #ffffff
+  }
+  mode hide
+  hidden_state hide
+  modifier $super
+  tray_output primary
 
-	status_command i3status
+  status_command i3status
 }
