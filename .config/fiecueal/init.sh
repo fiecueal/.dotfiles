@@ -40,6 +40,7 @@ openjdk-21-jdk-headless \
 rustc \
 smartmontools \
 tar \
+tmux \
 trash-cli \
 ufw \
 unzip \
@@ -103,9 +104,13 @@ echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] http
 
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-wget https://github.com/wbond/package_control/releases/latest/download/Package.Control.sublime-package -P $HOME/.config/sublime-text/Installed\ Packages
 cd $HOME/.config/sublime-text/Installed\ Packages
+wget https://github.com/wbond/package_control/releases/latest/download/Package.Control.sublime-package
 mv Package.Control.sublime-package Package\ Control.sublime-package
+
+curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
+echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
+sudo chmod 644 /usr/share/keyrings/wezterm-fury.gpg
 
 ln -s $DRAGONRUBY_HOME/dragonruby $HOME/.local/bin/dragonruby
 ln -s $DRAGONRUBY_HOME/dragonruby-httpd $HOME/.local/bin/dragonruby-httpd
@@ -124,6 +129,7 @@ pnpm env use --global lts
 
 # git clone https://github.com/fiecueal/qmk_firmware
 
+sudo apt update
 sudo apt install --no-install-recommends -y \
 brave-browser \
 cowsay \
@@ -137,10 +143,10 @@ flatpak \
 foliate \
 font-manager \
 font-viewer \
-fonts-3270 \
 fonts-klee \
 fonts-monofur \
 fonts-noto-* \
+fonts-ocr-a \
 fortunes \
 git-cola \
 gpick \
@@ -165,10 +171,10 @@ sublime-text \
 suckless-tools \
 thunar \
 udisks2 \
+wezterm \
 woff2 \
 xdg-utils \
 xfce4-clipman \
-xfce4-terminal \
 xinit \
 xsct \
 xss-lock \
