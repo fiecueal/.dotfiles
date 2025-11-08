@@ -26,7 +26,7 @@ assign [class="(?i)thunderbird-esr"]             8
 assign [class="(?i)ff9"]                         9
 assign [class="(?i)(lutris|com-atlauncher-app)"] 10
 assign [class="(?i)(heroic|steam)"]              11
-assign [class="(?i)minecraft*"]                  12
+assign [class="(?i)minecraft.*"]                 12
 
 for_window [class="(?i)dragonruby"] border none
 for_window [class="(?i)calculator|protonvpn-app"] floating enable
@@ -44,11 +44,10 @@ bindsym $super+$alt+F7  exec godot
 bindsym $super+$alt+F8  exec thunderbird
 bindsym $super+$alt+F9  exec firefox -P p9 --class ff9
 bindsym $super+$alt+F10 exec flatpak run net.lutris.Lutris
-bindsym $super+$alt+F11 exec flatpak run com.heroicgameslauncher.hgl
-bindsym $super+$alt+F12 exec steam
+bindsym $super+$alt+F11 exec steam
 
 bindsym $super+d exec i3-dmenu-desktop
-bindsym $super+Return exec xfce4-terminal
+bindsym $super+Return exec wezterm
 bindsym $super+Shift+q kill
 
 bindsym --release       Print exec --no-startup-id flameshot screen -c -p ~/Pictures/screenshots/$(date +'%Y-%m-%d-%T').png

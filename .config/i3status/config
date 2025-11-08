@@ -29,11 +29,11 @@ cpu_temperature gpu {
 }
 
 disk / {
-	format = "💾 %percentage_used_of_avail / %total"
+	format = "💾 %percentage_used_of_avail"
 }
 
 memory {
-	format = "🐏 %percentage_used / %total"
+	format = "🐏 %percentage_used"
 }
 
 time {
