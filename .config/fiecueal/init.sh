@@ -121,9 +121,6 @@ unzip Godot_v4.5-stable_linux.x86_64.zip
 mv Godot_v4.5-stable_linux.x86_64 $HOME/.local/bin/godot
 rm Godot_v4.5-stable_linux.x86_64.zip
 
-curl -fsSL https://deno.land/install.sh | sh
-ln -s $DENO_ISNTALL/bin/deno $HOME/.local/bin/deno
-
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 pnpm env use --global lts
 

@@ -40,7 +40,6 @@ alias drun='dragonruby $(pwd)'
 dots="--git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
 
 export PNPM_HOME="$HOME/.local/pnpm"
-export DENO_INSTALL="$HOME/.local/deno"
 export DRAGONRUBY_HOME="$HOME/.local/dragonruby"
 export DRAGONRUBY_ZIPS="$HOME/.local/dragonruby-zips"
 
