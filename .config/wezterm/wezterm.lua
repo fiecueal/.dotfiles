@@ -1,28 +1,38 @@
 local wezterm = require 'wezterm'
-local config  = wezterm.config_builder()
+local config = wezterm.config_builder()
 local act = wezterm.action
 
 config.keys = {
-  { key = 'UpArrow',   mods = 'SHIFT', action = act.ScrollByLine(-1) },
-  { key = 'DownArrow', mods = 'SHIFT', action = act.ScrollByLine(1) },
+  { key = 'UpArrow',   mods = 'SHIFT', action = act.ScrollByLine(-2) },
+  { key = 'DownArrow', mods = 'SHIFT', action = act.ScrollByLine(2) },
 }
 
+config.mouse_bindings = { {
+  event = { Up = { streak = 1, button = 'Left' } },
+  mods = 'NONE',
+  action = act.CompleteSelection 'PrimarySelection'
+}, {
+  event = { Up = { streak = 2, button = 'Left' } },
+  mods = 'NONE',
+  action = act.OpenLinkAtMouseCursor
+} }
+
+config.default_cursor_style = "SteadyBlock"
 config.enable_scroll_bar = true
 config.hide_tab_bar_if_only_one_tab = true
+config.use_fancy_tab_bar = false
 
---TODO custom colors
-config.color_scheme = 'hardhacker'
+config.font_size = 12
 config.font = wezterm.font_with_fallback {
   'OCR A',
-  'Noto Mono',
+  'Noto Sans CJK JP',
 }
-config.font_size = 12
 
-config.background = {{
-  source = {File = wezterm.config_dir..'/99448728_p0.jpg'},
-  vertical_align   = 'Middle',
-  horizontal_align = 'Center',
-  opacity = 0.3
-}}
+config.color_scheme = 'hardhacker'
+local colors = wezterm.color.get_default_colors()
+config.colors = {
+  cursor_bg = colors.foreground,
+  cursor_fg = colors.background
+}
 
 return config
