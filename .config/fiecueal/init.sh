@@ -28,16 +28,13 @@ sudo apt dist-upgrade -y
 sudo apt install --no-install-recommends -y \
 autojump \
 btop \
-build-essential \
 curl \
-libgmp-dev \
-libssl-dev \
-libyaml-dev \
+golang \
 micro \
 network-manager \
 nnn \
 openjdk-21-jdk-headless \
-rustc \
+ruby-full \
 smartmontools \
 tar \
 tmux \
@@ -46,17 +43,9 @@ ufw \
 unzip \
 wget \
 zip \
-zlib1g-dev \
 
 curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o .local/bin/yt-dlp
 chmod a+rx .local/bin/yt-dlp
-
-curl https://mise.run | sh
-eval "$(mise activate)"
-mise use -g go@latest
-mise use -g ruby@latest
-
-gem install rails
 
 if $is_server; then
 

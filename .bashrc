@@ -79,4 +79,3 @@ drupgrade() {
 . /usr/share/autojump/autojump.bash
 
 fortune | cowsay
-eval "$(mise activate)"
