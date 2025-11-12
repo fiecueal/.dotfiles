@@ -29,13 +29,31 @@ assign [class="(?i)(heroic|steam)"]              11
 assign [class="(?i)minecraft.*"]                 12
 
 for_window [class="(?i)dragonruby"] border none
-for_window [class="(?i)calculator|protonvpn-app"] floating enable
+for_window [class="(?i)calculator|protonvpn-app|font-manager"] floating enable
 # for_window [floating] resize set 1280 720
 for_window [floating] border pixel 3
 for_window [floating] move position center
 
+gaps inner 14px
+default_border pixel 2
+
+focus_follows_mouse no
+floating_modifier $super
+tiling_drag modifier titlebar
+
+bindsym $super+Shift+c reload
+bindsym $super+Shift+r restart
+
+# class                   border  bg      text    indic   child_border
+  client.focused          #e965a5 #e965a5 #e965a5 #e965a5 #e965a5
+# client.focused_inactive #333333 #5f676a #ffffff #484e50 #5f676a
+# client.unfocused        #333333 #222222 #888888 #292d2e #222222
+# client.urgent           #2f343a #900000 #ffffff #900000 #900000
+# client.placeholder      #000000 #0c0c0c #ffffff #000000 #0c0c0c
+# client.background       #000000
+
 bindsym $super+$alt+F1  exec firefox -P p1 --class ff1
-bindsym $super+$alt+F2  exec gnome-commander
+bindsym $super+$alt+F2  exec thunar
 bindsym $super+$alt+F3  exec smerge
 bindsym $super+$alt+F4  exec subl
 bindsym $super+$alt+F5  exec firefox -P p5 --class ff5
@@ -148,9 +166,6 @@ bindsym $super+Shift+F10 move container to workspace 10, workspace 10
 bindsym $super+Shift+F11 move container to workspace 11, workspace 11
 bindsym $super+Shift+F12 move container to workspace 12, workspace 12
 
-bindsym $super+Shift+c reload
-bindsym $super+Shift+r restart
-
 bindsym $super+Shift+e exec "pgrep i3-nagbar || i3-nagbar -t warning -m 'What do' \
 -B 'lock'     'pkill i3-nagbar && xset dpms force off' \
 -B 'suspend'  'systemctl suspend' \
@@ -159,24 +174,18 @@ bindsym $super+Shift+e exec "pgrep i3-nagbar || i3-nagbar -t warning -m 'What do
 -B 'reboot'   'systemctl reboot' \
 -B 'BIOS'     'systemctl reboot --firmware-setup'"
 
-default_border pixel 3
-hide_edge_borders both
-
-focus_follows_mouse no
-floating_modifier $super
-tiling_drag modifier titlebar
-
 bar {
   colors {
-    background #eeeeee
-    statusline #010101
-    # separator #666666
+    background #282433
+    statusline #eee9fc
+  # separator  #000000
 
-    focused_workspace  #000000 #aaffaa #000000
-    #active_workspace   #333333 #5f676a #ffffff
-    inactive_workspace #eeeeee #eeeeee #000000
-    urgent_workspace   #000000 #ff7777 #000000
-    #binding_mode       #2f343a #900000 #ffffff
+  # class              border  bg      text
+    focused_workspace  #e965a5 #3f3951 #e965a5
+  # active_workspace   #333333 #5f676a #ffffff
+    inactive_workspace #3f3951 #282433 #3f3951
+    urgent_workspace   #282433 #e965a5 #282433
+  # binding_mode       #2f343a #900000 #ffffff
   }
   mode hide
   hidden_state hide
