@@ -23,6 +23,10 @@
       "amount": -20
     },
   },
+  {//TODO plugin to save directly in first folder in sidebar with same name
+    "keys": ["ctrl+alt+s"],
+    "command": "save_project_and_workspace_as",
+  },
   // {
   //   "keys": ["ctrl+shift+up"],
   //   "command": "expand_selection",

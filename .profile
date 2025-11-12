@@ -2,8 +2,6 @@ umask 022
 
 PATH=$(printf "$HOME/.local/pnpm
 $HOME/.local/bin
-/opt/intellij-idea/bin
-/opt/odin
 /usr/local/sbin
 /usr/local/bin
 /usr/sbin

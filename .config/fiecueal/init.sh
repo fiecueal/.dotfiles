@@ -174,6 +174,8 @@ com.tomjwatson.Emote \
 com.vysp3r.ProtonPlus \
 net.lutris.Lutris \
 
+firefox &
+sleep 3 # let firefox load up a default profile
 cd $HOME/.mozilla/firefox
 mv $(find -name *.default) fiecueal.p1
 cp -r fiecueal.p1 fiecueal.p5
