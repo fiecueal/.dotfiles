@@ -20,8 +20,8 @@
 		{ "path": ".config/i3" },
 		{ "path": ".config/i3status" },
 		{ "path": ".config/sublime-text/Packages/User", "name": "sublime (User)", },
+		{ "path": ".config/wezterm" },
 		{ "path": ".config/X11" },
-		{ "path": ".config/xfce4" },
 		{ "path": ".local/bin" },
 	]
 }
