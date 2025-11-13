@@ -1,4 +1,4 @@
 // Terminal Settings - User
 {
-  "terminal": "x-terminal-emulator",
+  "terminal": "wezterm",
 }

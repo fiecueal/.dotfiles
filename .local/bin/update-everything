@@ -6,6 +6,5 @@ sudo apt dist-upgrade -y
 flatpak update -y
 pnpm self-update
 pnpm env use --global lts
-mise up
 yt-dlp -U
 # git -C $HOME/qmk_firmware/ pull
