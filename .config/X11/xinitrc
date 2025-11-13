@@ -12,4 +12,4 @@ xfce4-clipman &
 flameshot &
 flatpak run com.tomjwatson.Emote &
 thunderbird &
-exec i3
+i3
