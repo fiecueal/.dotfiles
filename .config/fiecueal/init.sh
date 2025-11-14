@@ -47,7 +47,7 @@ zip \
 curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o .local/bin/yt-dlp
 chmod a+rx .local/bin/yt-dlp
 
-if $is_server; then
+if [ $is_server ]; then
 
 sudo mkdir -p /Minecraft/config
 
@@ -198,7 +198,7 @@ fi # $is_server
 
 sudo ufw --force enable
 
-if $is_laptop; then
+if [ $is_laptop ]; then
 sudo apt install --no-install-recommends -y tlp
 sudo mkdir -p /etc/tlp.d
 sudo cp $HOME/.config/fiecueal/00-charge-thresh.conf \
