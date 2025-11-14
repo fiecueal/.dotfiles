@@ -30,6 +30,7 @@ autojump \
 btop \
 curl \
 golang \
+gpg \
 micro \
 network-manager \
 nnn \
@@ -176,10 +177,10 @@ com.tomjwatson.Emote \
 com.vysp3r.ProtonPlus \
 net.lutris.Lutris \
 
-firefox &
-sleep 3 # let firefox load up a default profile
+# assuming setup is from tty & no firefox files are made yet
+firefox -CreateProfile p1
 cd $HOME/.mozilla/firefox
-mv $(find -name *.default) fiecueal.p1
+mv $(find -name *.p1) fiecueal.p1
 cp -r fiecueal.p1 fiecueal.p5
 cp -r fiecueal.p1 fiecueal.p9
 
