@@ -14,6 +14,8 @@ for arg in "$@"; do
 done
 
 cd $HOME
+. .bashrc
+PATH="$PNPM_HOME:$PATH"
 mkdir -p Archives Pictures/screenshots Projects .local/bin
 
 sudo mkdir -p /etc/systemd/logind.conf.d
