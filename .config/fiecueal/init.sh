@@ -104,9 +104,9 @@ curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/sh
 echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
 sudo chmod 644 /usr/share/keyrings/wezterm-fury.gpg
 
-ln -s $DRAGONRUBY_HOME/dragonruby $HOME/.local/bin/dragonruby
-ln -s $DRAGONRUBY_HOME/dragonruby-httpd $HOME/.local/bin/dragonruby-httpd
-ln -s $DRAGONRUBY_HOME/dragonruby-publish $HOME/.local/bin/dragonruby-publish
+ln -sf $DRAGONRUBY_HOME/dragonruby $HOME/.local/bin/dragonruby
+ln -sf $DRAGONRUBY_HOME/dragonruby-httpd $HOME/.local/bin/dragonruby-httpd
+ln -sf $DRAGONRUBY_HOME/dragonruby-publish $HOME/.local/bin/dragonruby-publish
 
 wget https://github.com/godotengine/godot/releases/download/4.5-stable/Godot_v4.5-stable_linux.x86_64.zip
 unzip Godot_v4.5-stable_linux.x86_64.zip
