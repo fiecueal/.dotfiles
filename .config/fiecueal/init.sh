@@ -14,7 +14,8 @@ for arg in "$@"; do
 done
 
 cd $HOME
-. .bashrc
+PNPM_HOME="$HOME/.local/pnpm"
+DRAGONRUBY_HOME="$HOME/.local/dragonruby"
 PATH="$PNPM_HOME:$PATH"
 mkdir -p Archives Pictures/screenshots Projects .local/bin
 
