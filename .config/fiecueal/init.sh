@@ -116,6 +116,9 @@ rm Godot_v4.5-stable_linux.x86_64.zip
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 pnpm env use --global lts
 
+sudo sed -i "s/^deb \S* \w* .*/& contrib/" /etc/apt/sources.list
+sudo dpkg --add-architecture i386
+
 # git clone https://github.com/fiecueal/qmk_firmware
 
 sudo apt update
@@ -153,6 +156,7 @@ obs-studio \
 openssh-client \
 pavucontrol \
 playerctl \
+polkitd \
 pulseaudio \
 steam-installer \
 sublime-merge \
