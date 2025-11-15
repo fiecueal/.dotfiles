@@ -117,6 +117,8 @@ mv Godot_v4.5-stable_linux.x86_64 $HOME/.local/bin/godot
 rm Godot_v4.5-stable_linux.x86_64.zip
 
 curl -fsSL https://get.pnpm.io/install.sh | sh -
+# undo pnpm's invasion of .bashrc in case it still decides to append stuff
+git --git-dir=$HOME/.dotfiles.git --work-tree=$HOME restore $HOME/.bashrc
 pnpm env use --global lts
 
 sudo sed -i "s/^deb \S* \w* .*/& contrib/" /etc/apt/sources.list
