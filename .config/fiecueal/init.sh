@@ -174,7 +174,7 @@ xinit \
 xsct \
 xss-lock \
 
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install -y flathub \
 com.atlauncher.ATLauncher \
 com.github.tchx84.Flatseal \
