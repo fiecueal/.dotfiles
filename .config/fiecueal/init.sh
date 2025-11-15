@@ -195,7 +195,7 @@ sed -i "1i$(grep "\[Install.*\]" profiles.ini.old)" profiles.ini
 sed -i "s/^Default=.*$/Default=fiecueal.p1/" installs.ini
 
 cd $HOME/Projects
-git clone https://github.com/fiecueal/Betterfox
+[ -d Betterfox ] || git clone https://github.com/fiecueal/Betterfox
 cd Betterfox
 ./install.sh p1
 ./install.sh p5
