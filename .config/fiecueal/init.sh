@@ -173,6 +173,7 @@ xdg-utils \
 xfce4-clipman \
 xinit \
 xsct \
+xserver-xorg \
 xss-lock \
 
 sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
