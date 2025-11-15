@@ -11,5 +11,6 @@ fcitx5 &
 xfce4-clipman &
 flameshot &
 flatpak run com.tomjwatson.Emote &
+firefox -P p1 --class ff1 &
 thunderbird &
 i3

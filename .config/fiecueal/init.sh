@@ -185,18 +185,10 @@ com.tomjwatson.Emote \
 com.vysp3r.ProtonPlus \
 net.lutris.Lutris \
 
-# assuming setup is from tty & no firefox files are made yet
-firefox -CreateProfile p1
-cd $HOME/.mozilla/firefox
-mv $(find -name *.p1) fiecueal.p1
-cp -r fiecueal.p1 fiecueal.p5
-cp -r fiecueal.p1 fiecueal.p9
-
-mv profiles.ini profiles.ini.old
+mkdir -p $HOME/.mozilla/firefox/fiecueal.p1
+cd $HOME/.mozilla/firefox/
+mkdir fiecueal.p5 fiecueal.p9
 cp $HOME/.config/fiecueal/profiles.ini .
-
-sed -i "1i$(grep "\[Install.*\]" profiles.ini.old)" profiles.ini
-sed -i "s/^Default=.*$/Default=fiecueal.p1/" installs.ini
 
 cd $HOME/Projects
 [ -d Betterfox ] || git clone https://github.com/fiecueal/Betterfox
