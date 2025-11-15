@@ -20,7 +20,7 @@ sudo mkdir -p /etc/systemd/logind.conf.d
 sudo cp $HOME/.config/fiecueal/00-powerkey-lidswitch.conf /etc/systemd/logind.conf.d/
 
 sudo apt purge -y yt-dlp
-sudo apt-mark hold yt-dlp fonts-noto-hinted
+sudo apt-mark hold yt-dlp
 
 sudo apt update
 sudo apt upgrade -y
@@ -50,7 +50,7 @@ chmod a+rx .local/bin/yt-dlp
 
 if [ $is_server ]; then
 
-sudo mkdir -p /Minecraft/config
+sudo mkdir -p Minecraft/config
 
 sudo apt install --no-install-recommends -y \
 nfs-kernel-server \
@@ -70,7 +70,7 @@ sudo exportfs -ra
 
 # sysctl net.ipv4.ip_local_port_range
 PORT=$(ruby -e "puts rand(32768..60999)")
-echo $PORT | sudo tee /Minecraft/config/port.txt
+echo $PORT | sudo tee Minecraft/config/port.txt
 
 sudo ufw allow from 10.0.0.0/24 to any app SSH
 sudo ufw allow from 10.0.0.0/24 to any app Samba
