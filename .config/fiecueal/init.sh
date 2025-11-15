@@ -15,8 +15,8 @@ done
 
 cd $HOME
 export PNPM_HOME="$HOME/.local/pnpm"
-DRAGONRUBY_HOME="$HOME/.local/dragonruby"
-PATH="$PNPM_HOME:$PATH"
+export DRAGONRUBY_HOME="$HOME/.local/dragonruby"
+export PATH="$PNPM_HOME:$PATH"
 mkdir -p Archives Pictures/screenshots Projects .local/bin
 
 sudo mkdir -p /etc/systemd/logind.conf.d
