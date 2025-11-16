@@ -128,6 +128,7 @@ sudo dpkg --add-architecture i386
 
 sudo apt update
 sudo apt install --no-install-recommends -y \
+arandr \
 brave-browser \
 cowsay \
 dunst \
@@ -171,6 +172,7 @@ thunar \
 udisks2 \
 wezterm \
 woff2 \
+x11-xserver-utils \
 xdg-utils \
 xfce4-clipman \
 xinit \
