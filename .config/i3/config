@@ -34,7 +34,7 @@ for_window [class="(?i)calculator|protonvpn-app|font-manager"] floating enable
 for_window [floating] border pixel 3
 for_window [floating] move position center
 
-gaps inner 14px
+gaps inner 15px
 default_border pixel 1
 
 focus_follows_mouse no
