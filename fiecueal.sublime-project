@@ -19,6 +19,7 @@
 		{ "path": ".config/gtk-3.0" },
 		{ "path": ".config/i3" },
 		{ "path": ".config/i3status" },
+		{ "path": ".config/polybar" },
 		{ "path": ".config/sublime-text/Packages/User", "name": "sublime (User)", },
 		{ "path": ".config/wezterm" },
 		{ "path": ".config/X11" },

@@ -163,6 +163,7 @@ openssh-client \
 pavucontrol \
 playerctl \
 polkitd \
+polybar \
 pulseaudio \
 steam-installer \
 sublime-merge \
