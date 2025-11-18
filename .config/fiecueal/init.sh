@@ -171,6 +171,7 @@ sublime-text \
 suckless-tools \
 thunar \
 udisks2 \
+webp-pixbuf-loader \
 wezterm \
 woff2 \
 x11-xserver-utils \
