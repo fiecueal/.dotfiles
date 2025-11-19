@@ -32,6 +32,7 @@ sudo apt install --no-install-recommends -y \
 autojump \
 btop \
 curl \
+fastfetch \
 golang \
 gpg \
 micro \

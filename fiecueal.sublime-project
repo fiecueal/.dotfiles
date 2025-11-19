@@ -15,6 +15,8 @@
 			"folder_exclude_patterns": ["*"],
 		},
 		{ "path": ".config/fiecueal" },
+		{ "path": ".config", "file_include_patterns": ["mimeapps.list"], "folder_exclude_patterns": ["*"] },
+		{ "path": ".config/fastfetch" },
 		{ "path": ".config/fcitx5" },
 		{ "path": ".config/gtk-3.0" },
 		{ "path": ".config/i3" },
