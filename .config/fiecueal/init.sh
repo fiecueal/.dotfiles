@@ -129,6 +129,7 @@ sudo dpkg --add-architecture i386
 sudo apt update
 sudo apt install --no-install-recommends -y \
 arandr \
+bibata-cursor-theme \
 brave-browser \
 cowsay \
 dunst \

@@ -1,29 +1,26 @@
 [Default Applications]
 application/json=sublime_text.desktop
-application/pdf=firefox.desktop
+application/pdf=firefox-esr.desktop
+application/x-ruby=sublime_text.desktop
+application/x-zerosize=sublime_text.desktop
 image/gif=gpicview.desktop
 image/jpeg=gpicview.desktop
 image/png=gpicview.desktop
 image/svg+xml=gpicview.desktop
 image/webp=gpicview.desktop
+inode/directory=thunar.desktop
 text/css=sublime_text.desktop
 text/html=firefox-esr.desktop
 text/javascript=sublime_text.desktop
 text/plain=sublime_text.desktop
+text/x-lua=sublime_text.desktop
 video/mp4=mpv.desktop
 video/webm=mpv.desktop
+video/x-matroska=mpv.desktop
+x-scheme-handler/about=firefox-esr.desktop
+x-scheme-handler/http=firefox-esr.desktop
+x-scheme-handler/https=firefox-esr.desktop
+x-scheme-handler/unknown=firefox-esr.desktop
 
 [Added Associations]
-application/json=sublime_text.desktop;
-application/pdf=firefox.desktop;
-image/gif=gpicview.desktop;
-image/jpeg=gpicview.desktop;
-image/png=gpicview.desktop;
-image/svg+xml=gpicview.desktop;
-image/webp=gpicview.desktop;
-text/css=sublime_text.desktop;
-text/html=firefox-esr.desktop;
-text/javascript=sublime_text.desktop;
-text/plain=sublime_text.desktop;
-video/mp4=mpv.desktop;
-video/webm=mpv.desktop;
+inode/directory=sublime_text.desktop;sublime_merge.desktop;git-cola-folder-handler.desktop;thunar.desktop;
