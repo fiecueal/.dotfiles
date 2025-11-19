@@ -1,0 +1,18 @@
+#!/bin/sh
+
+PROJECT_HOME="$HOME/Projects"
+mkdir -p "$PROJECT_HOME"
+
+if [ ! "$1" ]; then
+	echo "Error: no project name provided"
+	exit 1
+elif [ -d "$HOME/Projects/$1" ]; then
+	echo "Error: Directory already exists"
+	exit 1
+fi
+
+mkdir "$PROJECT_HOME/$1"
+cd "$PROJECT_HOME/$1"
+echo '{"folders":[{"path":"."}]}' > "$1.sublime-project"
+
+echo "New project at $PROJECT_HOME/$1"
